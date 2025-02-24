@@ -1,10 +1,11 @@
 <header>
   <div class="container">
     <div class="topnav">
-        <a href="" class="split"><h1>{{ scrambledTitle || scrambleTitle }}</h1></a>
+        <!-- <a [routerLink]="['/']" class="split"><h1>{{ scrambledTitle || scrambleTitle }}</h1></a> -->
+        <a [routerLink]="['/']" class="split"><h1>Nottingham Arts</h1></a>
         <a href="">Logout</a>
         <a [routerLink]="['/profile']">Profile</a>
-        <a href="">Your Events</a>
+        <a [routerLink]="['/your-events']">Your Events</a>
         <a href="">Events</a>
       </div>
   </div>
