@@ -8,7 +8,7 @@
   background-blend-mode: overlay;
   padding: 100px;
   height: 20vh;
-  width: 100vw
+  width: 100vw;
 }
 
 .search {
@@ -17,13 +17,12 @@
 }
 
 .search-icons {
-  display: flex;
-  position: relative;
-  flex-grow: 1;
+display: flex; 
+  
+  flex-grow: 0.2;
 }
 
 .search-form {
-  position: relative;
   flex-grow: 0.2;
 }
 
@@ -39,5 +38,23 @@ p {
 
 .search-topic {
     text-align: center;
-    padding-right: 160px;
+    padding-right: 100px;
 }
+input {
+    padding: 7px
+}
+
+button {
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    border: none;
+    background-color: #8bd1c3;
+  }
+  
+  button:hover,
+  button:active {
+    background-color: rgb(107, 124, 124)
+  }
