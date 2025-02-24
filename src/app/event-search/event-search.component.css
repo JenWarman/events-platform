@@ -3,6 +3,7 @@
   background-image: url("../../../public/images/acoustic-guitar.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
+  background-position: 60%;
   padding: 100px;
   height: 20vh;
 }
