@@ -1,0 +1,35 @@
+.container {
+  color: #ffff;
+  background-image: url("../../../public/images/acoustic-guitar.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  padding: 100px;
+  height: 20vh;
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+}
+
+.search-icons {
+  display: flex;
+  position: relative;
+  flex-grow: 1;
+}
+
+.search-form {
+  position: relative;
+  flex-grow: 0.2;
+}
+
+h2 {
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  margin: auto
+}
+p {
+  padding-left: 10px;
+  text-align: center;
+}
