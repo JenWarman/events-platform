@@ -4,8 +4,11 @@
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: 60%;
+  background-color: rgba(0, 0, 0, 0.486);
+  background-blend-mode: overlay;
   padding: 100px;
   height: 20vh;
+  width: 100vw
 }
 
 .search {
