@@ -1,6 +1,13 @@
+.container {
+  background-color: black;
+  width: 100vw;
+  height: 10vh;
+  display: grid;
+}
+
 h1 {
-    font-size: 3rem;
-    text-align: center;
-    font-family: Arial, sans-serif;
-    color: black;
-  }
+  font-size: 3rem;
+  text-align: left;
+  font-family: Arial, sans-serif;
+  color: #ffff;
+}
