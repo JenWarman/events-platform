@@ -30,6 +30,10 @@ h2 {
   margin: auto
 }
 p {
-  padding-left: 10px;
   text-align: center;
+}
+
+.search-topic {
+    text-align: center;
+    padding-right: 160px;
 }
