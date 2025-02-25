@@ -1,0 +1,20 @@
+<form (submit)="onLogin()">
+  <div>
+    <label for="email">Email</label>
+    <div>
+      <input type="text" name="email" [(ngModel)]="formData.email" id="email" />
+    </div>
+  </div>
+  <div>
+    <label for="password">Password</label>
+    <div>
+      <input
+        type="text"
+        name="password"
+        [(ngModel)]="formData.password"
+        id="password"
+      />
+    </div>
+  </div>
+  <button type="submit">Login</button>
+</form>
