@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-event-search',
@@ -8,4 +9,8 @@ import { Component } from '@angular/core';
 })
 export class EventSearchComponent {
 
+  constructor(private routerService: Router) {}
+onCreateEvent() {
+  this.routerService.navigateByUrl('/add-event');
+}
 }
