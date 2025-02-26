@@ -7,7 +7,7 @@
     <p>Location: {{ event.location }}</p>
     <p>Date: {{ event.date }}</p>
     <p>Time: {{ event.time }}</p>
-    <button>Find out more</button>
+    <button (click)="onOpenEventDetails(event.id)">Find out more</button>
   </div>
   }
 </div>

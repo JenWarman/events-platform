@@ -5,6 +5,8 @@ import { UserEventsComponent } from './user-events/user-events.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AddEventComponent } from './add-event/add-event.component';
+import { EventCardComponent } from './event-card/event-card.component';
+import { EditEventComponent } from './edit-event/edit-event.component';
 
 export const routes: Routes = [
   {
@@ -31,4 +33,12 @@ export const routes: Routes = [
     path: 'add-event',
     component: AddEventComponent,
   },
+  {
+    path: 'event-item/:id',
+    component: EventCardComponent
+  },
+  {
+    path: 'edit-event/:id',
+    component: EditEventComponent
+  }
 ];

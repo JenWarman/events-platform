@@ -41,4 +41,5 @@ export class EventListComponent implements OnInit {
         return 'white';  
     }
   }
+
 }

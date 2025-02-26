@@ -1,0 +1,22 @@
+<div class="container">
+  @if (event) {
+  <h3>{{ event.title }}</h3>
+  <p class="type" [ngStyle]="{ 'background-color': getBackgroundColor(event.type) }">{{ event.type }}</p>
+  <div class="event-item-container">
+    <img src="{{ event.image }}" />
+    <p>{{ event.summary }}</p>
+    <p>Location: {{ event.location }}</p>
+    <p>Date: {{ event.date }}</p>
+    <p>Time: {{ event.time }}</p>
+  </div>
+  @if (user?.is_admin) {
+  <div>
+    <button (click)="onEdit(event.id)">Edit Event</button>
+    <button (click)="onDelete(event.id)">Delete Event</button>
+  </div>
+  }
+  <div>
+    <button>Sign up for event</button>
+  </div>
+  }
+</div>
