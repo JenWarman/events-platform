@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
   formData = {
-      username: '',
       email: '',
       password: '',
     };
