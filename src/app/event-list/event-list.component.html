@@ -1,8 +1,8 @@
 <div class="container">
   @for (event of events; track event.id) {
-  <div class="event-container">
+  <div class="event-container" >
     <h3>{{ event.title }}</h3>
-    <p class="type">{{event.type}}</p>
+    <p class="type" [ngStyle]="{ 'background-color': getBackgroundColor(event.type) }">{{ event.type }}</p>
     <p>Location: {{ event.location }}</p>
     <img src="{{ event.image }}" />
     <p>Date: {{ event.date }}</p>
