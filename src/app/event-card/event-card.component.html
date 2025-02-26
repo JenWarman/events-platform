@@ -1,11 +1,19 @@
 <div class="container">
   @if (event) {
   <h3>{{ event.title }}</h3>
-  <p class="type" [ngStyle]="{ 'background-color': getBackgroundColor(event.type) }">{{ event.type }}</p>
+  <p
+    class="type"
+    [ngStyle]="{ 'background-color': getBackgroundColor(event.type) }"
+  >
+    {{ event.type }}
+  </p>
   <div class="event-item-container">
     <img src="{{ event.image }}" />
     <p>{{ event.summary }}</p>
-    <p>Location: {{ event.location }}</p>
+    <div class="location">
+      <span class="material-symbols-outlined"> pin_drop</span>
+      <p>Location: {{ event.location }}</p>
+    </div>
     <p>Date: {{ event.date }}</p>
     <p>Time: {{ event.time }}</p>
   </div>
