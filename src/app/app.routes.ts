@@ -4,6 +4,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { UserEventsComponent } from './user-events/user-events.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AddEventComponent } from './add-event/add-event.component';
 
 export const routes: Routes = [
   {
@@ -25,5 +26,9 @@ export const routes: Routes = [
   {
     path: 'your-events',
     component: UserEventsComponent,
+  },
+  {
+    path: 'add-event',
+    component: AddEventComponent,
   },
 ];

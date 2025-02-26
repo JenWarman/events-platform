@@ -23,7 +23,6 @@ export class SupabaseService {
   }
 
   private publishUser() {
-
     this.supabase.auth.getSession().then(async (user) => {
       if (!user.data.session?.user) {
         return;
