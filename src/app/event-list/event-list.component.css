@@ -2,16 +2,16 @@
     width: 50%;
     margin: 2rem auto;
     padding: 2rem;
-    border-radius: 4px;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
-    display: flex;
-    flex-direction: column;
   }
   
   .event-container {
     position: relative;
     display: flex;
     flex-direction: column;
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+    margin: 2rem auto;
+    padding: 2rem;
   }
 
   button {
@@ -27,4 +27,11 @@
   button:hover,
   button:active {
     background-color: rgb(107, 124, 124)
+  }
+
+  .type {
+    background-color: #8bd1c3;
+    margin: auto;
+    padding: 6px;
+    border-radius: 0.25rem;
   }

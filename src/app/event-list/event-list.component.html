@@ -1,11 +1,13 @@
 <div class="container">
-<div class="event-container">
-    <h3>Event Title</h3>
-    <p>Location</p>
-    <p>Image</p>
-    <!-- <img src=""/> -->
-     <p>Date</p>
-     <p>Time</p>
-     <button>Find out more</button>
-</div>
+  @for (event of events; track event.id) {
+  <div class="event-container">
+    <h3>{{ event.title }}</h3>
+    <p class="type">{{event.type}}</p>
+    <p>Location: {{ event.location }}</p>
+    <img src="{{ event.image }}" />
+    <p>Date: {{ event.date }}</p>
+    <p>Time: {{ event.time }}</p>
+    <button>Find out more</button>
+  </div>
+  }
 </div>
