@@ -3,8 +3,8 @@
   <div class="event-container" >
     <h3>{{ event.title }}</h3>
     <p class="type" [ngStyle]="{ 'background-color': getBackgroundColor(event.type) }">{{ event.type }}</p>
-    <p>Location: {{ event.location }}</p>
     <img src="{{ event.image }}" />
+    <p>Location: {{ event.location }}</p>
     <p>Date: {{ event.date }}</p>
     <p>Time: {{ event.time }}</p>
     <button>Find out more</button>
