@@ -50,16 +50,3 @@ h3 {
     padding-bottom: 6px;
     border-radius: 0.25rem;
   }
-
- 
-/* .material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
-} */
-
-.location {
-    display: inline-block;
-}
