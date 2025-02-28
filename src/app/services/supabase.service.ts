@@ -156,6 +156,9 @@ export class SupabaseService {
       if (error) {
         console.log('error adding event to user');
       }
+      if (!data) {
+        console.log('no event data added to user');
+      }
       console.log(data, '<---event added to user');
       return data;
   }
