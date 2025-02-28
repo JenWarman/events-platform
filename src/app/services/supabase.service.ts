@@ -11,7 +11,8 @@ export type UserProfile = User & { is_admin: boolean };
 export class SupabaseService {
   public supabase: SupabaseClient;
 
-  private userLoadedSub: BehaviorSubject<UserProfile | undefined> = new BehaviorSubject<UserProfile | undefined> (undefined);
+  private userLoadedSub: BehaviorSubject<UserProfile | undefined> =
+    new BehaviorSubject<UserProfile | undefined>(undefined);
   public userLoaded = this.userLoadedSub.asObservable();
 
   constructor() {
@@ -27,9 +28,15 @@ export class SupabaseService {
       if (!user.data.session?.user) {
         return;
       }
-      const {data, error} = await this.supabase.from('admin').select().eq('user_id', user.data.session?.user.id)
-      
-      this.userLoadedSub.next({...user.data.session?.user, is_admin: data?.length === 1});
+      const { data, error } = await this.supabase
+        .from('admin')
+        .select()
+        .eq('user_id', user.data.session?.user.id);
+
+      this.userLoadedSub.next({
+        ...user.data.session?.user,
+        is_admin: data?.length === 1,
+      });
     });
   }
 
@@ -57,19 +64,21 @@ export class SupabaseService {
     this.publishUser();
   }
 
-  async fetchEvents(filters?: {category?: string, keyword?: string}) {
+  async fetchEvents(filters?: { category?: string; keyword?: string }) {
     let builder = this.supabase.from('event').select();
 
     if (filters?.category) {
-        builder = builder.eq('type', filters?.category); 
+      builder = builder.eq('type', filters?.category);
     }
 
     if (filters?.keyword) {
-        builder = builder.or(`summary.fts.${filters.keyword},title.fts.${filters.keyword}`); 
+      builder = builder.or(
+        `summary.fts.${filters.keyword},title.fts.${filters.keyword}`
+      );
     }
-    
+
     const { data, error } = await builder;
-    
+
     if (error) {
       console.log('error fetching events');
       return;
@@ -104,28 +113,50 @@ export class SupabaseService {
   }
 
   async fetchEventByType(eventType: string) {
-    const {data, error} = await this.supabase.from('event').select().eq('type', eventType);
+    const { data, error } = await this.supabase
+      .from('event')
+      .select()
+      .eq('type', eventType);
 
     if (error) {
-      console.log('error fetching event by type')
+      console.log('error fetching event by type');
     }
     if (data!.length < 1) {
       console.log('error in fetching data by type');
     }
-    console.log(data, '<---data fetched by type')
+    console.log(data, '<---data fetched by type');
     return data;
   }
 
   async fetchEventByKeyword(query: string) {
-    const {data, error} = await this.supabase.from('event').select().textSearch("summary", query);
+    const { data, error } = await this.supabase
+      .from('event')
+      .select()
+      .textSearch('summary', query);
 
     if (error) {
-      console.log('error fetching event by query')
+      console.log('error fetching event by query');
     }
     if (data!.length < 1) {
       console.log('error in fetching data by query');
     }
-    console.log(data, '<---data fetched by query')
+    console.log(data, '<---data fetched by query');
     return data;
+  }
+
+  async AddEventToUser(eventId: string) {
+    
+    const user = this.userLoadedSub.getValue();
+    if (!user){return}
+
+    const { data, error } = await this.supabase
+      .from('user-events')
+      .insert({ user_id: user.id, event_id: eventId })
+
+      if (error) {
+        console.log('error adding event to user');
+      }
+      console.log(data, '<---event added to user');
+      return data;
   }
 }

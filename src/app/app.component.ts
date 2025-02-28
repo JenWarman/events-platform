@@ -7,7 +7,7 @@ import { HeroBarComponent } from './hero-bar/hero-bar.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, EventSearchComponent, HeroBarComponent],
+  imports: [RouterOutlet, HeaderComponent, EventSearchComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

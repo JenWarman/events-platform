@@ -41,6 +41,11 @@ export class EventCardComponent {
     }
   }
 
+  onAddEventToUser(eventId: string){
+    this.supabaseService.AddEventToUser(this.event.id);
+  }
+
+  
   ngOnInit(): void {
     if (!this.id) {
       return;
