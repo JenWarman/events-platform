@@ -11,7 +11,22 @@ import { EditEventComponent } from './edit-event/edit-event.component';
 export const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
+    redirectTo: '/events'
+  },
+  {
+    path: 'events',
     component: HomeComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'events/:category',
+    pathMatch: 'full',
+    component: HomeComponent,
+  },
+  {
+    path: 'events/:category/event/:id',
+    component: EventCardComponent
   },
   {
     path: 'login',

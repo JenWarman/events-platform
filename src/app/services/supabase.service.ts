@@ -57,9 +57,19 @@ export class SupabaseService {
     this.publishUser();
   }
 
-  async fetchEvents() {
-    const { data, error } = await this.supabase.from('event').select();
+  async fetchEvents(filters?: {category?: string, keyword?: string}) {
+    let builder = this.supabase.from('event').select();
 
+    if (filters?.category) {
+        builder = builder.eq('type', filters?.category); 
+    }
+
+    if (filters?.keyword) {
+        builder = builder.or(`summary.fts.${filters.keyword},title.fts.${filters.keyword}`); 
+    }
+    
+    const { data, error } = await builder;
+    
     if (error) {
       console.log('error fetching events');
       return;
@@ -93,16 +103,29 @@ export class SupabaseService {
     }
   }
 
-  async fetchEventByQuery(query: string) {
-    const {data, error} = await this.supabase.from('event').select().textSearch('title', query);
+  async fetchEventByType(eventType: string) {
+    const {data, error} = await this.supabase.from('event').select().eq('type', eventType);
 
     if (error) {
-      console.log('error fetching event by title')
+      console.log('error fetching event by type')
     }
     if (data!.length < 1) {
-      console.log('error in fetching data by title query');
+      console.log('error in fetching data by type');
     }
-    console.log(data, '<---data fetched by title query')
+    console.log(data, '<---data fetched by type')
+    return data;
+  }
+
+  async fetchEventByKeyword(query: string) {
+    const {data, error} = await this.supabase.from('event').select().textSearch("summary", query);
+
+    if (error) {
+      console.log('error fetching event by query')
+    }
+    if (data!.length < 1) {
+      console.log('error in fetching data by query');
+    }
+    console.log(data, '<---data fetched by query')
     return data;
   }
 }

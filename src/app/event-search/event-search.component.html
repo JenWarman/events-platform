@@ -1,19 +1,21 @@
 <div class="container">
   <h2>Not Art</h2>
   <p>Discover art and cultural events in Nottingham.</p>
-  <form>
+
     <div class="search">
 
       <div class="search-icons">
-        <button name="art" class="search-topic" (click)="onSearchEvent(this.form.value.searchQuery)">Art</button>
-        <button name="music" class="search-topic" (click)="onSearchEvent(this.form.value.searchQuery)">Music</button>
-        <button name="literature" class="search-topic"(click)="onSearchEvent(this.form.value.searchQuery)">Literature</button>
-        <button name="theatre" class="search-topic" (click)="onSearchEvent(this.form.value.searchQuery)">Theatre</button>
+        <button name="art" class="search-topic" [routerLink]="['/events']" [queryParams]="{category: 'art'}" queryParamsHandling="merge">Art</button>
+        <button name="music" class="search-topic" [routerLink]="['/events/music']">Music</button>
+        <button name="literature" class="search-topic"[routerLink]="['/events/literature']">Literature</button>
+        <button name="theatre" class="search-topic" [routerLink]="['/events/theatre']">Theatre</button>
       </div>
 
       <div class="search-form">
-        <input type="text" placeholder="keyword search" />
-        <button type="submit" (click)="onSearchEventKeyword()">Search</button>
+        <form method="get" action="/events" [formGroup]="form" (ngSubmit)="onFormSubmit()">
+          <input type="text" name="keyword" id="keyword" placeholder="keyword search" formControlName="keyword"/>
+          <button type="submit">Search</button>
+        </form>
       </div>
 
       <div class="add-event-button">
@@ -21,5 +23,5 @@
       </div>
 
     </div>
-  </form>
+
 </div>

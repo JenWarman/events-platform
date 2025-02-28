@@ -4,42 +4,45 @@ import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
-  Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink, TitleStrategy } from '@angular/router';
 
 @Component({
   selector: 'app-event-search',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './event-search.component.html',
   styleUrl: './event-search.component.css',
 })
 export class EventSearchComponent {
-
   form = new FormGroup({
-    searchQuery: new FormControl('')
-  })
+    keyword: new FormControl(''),
+  });
 
-  searchTerm: string | undefined;
+  searchTerm: string | null | undefined;
+  keyword: string | null | undefined;
 
-  constructor(private routerService: Router, private supabaseService: SupabaseService) {
-    //update searchTerm with name/value from button? 
-    this.searchTerm = this.form.value.searchQuery;
+  constructor(
+    private routerService: Router,
+    private supabaseService: SupabaseService
+  ) {
   }
 
-  onSearchEvent(searchTerm: string) {
-    if (!this.searchTerm) {
+  onSearchEventType(searchTerm: string) {
+    if (!searchTerm) {
+      console.log('no query - in component')
       return;
     }
-    this.supabaseService.fetchEventByQuery(this.searchTerm).then((event) => {
-      console.log(event);
+    this.supabaseService.fetchEventByType(searchTerm).then((event) => {
+      console.log(event, 'fetched event by type');
     });
   }
+  
+  onFormSubmit() {
 
-  onSearchEventKeyword(){}
-
+    this.routerService.navigate(['/events'], {queryParams: {keyword: this.form.value.keyword}, queryParamsHandling: 'merge'})
+    }
+  
   onCreateEvent() {
     this.routerService.navigateByUrl('/add-event');
   }
-  
 }

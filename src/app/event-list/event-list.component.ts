@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SupabaseService } from '../services/supabase.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -15,16 +15,27 @@ export class EventListComponent implements OnInit {
   constructor(
     private supabaseService: SupabaseService,
     private routerService: Router,
-  ) {}
+    private route: ActivatedRoute,
+  ) {
+
+  }
 
   onOpenEventDetails(id: string) {
     this.routerService.navigateByUrl(`/event-item/${id}`);
   }
 
   ngOnInit(): void {
-    this.supabaseService.fetchEvents().then((events) => {
-      this.events = events;
-    });
+
+    this.route.queryParamMap.subscribe((query) => {
+    
+      this.supabaseService.fetchEvents({
+        category: query.get('category') ?? undefined,
+        keyword: query.get('keyword') ?? undefined,
+      }).then((events) => {
+        this.events = events;
+      });
+    })
+
   }
 
   getBackgroundColor(eventType: string): string {
