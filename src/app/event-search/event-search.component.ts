@@ -5,12 +5,14 @@ import { Router } from '@angular/router';
   selector: 'app-event-search',
   imports: [],
   templateUrl: './event-search.component.html',
-  styleUrl: './event-search.component.css'
+  styleUrl: './event-search.component.css',
 })
 export class EventSearchComponent {
-
   constructor(private routerService: Router) {}
-onCreateEvent() {
-  this.routerService.navigateByUrl('/add-event');
-}
+
+  onSearchEvent() {}
+
+  onCreateEvent() {
+    this.routerService.navigateByUrl('/add-event');
+  }
 }

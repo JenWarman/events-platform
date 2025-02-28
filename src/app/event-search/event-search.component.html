@@ -3,16 +3,16 @@
   <p>Discover art and cultural events in Nottingham.</p>
   <div class="search">
     <div class="search-icons">
-      <p class="search-topic">Art</p>
-      <p class="search-topic">Music</p>
-      <p class="search-topic">Literature</p>
-      <p class="search-topic">Theatre</p>
+      <button class="search-topic">Art</button>
+      <button class="search-topic">Music</button>
+      <button class="search-topic">Literature</button>
+      <button class="search-topic">Theatre</button>
     </div>
 
     <div class="search-form">
       <form>
         <input type="text" placeholder="keyword search" />
-        <button type="submit">Search</button>
+        <button type="submit" (click)="onSearchEvent()">Search</button>
       </form>
     </div>
 

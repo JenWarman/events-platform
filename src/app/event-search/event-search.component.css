@@ -14,16 +14,12 @@
 .search {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
-.search-icons {
-  display: flex;
-  flex-grow: 0.2;
-}
+/* .search-icons {}
 
-.search-form {
-  flex-grow: 0.2;
-}
+.search-form {} */
 
 h2 {
   text-align: center;
@@ -31,6 +27,7 @@ h2 {
   font-weight: bold;
   margin: auto;
 }
+
 p {
   text-align: center;
 }
