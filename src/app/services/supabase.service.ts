@@ -93,16 +93,16 @@ export class SupabaseService {
     }
   }
 
-//   async fetchEventByTitle(query: string) {
-//     const {data, error} = await this.supabase.from('event').select().textSearch('title', query);
+  async fetchEventByQuery(query: string) {
+    const {data, error} = await this.supabase.from('event').select().textSearch('title', query);
 
-//     if (error) {
-//       console.log('error fetching event by title')
-//     }
-    // if (data.length < 1) {
-    //   console.log('error in fetching data by title query');
-    // }
-//     console.log(data, '<---data fetched by title query')
-//     return data;
-//   }
+    if (error) {
+      console.log('error fetching event by title')
+    }
+    if (data!.length < 1) {
+      console.log('error in fetching data by title query');
+    }
+    console.log(data, '<---data fetched by title query')
+    return data;
+  }
 }

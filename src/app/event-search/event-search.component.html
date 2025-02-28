@@ -1,23 +1,25 @@
 <div class="container">
   <h2>Not Art</h2>
   <p>Discover art and cultural events in Nottingham.</p>
-  <div class="search">
-    <div class="search-icons">
-      <button class="search-topic">Art</button>
-      <button class="search-topic">Music</button>
-      <button class="search-topic">Literature</button>
-      <button class="search-topic">Theatre</button>
-    </div>
+  <form>
+    <div class="search">
 
-    <div class="search-form">
-      <form>
+      <div class="search-icons">
+        <button name="art" class="search-topic" (click)="onSearchEvent(this.form.value.searchQuery)">Art</button>
+        <button name="music" class="search-topic" (click)="onSearchEvent(this.form.value.searchQuery)">Music</button>
+        <button name="literature" class="search-topic"(click)="onSearchEvent(this.form.value.searchQuery)">Literature</button>
+        <button name="theatre" class="search-topic" (click)="onSearchEvent(this.form.value.searchQuery)">Theatre</button>
+      </div>
+
+      <div class="search-form">
         <input type="text" placeholder="keyword search" />
-        <button type="submit" (click)="onSearchEvent()">Search</button>
-      </form>
-    </div>
+        <button type="submit" (click)="onSearchEventKeyword()">Search</button>
+      </div>
 
-    <div class="add-event-button">
-      <button (click)="onCreateEvent()">Create new event</button>
+      <div class="add-event-button">
+        <button (click)="onCreateEvent()">Create new event</button>
+      </div>
+
     </div>
-  </div>
+  </form>
 </div>
