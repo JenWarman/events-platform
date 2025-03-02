@@ -8,9 +8,9 @@
       <p>Location: {{ event.location }}</p>
       <p>Date: {{ event.date }}</p>
       <p>Time: {{ event.time }}</p>
-      <div>
-        <button (click)="onOpenEventDetails(event.id)">Edit RSVP</button>
-        <button>You're going!</button>
+      <div >
+        <button class="event-rsvp" (click)="onDeleteEventFromUser(event.id)">Edit RSVP</button>
+        <p class="event-rsvp">You're going!</p>
       </div>
     </div>
     }

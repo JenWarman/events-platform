@@ -145,21 +145,34 @@ export class SupabaseService {
   }
 
   async AddEventToUser(eventId: string) {
-    
     const user = this.userLoadedSub.getValue();
-    if (!user){return}
+    if (!user) {
+      return;
+    }
 
     const { data, error } = await this.supabase
       .from('user-events')
-      .insert({ user_id: user.id, event_id: eventId })
+      .insert({ user_id: user.id, event_id: eventId });
 
-      if (error) {
-        console.log('error adding event to user');
-      }
-      if (!data) {
-        console.log('no event data added to user');
-      }
-      console.log(data, '<---event added to user');
-      return data;
+    if (error) {
+      console.log('error adding event to user');
+    }
+    if (!data) {
+      console.log('no event data added to user');
+    }
+    console.log(data, '<---event added to user');
+    return data;
+  }
+
+  async deleteEventFromUser(eventId: string) {
+    const response = await this.supabase
+      .from('user-events')
+      .delete()
+      .eq('event_id', eventId);
+
+    if (response.error) {
+      console.log('error deleting event from user');
+      return;
+    }
   }
 }

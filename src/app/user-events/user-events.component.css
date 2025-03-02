@@ -31,7 +31,6 @@
   }
 
   button {
-    float: right;
     padding: 0.5rem 1rem;
     margin-right: 1rem;
     margin-top: 1rem;
@@ -54,4 +53,11 @@
     padding-top: 6px;
     padding-bottom: 6px;
     border-radius: 0.25rem;
+  }
+
+  .event-rsvp {
+    float: right;
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
   }

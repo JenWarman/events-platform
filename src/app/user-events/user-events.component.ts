@@ -10,20 +10,19 @@ import { CommonModule } from '@angular/common';
   styleUrl: './user-events.component.css'
 })
 export class UserEventsComponent implements OnInit {
+  event: any;
   events: any;
 
   constructor(
     private supabaseService: SupabaseService,
     private routerService: Router,
     private route: ActivatedRoute,
-  ) {
+  ) {}
 
+  onDeleteEventFromUser(eventId: string) {
+    this.supabaseService.deleteEventFromUser(this.event.id);
   }
-
-  onOpenEventDetails(id: string) {
-    this.routerService.navigateByUrl(`/event-item/${id}`);
-  }
-
+ 
   ngOnInit(): void {
 
     this.route.queryParamMap.subscribe((query) => {
