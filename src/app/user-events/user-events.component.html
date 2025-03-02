@@ -1,1 +1,17 @@
-<p>user-events works!</p>
+<div class="container">
+    @for (event of events; track event.id) {
+    <div class="event-container" >
+      <h3>{{ event.title }}</h3>
+      <p class="type" [ngStyle]="{ 'background-color': getBackgroundColor(event.type) }">{{ event.type }}</p>
+      <img src="{{ event.image }}" />
+      <p>{{event.summary}}</p>
+      <p>Location: {{ event.location }}</p>
+      <p>Date: {{ event.date }}</p>
+      <p>Time: {{ event.time }}</p>
+      <div>
+        <button (click)="onOpenEventDetails(event.id)">Edit RSVP</button>
+        <button>You're going!</button>
+      </div>
+    </div>
+    }
+  </div>
