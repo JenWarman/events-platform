@@ -164,6 +164,22 @@ export class SupabaseService {
     return data;
   }
 
+  async fetchEventsByUser(userId: string) {
+    const {data, error} = await this.supabase
+    .from('user-events')
+    .select()
+    .eq('user_id', userId)
+
+    if (error) {
+      console.log('error fetching events by user id')
+    }
+    if (data!.length < 1) {
+      console.log('empty array for user events')
+    }
+    console.log(data, '<-- event data fetched by user id')
+    return data;
+  }
+
   async deleteEventFromUser(eventId: string) {
     const response = await this.supabase
       .from('user-events')
