@@ -14,6 +14,7 @@ export class UserEventsComponent {
   event: any;
   events: any;
    user: User | undefined;
+   rsvpStatus: string = '';
 
   constructor(
     private supabaseService: SupabaseService,
@@ -28,6 +29,7 @@ export class UserEventsComponent {
       this.supabaseService.fetchEventsByUser(user?.id).then((events) => {
         console.log(events, '<---data from fetched event by user id')
         this.events = events;
+        this.rsvpStatus = 'you\'re going!'
       })
     });
   }
@@ -36,9 +38,10 @@ export class UserEventsComponent {
     if (!eventId) {
       console.log('no event id to delete from user');
       return;
-    }this.supabaseService.deleteEventFromUser(eventId);
+    }
     if (window.confirm('Are you sure you are not going to this event?')){
-      
+      this.supabaseService.deleteEventFromUser(eventId);
+      this.rsvpStatus = 'you\'re not going!'
     }
   }
 

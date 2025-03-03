@@ -10,7 +10,7 @@
       <p>Time: {{ event.event.time }}</p>
       <div >
         <button class="event-rsvp" (click)="onEditRSVP(event.event.id)">Edit RSVP</button>
-        <p class="event-rsvp">You're going!</p>
+        <p class="event-rsvp">{{this.rsvpStatus}}</p>
       </div>
     </div>
     }

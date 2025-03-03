@@ -5,7 +5,7 @@ import {
   FormGroup,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { Router, RouterLink, TitleStrategy } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-event-search',
@@ -38,7 +38,6 @@ export class EventSearchComponent {
   }
   
   onFormSubmit() {
-
     this.routerService.navigate(['/events'], {queryParams: {keyword: this.form.value.keyword}, queryParamsHandling: 'merge'})
     }
   
