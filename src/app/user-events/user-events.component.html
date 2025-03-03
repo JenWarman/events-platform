@@ -1,15 +1,15 @@
 <div class="container">
-    @for (event of events; track event.id) {
+    @for (event of events; track event.event_id) {
     <div class="event-container" >
-      <h3>{{ event.title }}</h3>
-      <p class="type" [ngStyle]="{ 'background-color': getBackgroundColor(event.type) }">{{ event.type }}</p>
-      <img src="{{ event.image }}" />
-      <p>{{event.summary}}</p>
-      <p>Location: {{ event.location }}</p>
-      <p>Date: {{ event.date }}</p>
-      <p>Time: {{ event.time }}</p>
+      <h3>{{ event.event.title }}</h3>
+      <p class="type" [ngStyle]="{ 'background-color': getBackgroundColor(event.event.type) }">{{ event.event.type }}</p>
+      <img src="{{ event.event.image }}" />
+      <p>{{event.event.summary}}</p>
+      <p>Location: {{ event.event.location }}</p>
+      <p>Date: {{ event.event.date }}</p>
+      <p>Time: {{ event.event.time }}</p>
       <div >
-        <button class="event-rsvp" (click)="onEditRSVP(event.id)">Edit RSVP</button>
+        <button class="event-rsvp" (click)="onEditRSVP(event.event.id)">Edit RSVP</button>
         <p class="event-rsvp">You're going!</p>
       </div>
     </div>

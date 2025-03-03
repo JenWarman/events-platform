@@ -26,6 +26,7 @@ export class UserEventsComponent {
         return;
       }
       this.supabaseService.fetchEventsByUser(user?.id).then((events) => {
+        console.log(events, '<---data from fetched event by user id')
         this.events = events;
       })
     });
@@ -35,13 +36,13 @@ export class UserEventsComponent {
     if (!eventId) {
       console.log('no event id to delete from user');
       return;
-    }
+    }this.supabaseService.deleteEventFromUser(eventId);
     if (window.confirm('Are you sure you are not going to this event?')){
-      this.supabaseService.deleteEventFromUser(eventId);
+      
     }
   }
 
-  getBackgroundColor(eventType: string): string {
+  getBackgroundColor(eventType: string) {
     switch (eventType.toLowerCase()) {
       case 'art':
         return 'lightblue';

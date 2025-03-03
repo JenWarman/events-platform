@@ -181,14 +181,16 @@ export class SupabaseService {
   }
 
   async deleteEventFromUser(eventId: string) {
-    const response = await this.supabase
-      .from('user-events')
-      .delete()
-      .eq('event_id', eventId);
+    const { data, error } = await this.supabase
+    .from('user-events')
+    .delete()
+    .eq('event_id', eventId)
 
-    if (response.error) {
+    if (error) {
       console.log('error deleting event from user');
       return;
     }
+    console.log(data, '<---response from deleting event by user.')
+    return data;
   }
 }
