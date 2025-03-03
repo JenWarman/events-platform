@@ -1,6 +1,5 @@
-<div class="search-form">
-    <form method="get" action="/events" [formGroup]="form" (ngSubmit)="onFormSubmit()">
-      <input type="text" name="keyword" id="keyword" placeholder="keyword search" formControlName="keyword"/>
-      <button type="submit">Search</button>
-    </form>
-  </div>
+<form method="get" action="/events" [formGroup]="form" (ngSubmit)="onFormSubmit()">
+    <input type="text" name="keyword" id="keyword" placeholder="keyword search" formControlName="keyword"/>
+    <button type="submit">Search</button>
+</form>
+

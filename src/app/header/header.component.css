@@ -35,6 +35,8 @@ h1 {
 
 .search-bar {
   flex-grow: 1;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .topnav-col {
@@ -42,3 +44,4 @@ h1 {
   flex-direction: column;
   justify-content: space-around;
 }
+
