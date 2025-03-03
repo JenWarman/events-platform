@@ -1,6 +1,5 @@
 .container {
   width: 100vw;
-  height: 8vh;
   background-color: rgb(8, 8, 8);
 }
 
@@ -10,14 +9,15 @@ h1 {
   font-family: Arial, sans-serif;
   color: #fff;
   position: relative;
+  padding: 0 20px 0 20px;
 }
 
 .topnav {
-  overflow: hidden;
+  display: flex;
+  flex-direction: row;
 }
 
 .topnav a {
-  float: right;
   color: #fff;
   text-align: center;
   padding: 14px 16px;
@@ -30,6 +30,15 @@ h1 {
 }
 
 .topnav a.split {
-  float: left;
   color: white;
+}
+
+.search-bar {
+  flex-grow: 1;
+}
+
+.topnav-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }

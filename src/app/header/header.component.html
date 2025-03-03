@@ -1,13 +1,21 @@
 <header>
   <div class="container">
     <div class="topnav">
+      <div class="topnav-col">
         <!-- <a [routerLink]="['/']" class="split"><h1>{{ scrambledTitle || scrambleTitle }}</h1></a> -->
         <a [routerLink]="['/']" class="split"><h1>Nottingham Arts</h1></a>
+      </div>
+      <div class="topnav-col search-bar" >
         <app-search-bar></app-search-bar>
-        <a [routerLink]="['/login']">Log in</a>
-        <a [routerLink]="['/profile']">Profile</a>
-        <a [routerLink]="['/your-events']">Your events</a>
-        <a href="">Events</a>
+      </div>
+      <div class="topnav-col">
+        <div>
+          <a [routerLink]="['/login']">Log in</a>
+          <a [routerLink]="['/profile']">Profile</a>
+          <a [routerLink]="['/your-events']">Your events</a>
+          <a href="">Events</a>
+        </div>
+      </div>
       </div>
   </div>
 </header>
