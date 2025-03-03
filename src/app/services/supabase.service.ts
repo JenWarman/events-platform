@@ -167,7 +167,7 @@ export class SupabaseService {
   async fetchEventsByUser(userId: string) {
     const {data, error} = await this.supabase
     .from('user-events')
-    .select()
+    .select('*, event(*)')
     .eq('user_id', userId)
 
     if (error) {

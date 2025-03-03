@@ -10,7 +10,7 @@ import { User } from '@supabase/supabase-js';
   templateUrl: './user-events.component.html',
   styleUrl: './user-events.component.css'
 })
-export class UserEventsComponent implements OnInit {
+export class UserEventsComponent {
   event: any;
   events: any;
    user: User | undefined;
@@ -22,6 +22,12 @@ export class UserEventsComponent implements OnInit {
   ) {
     supabaseService.userLoaded.subscribe((user) => {
       this.user = user;
+      if(!user) {
+        return;
+      }
+      this.supabaseService.fetchEventsByUser(user?.id).then((events) => {
+        this.events = events;
+      })
     });
   }
 
@@ -33,22 +39,6 @@ export class UserEventsComponent implements OnInit {
     if (window.confirm('Are you sure you are not going to this event?')){
       this.supabaseService.deleteEventFromUser(eventId);
     }
-  }
- 
-  ngOnInit(): void {
-    this.supabaseService.fetchEventsByUser(this.user!.id).then((events) => {
-      this.events = events;
-    })
-     // this.route.queryParamMap.subscribe((query) => {
-    
-    //   this.supabaseService.fetchEvents({
-    //     category: query.get('category') ?? undefined,
-    //     keyword: query.get('keyword') ?? undefined,
-    //   }).then((events) => {
-    //     this.events = events;
-    //   });
-    // })
-
   }
 
   getBackgroundColor(eventType: string): string {
