@@ -19,6 +19,7 @@ export class SearchBarComponent {
 
   onFormSubmit() {
     this.routerService.navigate(['/events'], {queryParams: {keyword: this.form.value.keyword}, queryParamsHandling: 'merge'})
-    }
+    this.form.reset();  
+  }
   
 }

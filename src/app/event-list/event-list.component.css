@@ -4,7 +4,6 @@
     padding: 1rem;
     display: flex;
     flex-direction: row;
-    /* overflow: hidden; */
     flex-wrap: wrap; 
     justify-content: center;
   }
