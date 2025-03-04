@@ -1,1 +1,16 @@
-<p>profile works!</p>
+<div class="container">
+    <div class="profile">
+        @if (user) {
+            <h1>Your Profile</h1>
+            <div class="profile-info">
+                <h2>{{user.email}}</h2>
+                <p>Image</p>
+                <p>Edit profile here</p>
+            </div>
+        }
+    </div>
+    <div class="your-events">
+        <h1>Your Events</h1>
+        <app-user-events></app-user-events>
+    </div>
+</div>
