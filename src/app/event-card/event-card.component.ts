@@ -13,6 +13,7 @@ export class EventCardComponent {
   event: any;
   id: string | undefined;
   user: UserProfile | undefined;
+  rsvpStatus: string = '';
 
   constructor(
     private supabaseService: SupabaseService,
@@ -43,6 +44,8 @@ export class EventCardComponent {
 
   onAddEventToUser(eventId: string){
     this.supabaseService.AddEventToUser(this.event.id);
+    this.rsvpStatus = 'You\'re going!'
+    this.routerService.navigateByUrl('/your-events')
   }
 
   
@@ -52,6 +55,7 @@ export class EventCardComponent {
     }
     this.supabaseService.fetchEventById(this.id).then((event) => {
       this.event = event;
+      this.rsvpStatus = 'Sign up for event'
     });
   }
 

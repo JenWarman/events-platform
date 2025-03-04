@@ -6,7 +6,7 @@
       <img src="{{ event.event.image }}" />
       <p>{{event.event.summary}}</p>
       <p>Location: {{ event.event.location }}</p>
-      <p>Date: {{ event.event.date }}</p>
+      <p>{{ event.event.date | date: 'fullDate'}}</p>
       <p>Time: {{ event.event.time }}</p>
       <div >
         <button class="event-rsvp" (click)="onEditRSVP(event.event.id)">Edit RSVP</button>

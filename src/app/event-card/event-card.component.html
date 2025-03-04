@@ -11,7 +11,7 @@
     <img src="{{ event.image }}" />
     <p>{{ event.summary }}</p>
     <p>Location: {{ event.location }}</p>
-    <p>Date: {{ event.date }}</p>
+    <p>{{ event.date | date: 'fullDate'}}</p>
     <p>Time: {{ event.time }}</p>
   </div>
   @if (user?.is_admin) {
@@ -21,7 +21,7 @@
   </div>
   }
   <div>
-    <button (click)="onAddEventToUser(event.id)">Sign up for event</button>
+    <button (click)="onAddEventToUser(event.id)">{{this.rsvpStatus}}</button>
   </div>
   }
 </div>
