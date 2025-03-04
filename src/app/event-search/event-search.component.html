@@ -1,17 +1,16 @@
 <div class="container">
   <h2>Not Art</h2>
   <p>Discover art and cultural events in Nottingham.</p>
-
-    <div class="search">
-
-      <div class="search-icons">
-        <button name="art" class="search-topic" [routerLink]="['/events']" [queryParams]="{category: 'art'}" queryParamsHandling="merge">Art</button>
-        <button name="music" class="search-topic" [routerLink]="['/events/music']" [queryParams]="{category: 'music'}" queryParamsHandling="merge">Music</button>
-        <button name="literature" class="search-topic"[routerLink]="['/events/literature']" [queryParams]="{category: 'literature'}" queryParamsHandling="merge">Literature</button>
-        <button name="theatre" class="search-topic" [routerLink]="['/events/theatre']" [queryParams]="{category: 'theatre'}" queryParamsHandling="merge">Theatre</button>
-        <button [routerLink]="['/your-events']">Your Events</button>
-        <button (click)="onCreateEvent()">Create new event</button>
-    </div>
-    </div>
-
+  <div class="search">
+    <div class="search-icons">
+    <button name="art" class="search-topic" [routerLink]="['/events']" [queryParams]="{category: 'art'}" queryParamsHandling="merge">Art</button>
+    <button name="music" class="search-topic" [routerLink]="['/events/music']" [queryParams]="{category: 'music'}" queryParamsHandling="merge">Music</button>
+    <button name="literature" class="search-topic"[routerLink]="['/events/literature']" [queryParams]="{category: 'literature'}" queryParamsHandling="merge">Literature</button>
+    <button name="theatre" class="search-topic" [routerLink]="['/events/theatre']" [queryParams]="{category: 'theatre'}" queryParamsHandling="merge">Theatre</button>
+    <button [routerLink]="['/your-events']">Your Events</button>
+    @if (user?.is_admin) {
+    <button (click)="onCreateEvent()" [disabled]="user == null">Create new event</button>
+    }
+    </div>      
+  </div>
 </div>

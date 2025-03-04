@@ -4,6 +4,7 @@
       <div class="topnav-col">
         <!-- <a [routerLink]="['/']" class="split"><h1>{{ scrambledTitle || scrambleTitle }}</h1></a> -->
         <a [routerLink]="['/']" class="split"><h1>Nottingham Arts</h1></a>
+        <h1>Hello, {{ user?.email}} (admin: {{user?.is_admin}})</h1>
       </div>
       <div class="topnav-col search-bar" >
         <app-search-bar></app-search-bar>

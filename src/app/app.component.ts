@@ -12,6 +12,7 @@ import { HeroBarComponent } from './hero-bar/hero-bar.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  title = 'events-platform'
   user: UserProfile | null = null;
 
   constructor(private supabaseService: SupabaseService, private routerService: Router) {

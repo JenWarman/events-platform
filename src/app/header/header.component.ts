@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { SearchBarComponent } from "../search-bar/search-bar.component";
+import { SupabaseService, UserProfile } from '../services/supabase.service';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +11,8 @@ import { SearchBarComponent } from "../search-bar/search-bar.component";
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit {
+
+  user: UserProfile | null = null;
   // phrases: string[] = ['Nottingham Arts', 'Not Art', 'Not Music', 'Not Literature', 'Not Theatre'];
   // currentIndex: number = 0; // Index for cycling through phrases
   // scrambledTitle: string = '';
@@ -19,7 +22,11 @@ export class HeaderComponent implements OnInit {
 
   // characters: string = '!<>-_\\/[]{}—=+*^?#________'; // Characters for scrambling
 
-  constructor(private routerService: Router) {}
+  constructor(private routerService: Router, private supabaseService: SupabaseService) {
+    this.supabaseService.userLoaded.subscribe((user) => {
+      this.user = user ?? null;
+    });
+  }
 
   ngOnInit(): void {
     // this.originalText = this.phrases[this.currentIndex];
