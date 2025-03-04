@@ -10,11 +10,8 @@
         <button name="literature" class="search-topic"[routerLink]="['/events/literature']" [queryParams]="{category: 'literature'}" queryParamsHandling="merge">Literature</button>
         <button name="theatre" class="search-topic" [routerLink]="['/events/theatre']" [queryParams]="{category: 'theatre'}" queryParamsHandling="merge">Theatre</button>
         <button [routerLink]="['/your-events']">Your Events</button>
-      </div>
-      <div class="add-event-button">
         <button (click)="onCreateEvent()">Create new event</button>
-      </div>
-
+    </div>
     </div>
 
 </div>

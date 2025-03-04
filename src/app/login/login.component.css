@@ -18,9 +18,24 @@ textarea {
   border-radius: 0.25rem;
 }
 
+.register-link {
+margin: 2rem auto;
+max-width: 30rem;
+padding-left: 2rem;
+padding-right: 2rem;
+}
+
+.register-link p {
+  text-align: end;
+}
+
+.register-link a {
+  font-weight: bold;
+}
+
 button {
+  float: right;
   padding: 0.5rem 1rem;
-  margin-right: 1rem;
   margin-top: 1rem;
   border-radius: 0.25rem;
   cursor: pointer;

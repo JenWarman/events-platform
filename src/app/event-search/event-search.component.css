@@ -22,11 +22,14 @@ h2 {
 p {
   text-align: center;
 }
-
-.search-topic {
-  text-align: center;
-  padding-right: 100px;
+.search {
+  display: flex;
+  justify-content: center;
+  
 }
+/* .search-topic {
+  
+} */
 input {
   padding: 7px;
 }
