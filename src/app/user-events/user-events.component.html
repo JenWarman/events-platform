@@ -4,13 +4,14 @@
       <h3>{{ event.event.title }}</h3>
       <p class="type" [ngStyle]="{ 'background-color': getBackgroundColor(event.event.type) }">{{ event.event.type }}</p>
       <img src="{{ event.event.image }}" />
-      <p>{{event.event.summary}}</p>
-      <p>Location: {{ event.event.location }}</p>
-      <p>{{ event.event.date | date: 'fullDate'}}</p>
-      <p>Time: {{ event.event.time }}</p>
-      <div >
-        <button class="event-rsvp" (click)="onEditRSVP(event.event.id)">Edit RSVP</button>
+      <p class="event-text">{{event.event.summary}}</p>
+      <p class="event-text">Location: {{ event.event.location }}</p>
+      <p class="event-text">{{ event.event.date | date: 'fullDate'}}</p>
+      <p class="event-text">Time: {{ event.event.time }}</p>
+      <div class="event-rsvp" >
         <p class="event-rsvp">{{this.rsvpStatus}}</p>
+        <button class="event-rsvp" (click)="onEditRSVP(event.event.id)">Edit RSVP</button>
+        
       </div>
     </div>
     }
