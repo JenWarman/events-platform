@@ -3,7 +3,6 @@ import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./header/header.component";
 import { EventSearchComponent } from "./event-search/event-search.component";
 import { SupabaseService, UserProfile } from './services/supabase.service';
-import { HeroBarComponent } from './hero-bar/hero-bar.component';
 
 @Component({
   selector: 'app-root',
