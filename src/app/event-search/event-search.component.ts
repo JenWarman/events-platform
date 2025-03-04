@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { SupabaseService, UserProfile } from '../services/supabase.service';
 import { Router, RouterLink } from '@angular/router';
 
@@ -26,8 +26,10 @@ export class EventSearchComponent {
       console.log('no query - in component');
       return;
     }
+  
     this.supabaseService.fetchEventByType(searchTerm).then((event) => {
       console.log(event, 'fetched event by type');
+      
     });
   }
 

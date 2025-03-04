@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
-import { SearchBarComponent } from "../search-bar/search-bar.component";
+import { SearchBarComponent } from '../search-bar/search-bar.component';
 import { SupabaseService, UserProfile } from '../services/supabase.service';
 
 @Component({
@@ -8,11 +8,11 @@ import { SupabaseService, UserProfile } from '../services/supabase.service';
   imports: [RouterModule, SearchBarComponent],
   standalone: true,
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
 })
 export class HeaderComponent implements OnInit {
-
   user: UserProfile | null = null;
+  userStatus: string = '';
   // phrases: string[] = ['Nottingham Arts', 'Not Art', 'Not Music', 'Not Literature', 'Not Theatre'];
   // currentIndex: number = 0; // Index for cycling through phrases
   // scrambledTitle: string = '';
@@ -22,11 +22,35 @@ export class HeaderComponent implements OnInit {
 
   // characters: string = '!<>-_\\/[]{}—=+*^?#________'; // Characters for scrambling
 
-  constructor(private routerService: Router, private supabaseService: SupabaseService) {
+  constructor(
+    private routerService: Router,
+    private supabaseService: SupabaseService
+  ) {
     this.supabaseService.userLoaded.subscribe((user) => {
       this.user = user ?? null;
+      if (this.user?.email) {
+        this.userStatus = 'Log Out';
+      } 
+      
+      if (!this.user?.email) {
+        this.userStatus = 'Login';
+      }
     });
   }
+
+  onLogClick() {
+    if (!this.user) {
+      this.userStatus = 'Login'
+      this.routerService.navigateByUrl('/login');
+      return;
+    } else {
+      this.supabaseService.logoutUser();
+      this.routerService.navigateByUrl('/events');
+      this.userStatus = 'Login';
+    }
+
+  }
+
 
   ngOnInit(): void {
     // this.originalText = this.phrases[this.currentIndex];
@@ -51,8 +75,8 @@ export class HeaderComponent implements OnInit {
   //   let currentText = this.scrambledTitle.split('');
   //   let index = 0;
 
-    // const interval = setInterval(() => {
-      // Make sure we're only replacing the characters that need to be restored
+  // const interval = setInterval(() => {
+  // Make sure we're only replacing the characters that need to be restored
   //     currentText[index] = this.originalText[index];
   //     this.scrambledTitle = currentText.join('');
   //     index++;
@@ -68,22 +92,22 @@ export class HeaderComponent implements OnInit {
   //     if (this.currentIndex < this.phrases.length - 1) {
   //       this.originalText = this.phrases[this.currentIndex];
   //       this.scrambleTitle();
-        
+
   //       setTimeout(() => {
   //         this.unscrambleTitle();
   //       }, this.scrambleDuration);
-        
+
   //       this.currentIndex++;
   //     } else {
-        // When we reach the last phrase, end with 'Not Art'
-        // this.originalText = 'Not Art';
-        // this.scrambleTitle();
-        // setTimeout(() => {
-        //   this.unscrambleTitle();
-        // }, this.scrambleDuration);
-        
-        // clearInterval(cycleInterval); // Stop cycling after last phrase
-      }
-  //   }, this.scrambleDuration + this.unscrambleDuration);
-  // }
+  // When we reach the last phrase, end with 'Not Art'
+  // this.originalText = 'Not Art';
+  // this.scrambleTitle();
+  // setTimeout(() => {
+  //   this.unscrambleTitle();
+  // }, this.scrambleDuration);
+
+  // clearInterval(cycleInterval); // Stop cycling after last phrase
+}
+//   }, this.scrambleDuration + this.unscrambleDuration);
+// }
 // }

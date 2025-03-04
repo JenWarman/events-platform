@@ -10,6 +10,7 @@
 }
 
 .event-item-container {
+  background-color: #ffff;
     position: relative;
   display: flex;
   flex-direction: column;
