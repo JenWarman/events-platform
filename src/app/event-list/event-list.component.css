@@ -1,32 +1,36 @@
 .container {
-    width: 60vw;
+    width: 100vw;
     margin: auto;
     padding: 1rem;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     justify-content: center;
-  }
+   }
   
   .event-container {
     display: flex;
     flex-direction: column; 
-    flex-grow: 1;
+    /* flex-grow: 1; */
     border-radius: 4px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
-    margin: 2rem;
-    padding: 2rem;
-    width: 50%;
+    margin: 1rem;
+    padding: 1rem;
+    width: 20%;
+  }
+
+  .event-container p {
+    margin: 0.5rem auto;
   }
 
   h3 {
     text-align: center;
-    font-size: 2rem;
-    margin: 10px
+    font-size: 1.4rem;
+    margin: 8px
   }
 
   img {
-    padding-top: 24px
+    padding-top: 14px
   }
 
   button {
@@ -49,7 +53,7 @@
     margin: auto;
     padding-left: 24px;
     padding-right: 24px;
-    padding-top: 6px;
-    padding-bottom: 6px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     border-radius: 0.25rem;
   }

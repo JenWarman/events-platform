@@ -5,7 +5,7 @@
     <p class="type" [ngStyle]="{ 'background-color': getBackgroundColor(event.type) }">{{ event.type }}</p>
     <img src="{{ event.image }}" />
     <p>Location: {{ event.location }}</p>
-    <p>Date: {{ event.date }}</p>
+    <p>{{ event.date | date: 'fullDate' }}</p>
     <p>Time: {{ event.time }}</p>
     <button (click)="onOpenEventDetails(event.id)">Find out more</button>
   </div>
