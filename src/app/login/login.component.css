@@ -1,7 +1,8 @@
 form {
   margin: 2rem auto;
   max-width: 30rem;
-  padding: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 label {
@@ -17,20 +18,23 @@ textarea {
   margin-bottom: 0.25rem;
   border-radius: 0.25rem;
 }
-
-.register-link {
+.login-header {
+  text-align: center;
+}
+.login-link {
 margin: 2rem auto;
 max-width: 30rem;
 padding-left: 2rem;
 padding-right: 2rem;
 }
 
-.register-link p {
-  text-align: end;
+.login-link p {
+  text-align: center;
 }
 
-.register-link a {
+.login-link a {
   font-weight: bold;
+  text-decoration: none;
 }
 
 button {

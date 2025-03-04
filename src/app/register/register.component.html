@@ -1,3 +1,7 @@
+<div class="register-heading">
+  <h1>Discover art and cultural events in Nottingham</h1>
+  <h2>Join the creative communtiy and sign up</h2>
+</div>
 <form (submit)="onSubmit()">
   <div>
     <label for="email">Email</label>
@@ -11,7 +15,8 @@
       <input name="password" [(ngModel)]="formData.password" id="password" />
     </div>
   </div>
-  <div>
-    <button type="submit">Submit</button>
-  </div>
+  <button type="submit">Submit</button>
 </form>
+<div class="register-link">
+  <p>Already have an account? <a [routerLink]="['/login']">Login</a></p>
+</div>
