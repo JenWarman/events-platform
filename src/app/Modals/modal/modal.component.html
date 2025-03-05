@@ -1,6 +1,6 @@
 <div class="popup-overlay" (click)="closeModal()">
   <div class="popup-content" (click)="$event.stopPropagation()">
+    <button (click)="closeModal()">X</button>
     <ng-content></ng-content>
-    <button (click)="closeModal()">Close</button>
   </div>
 </div>

@@ -16,21 +16,24 @@
           <button class="event-rsvp" (click)="showModal()">Edit RSVP</button>
           <app-modal *ngIf="isPopupVisible" (close)="hideModal()">
             <div class="modal">
-              <h2>Are you sure you don't want to attend this event?</h2>
+              <h2>Update your RSVP</h2>
+              <p>Are you still going to this event?</p>
               <button class="event-rsvp" (click)="onEditRSVP(event.event.id)">Not going</button>
+              <button>You're going!</button>
             </div>
           </app-modal>
+          <button>Add to Calendar</button>
         </div>
         
 
-        <button (click)="showModal()">Add to calendar</button>
+        <!-- <button (click)="showModal()">Add to calendar</button>
         <app-modal *ngIf="isPopupVisible" (close)="hideModal()">
           <div class="modal">
             <div class="modal-header">
               <h2>Add to calendar</h2>
             </div>
           </div>
-        </app-modal> 
+        </app-modal>  -->
 
       </div>
     </div>
