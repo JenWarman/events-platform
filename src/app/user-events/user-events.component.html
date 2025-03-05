@@ -9,8 +9,20 @@
       <p class="event-text">{{ event.event.date | date: 'fullDate'}}</p>
       <p class="event-text">Time: {{ event.event.time }}</p>
       <div class="event-rsvp" >
+
         <p class="event-rsvp">{{this.rsvpStatus}}</p>
-        <button class="event-rsvp" (click)="onEditRSVP(event.event.id)">Edit RSVP</button>
+
+        <div>
+          <button class="event-rsvp" (click)="showModal()">Edit RSVP</button>
+          <app-modal *ngIf="isPopupVisible" (close)="hideModal()">
+            <div class="modal">
+              <h2>Are you sure you don't want to attend this event?</h2>
+              <button class="event-rsvp" (click)="onEditRSVP(event.event.id)">Not going</button>
+            </div>
+          </app-modal>
+        </div>
+        
+
         <button (click)="showModal()">Add to calendar</button>
         <app-modal *ngIf="isPopupVisible" (close)="hideModal()">
           <div class="modal">
@@ -19,6 +31,7 @@
             </div>
           </div>
         </app-modal> 
+
       </div>
     </div>
     }

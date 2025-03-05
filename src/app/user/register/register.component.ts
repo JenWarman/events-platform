@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { SupabaseService } from '../services/supabase.service';
+import { SupabaseService } from '../../services/supabase.service';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({

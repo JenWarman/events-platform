@@ -3,7 +3,6 @@ import { SupabaseService } from '../services/supabase.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { User } from '@supabase/supabase-js';
-import { EventCardComponent } from '../event-card/event-card.component';
 import { ModalComponent } from '../Modals/modal/modal.component';
 
 @Component({
@@ -42,12 +41,14 @@ export class UserEventsComponent {
       console.log('no event id to delete from user');
       return;
     }
-    if (window.confirm('Are you sure you are not going to this event?')){
+    // if (window.confirm('Are you sure you are not going to this event?')){
       this.supabaseService.deleteEventFromUser(eventId);
       this.rsvpStatus = 'you\'re not going!'
-    }
+    // }
   }
+
   onAddToCalendar(){}
+
   showModal() {
     this.isPopupVisible = true;
     }

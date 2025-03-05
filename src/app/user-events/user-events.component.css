@@ -68,3 +68,22 @@ button:active {
 .event-rsvp p {
   font-weight: 600;
 }
+
+.modal {
+  justify-content: center;
+  max-width: 40rem;
+  margin: auto;
+  padding: 0.5rem 0.5rem 1rem 0.5rem;
+  background-color: #ffff;
+}
+
+.modal-header {
+  display: flex;
+  padding-bottom: 1rem;
+}
+
+.modal-header button {
+  background-color: #fff;
+  margin: 0 0 1rem;
+  padding: 0 0 1rem;
+}
