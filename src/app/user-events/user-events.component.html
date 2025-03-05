@@ -1,3 +1,9 @@
+@if (events!.length === 0) {
+  <div class="no-events">
+    <p>You're not signed up to any events.</p>
+  </div>
+}
+
 <div class="container">
     @for (event of events; track event.event_id) {
     <div class="event-container" >

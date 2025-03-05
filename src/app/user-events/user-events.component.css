@@ -90,3 +90,8 @@ button:active {
   padding-bottom: 1rem;
 }
 
+.no-events {
+  text-align: center;
+  padding: 1rem;
+  font-weight: 600;
+}

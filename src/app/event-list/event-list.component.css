@@ -56,3 +56,9 @@
     padding-bottom: 4px;
     border-radius: 0.25rem;
   }
+
+  .no-events {
+    text-align: center;
+    padding: 1rem;
+    font-weight: 600;
+  }

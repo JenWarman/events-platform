@@ -106,7 +106,6 @@ export class SupabaseService {
     if (data.length < 1) {
       console.log('error in fetching data');
     }
-    console.log(data, '<---data from fetching event by id');
     return data[0];
   }
 
@@ -132,7 +131,6 @@ export class SupabaseService {
     if (data!.length < 1) {
       console.log('error in fetching data by type');
     }
-    console.log(data, '<---data fetched by type');
     return data;
   }
 
@@ -149,7 +147,6 @@ export class SupabaseService {
     if (data!.length < 1) {
       console.log('error in fetching data by query');
     }
-    console.log(data, '<---data fetched by query');
     return data;
   }
 
@@ -170,7 +167,6 @@ export class SupabaseService {
     if (!data) {
       console.log('no event data added to user');
     }
-    console.log(data, '<---event added to user');
     return data;
   }
 
@@ -180,13 +176,13 @@ export class SupabaseService {
     .select('*, event(*)')
     .eq('user_id', userId)
 
-    if (error) {
-      console.log('error fetching events by user id')
-    }
+    if (error)  {
+      this.errorService.showError('Failed to fetch your events.');
+      throw throwError(() => new Error('Failed to fetch your events.'));
+  }
     if (data!.length < 1) {
       console.log('empty array for user events')
     }
-    console.log(data, '<-- event data fetched by user id')
     return data;
   }
 
@@ -197,10 +193,9 @@ export class SupabaseService {
     .eq('event_id', eventId)
 
     if (error)  {
-      this.errorService.showError('Failed to edit users RSVP to this event.');
-      throw throwError(() => new Error('Failed to edit users RSVP to this event.'));
+      this.errorService.showError('Failed to edit your RSVP to this event.');
+      throw throwError(() => new Error('Failed to edit your RSVP to this event.'));
   }
-    console.log(data, '<---response from deleting event by user.')
     return data;
   }
 }
