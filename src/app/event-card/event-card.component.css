@@ -60,3 +60,24 @@ button:active {
   border-radius: 0.25rem;
 }
 
+.modal {
+  justify-content: center;
+  max-width: 40rem;
+  margin: 1rem;
+  padding: 1rem 1rem 2rem 1rem;
+  background-color: #ffff;
+}
+
+.modal-header {
+  display: flex;
+  padding: 1rem;
+}
+
+.modal-header button {
+  background-color: #fff;
+  font-size: 1.5rem;
+  text-align:inherit;
+  margin: 0 0 1rem;
+  padding: 0 0 1rem;
+
+}
