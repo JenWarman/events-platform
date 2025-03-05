@@ -16,6 +16,7 @@ export class EventCardComponent {
   user: UserProfile | undefined;
   rsvpStatus: string = '';
   isPopupVisible = false;
+ 
 
   constructor(
     private supabaseService: SupabaseService,
@@ -57,7 +58,6 @@ export class EventCardComponent {
 	this.isPopupVisible = false;
   }
 
-  
   ngOnInit(): void {
     if (!this.id) {
       return;

@@ -11,8 +11,16 @@
       <div class="event-rsvp" >
         <p class="event-rsvp">{{this.rsvpStatus}}</p>
         <button class="event-rsvp" (click)="onEditRSVP(event.event.id)">Edit RSVP</button>
-        <button>Add to calendar</button>
+        <button (click)="showModal()">Add to calendar</button>
+        <app-modal *ngIf="isPopupVisible" (close)="hideModal()">
+          <div class="modal">
+            <div class="modal-header">
+              <h2>Add to calendar</h2>
+            </div>
+          </div>
+        </app-modal> 
       </div>
     </div>
     }
   </div>
+ 
