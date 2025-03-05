@@ -23,6 +23,7 @@
   <div>
     <button (click)="onAddEventToUser(event.id)">{{ this.rsvpStatus }}</button>
   </div>
+  
   } @if(!user?.email) {
   <button (click)="showModal()">Sign up for event</button>
   <app-modal *ngIf="isPopupVisible" (close)="hideModal()">

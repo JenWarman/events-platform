@@ -47,7 +47,6 @@ export class EventCardComponent {
   onAddEventToUser(eventId: string){
     this.supabaseService.AddEventToUser(this.event.id);
     this.rsvpStatus = 'You\'re going!'
-    this.routerService.navigateByUrl('/your-events')
   }
 
   showModal() {
