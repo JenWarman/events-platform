@@ -16,6 +16,7 @@ export class EventCardComponent {
   id: string | undefined;
   user: UserProfile | undefined;
   rsvpStatus: string = '';
+  isPopupVisible = false;
 
   constructor(
     private supabaseService: SupabaseService,
@@ -48,6 +49,14 @@ export class EventCardComponent {
     this.supabaseService.AddEventToUser(this.event.id);
     this.rsvpStatus = 'You\'re going!'
     this.routerService.navigateByUrl('/your-events')
+  }
+
+  showModal() {
+	this.isPopupVisible = true;
+  }
+
+  hideModal() {
+	this.isPopupVisible = false;
   }
 
   

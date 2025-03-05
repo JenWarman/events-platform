@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, viewChild  } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Output, viewChild  } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -6,10 +6,10 @@ import { AfterViewInit, Component, ElementRef, viewChild  } from '@angular/core'
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.css'
 })
-export class ModalComponent implements AfterViewInit {
-  private dialogEl = viewChild.required<ElementRef<HTMLDialogElement>>('dialog');
+export class ModalComponent  {
+  @Output() close = new EventEmitter<void>();
 
-  ngAfterViewInit(): void {
-    this.dialogEl().nativeElement.showModal();
+  closeModal() {
+	this.close.emit();
   }
 }
