@@ -1,5 +1,14 @@
 <app-header></app-header>
-
 <app-event-search></app-event-search>
+
+@if (this.error()) {
+<div class="error">
+    <p>{{ this.error() }}</p>
+    <div class="confirmation-actions">
+      <button class="button" (click)="onClearError()">Okay</button>
+    </div>
+  
+</div>
+}
 
 <router-outlet></router-outlet>

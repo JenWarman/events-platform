@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { createClient, SupabaseClient, User } from '@supabase/supabase-js';
 import { environment } from '../environments/environment';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, throwError } from 'rxjs';
+import { ErrorService } from './error.service';
 
 export type UserProfile = User & { is_admin: boolean };
 
@@ -15,7 +16,7 @@ export class SupabaseService {
     new BehaviorSubject<UserProfile | undefined>(undefined);
   public userLoaded = this.userLoadedSub.asObservable();
 
-  constructor() {
+  constructor(private errorService: ErrorService) {
     this.supabase = createClient(
       environment.supabaseUrl,
       environment.supabaseKey
@@ -42,8 +43,9 @@ export class SupabaseService {
 
   async registerUser(formData: { email: string; password: string }) {
     let { data, error } = await this.supabase.auth.signUp(formData);
-    if (error) {
-      throw error;
+    if (error)  {
+        this.errorService.showError('Failed to register new user.');
+        throw throwError(() => new Error('Failed to register new user.'));
     }
     this.publishUser();
   }
@@ -53,14 +55,19 @@ export class SupabaseService {
       email: formData.email,
       password: formData.password,
     });
-    if (error != null) {
-      throw error;
-    }
+    if (error)  {
+      this.errorService.showError('Login failed.');
+      throw throwError(() => new Error('Login failed.'));
+  }
     this.publishUser();
   }
 
   async logoutUser() {
     let { error } = await this.supabase.auth.signOut();
+    if (error)  {
+      this.errorService.showError('Failed to log out user.');
+      throw throwError(() => new Error('Failed to log out user.'));
+  }
     this.publishUser();
   }
 
@@ -79,10 +86,10 @@ export class SupabaseService {
 
     const { data, error } = await builder;
 
-    if (error) {
-      console.log('error fetching events');
-      return;
-    }
+    if (error)  {
+      this.errorService.showError('Failed to fetch event data.');
+      throw throwError(() => new Error('Failed to fetch event data.'));
+  }
     return data;
   }
 
@@ -92,9 +99,9 @@ export class SupabaseService {
       .select()
       .eq('id', id);
 
-    if (error) {
-      console.log('error fetching event by id.');
-      return;
+      if (error)  {
+        this.errorService.showError('Failed to fetch event by event id.');
+        throw throwError(() => new Error('Failed to fetch event by event id.'));
     }
     if (data.length < 1) {
       console.log('error in fetching data');
@@ -107,8 +114,8 @@ export class SupabaseService {
     const response = await this.supabase.from('event').delete().eq('id', id);
 
     if (response.error) {
-      console.log('error deleting event');
-      return;
+      this.errorService.showError('Failed to delete event data.');
+        throw throwError(() => new Error('Failed to delete event data.'));
     }
   }
 
@@ -118,8 +125,9 @@ export class SupabaseService {
       .select()
       .eq('type', eventType);
 
-    if (error) {
-      console.log('error fetching event by type');
+      if (error)  {
+        this.errorService.showError('Failed to fetch event by event type.');
+        throw throwError(() => new Error('Failed to fetch event by event type.'));
     }
     if (data!.length < 1) {
       console.log('error in fetching data by type');
@@ -134,8 +142,9 @@ export class SupabaseService {
       .select()
       .textSearch('summary', query);
 
-    if (error) {
-      console.log('error fetching event by query');
+      if (error)  {
+        this.errorService.showError('Failed to fetch event by keyword search.');
+        throw throwError(() => new Error('Failed to fetch event by keyword search.'));
     }
     if (data!.length < 1) {
       console.log('error in fetching data by query');
@@ -154,8 +163,9 @@ export class SupabaseService {
       .from('user-events')
       .insert({ user_id: user.id, event_id: eventId });
 
-    if (error) {
-      console.log('error adding event to user');
+      if (error)  {
+        this.errorService.showError('Failed to sign up user to this event.');
+        throw throwError(() => new Error('Failed to sign up user to this event.'));
     }
     if (!data) {
       console.log('no event data added to user');
@@ -186,10 +196,10 @@ export class SupabaseService {
     .delete()
     .eq('event_id', eventId)
 
-    if (error) {
-      console.log('error deleting event from user');
-      return;
-    }
+    if (error)  {
+      this.errorService.showError('Failed to edit users RSVP to this event.');
+      throw throwError(() => new Error('Failed to edit users RSVP to this event.'));
+  }
     console.log(data, '<---response from deleting event by user.')
     return data;
   }

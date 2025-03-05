@@ -1,0 +1,29 @@
+.error {
+    max-width: 30rem;
+    margin: auto;
+    padding: 1rem;
+    background-color: #e6b4ad;
+    color: #3e0505;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .confirmation-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  button {
+    float: right;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    border: none;
+    background-color: #d36b5d;
+  }
+  
+  button:hover,
+  button:active {
+    background-color: #97615a;
+  }
