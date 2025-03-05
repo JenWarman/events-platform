@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SupabaseService } from '../services/supabase.service';
-import { UserEventsComponent } from '../user-events/user-events.component';
+import { SupabaseService } from '../../services/supabase.service';
+import { UserEventsComponent } from '../../user-events/user-events.component';
 import { User } from '@supabase/supabase-js';
 
 @Component({

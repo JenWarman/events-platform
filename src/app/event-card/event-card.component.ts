@@ -2,7 +2,7 @@ import { Component} from '@angular/core';
 import { SupabaseService, UserProfile } from '../services/supabase.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ModalComponent } from '../modal/modal.component';
+import { ModalComponent } from '../Modals/modal/modal.component';
 
 @Component({
   selector: 'app-event-card',

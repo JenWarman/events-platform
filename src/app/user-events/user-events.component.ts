@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { User } from '@supabase/supabase-js';
 import { EventCardComponent } from '../event-card/event-card.component';
-import { ModalComponent } from '../modal/modal.component';
+import { ModalComponent } from '../Modals/modal/modal.component';
 
 @Component({
   selector: 'app-user-events',
