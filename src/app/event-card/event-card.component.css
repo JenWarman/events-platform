@@ -35,10 +35,9 @@ img {
 }
 
 button {
-  float: right;
+  width: 40%;
   padding: 0.5rem 1rem;
-  margin-right: 1rem;
-  margin-top: 1rem;
+
   border-radius: 0.25rem;
   cursor: pointer;
   border: none;
@@ -78,8 +77,6 @@ button:active {
   padding-bottom: 1rem;
 }
 
-.modal-header button {
-  background-color: #fff;
-  margin:1rem;
-  padding: 1rem;
+.register-link {
+  padding-top: 1rem;
 }

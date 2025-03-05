@@ -31,7 +31,10 @@
       <div class="modal-header">
         <h2>You need to login to sign up for events.</h2>
       </div>
-      <p>Would you like to <a [routerLink]="['/login']" >Login?</a></p>
+      <button [routerLink]="['/login']">Login</button>
+      <div class="register-link">
+        <p>Don't have an account yet? <a [routerLink]="['/register']">Sign Up</a></p>
+      </div>
     </div>
   </app-modal>
   } }

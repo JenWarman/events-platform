@@ -34,9 +34,10 @@ img {
 }
 
 button {
+  width: 40%;
   padding: 0.5rem 1rem;
   margin-right: 1rem;
-  margin-top: 1rem;
+  margin-left: 1rem;
   border-radius: 0.25rem;
   cursor: pointer;
   border: none;
@@ -46,6 +47,10 @@ button {
 button:hover,
 button:active {
   background-color: rgb(107, 124, 124);
+}
+
+.not-going {
+  background-color: rgb(203, 205, 205);
 }
 
 .type {
@@ -77,13 +82,11 @@ button:active {
   background-color: #ffff;
 }
 
-.modal-header {
-  display: flex;
+.modal h2{
   padding-bottom: 1rem;
 }
 
-.modal-header button {
-  background-color: #fff;
-  margin: 0 0 1rem;
-  padding: 0 0 1rem;
+.modal p {
+  padding-bottom: 1rem;
 }
+
