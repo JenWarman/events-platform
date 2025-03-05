@@ -1,8 +1,7 @@
 <div class="popup-overlay" (click)="closeModal()">
-    <div class="popup-content" (click)="$event.stopPropagation()">
-      <!-- <h2>Welcome to the Popup!</h2>
-      <p>This is a simple popup component in Angular.</p> -->
-      <ng-content></ng-content>
-      <button (click)="closeModal()">Close</button>
-    </div>
+  <div class="popup-content" (click)="$event.stopPropagation()">
+    <ng-content></ng-content>
+    <button (click)="closeModal()">Close</button>
+    <button [routerLink]="['/login']">Login</button>
   </div>
+</div>

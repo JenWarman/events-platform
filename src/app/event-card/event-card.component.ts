@@ -3,11 +3,10 @@ import { SupabaseService, UserProfile } from '../services/supabase.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from '../modal/modal.component';
-import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-event-card',
-  imports: [CommonModule, ModalComponent, LoginComponent],
+  imports: [CommonModule, ModalComponent],
   templateUrl: './event-card.component.html',
   styleUrl: './event-card.component.css'
 })

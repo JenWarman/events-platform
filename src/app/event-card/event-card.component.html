@@ -19,20 +19,18 @@
     <button (click)="onEdit(event.id)">Edit Event</button>
     <button (click)="onDelete(event.id)">Delete Event</button>
   </div>
-  }
-
+  } @if (user?.email) {
   <div>
     <button (click)="onAddEventToUser(event.id)">{{ this.rsvpStatus }}</button>
   </div>
-  @if(!user?.email) {
-    <button (click)="showModal()">Show Popup</button>
-<app-modal *ngIf="isPopupVisible" (close)="hideModal()">
-  <div class="modal">
-    <div class="modal-header">
-      <h2>You need to login or register to sign up for events.</h2>
+  } @if(!user?.email) {
+  <button (click)="showModal()">Sign up for event</button>
+  <app-modal *ngIf="isPopupVisible" (close)="hideModal()">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>You need to login to sign up for events.</h2>
+      </div>
     </div>
-    <app-login></app-login>
-  </div>
-</app-modal>
+  </app-modal>
   } }
 </div>
