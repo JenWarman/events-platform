@@ -1,6 +1,8 @@
 <div class="register-heading">
+  <div class="register-header">
   <h1>Discover art and cultural events in Nottingham</h1>
   <h2>Join the creative communtiy and sign up</h2>
+</div>
 </div>
 <form [formGroup]="form" (submit)="onSubmit()">
   <div>
@@ -12,7 +14,7 @@
   <div>
     <label for="message">Password</label>
     <div>
-      <input name="password" formControlName="password" id="password" />
+      <input name="password" type="password" formControlName="password" id="password" />
     </div>
   </div>
   <button type="submit" [disabled]="!this.form.valid">Submit</button>

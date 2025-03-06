@@ -1,11 +1,18 @@
 form {
-    margin: 2rem auto;
+    margin: auto;
     max-width: 30rem;
     padding-right: 2rem;
     padding-left: 2rem;
     padding-bottom: 2rem;
   }
   
+  .register-header {
+    padding: 1rem;
+  }
+
+  .register-header h1 {
+    padding: 1rem;
+  }
   label {
     display: block;
     margin-bottom: 0.15rem;
@@ -53,3 +60,7 @@ form {
     background-color: rgb(107, 124, 124);
   }
   
+  button:disabled {
+    background-color: rgb(133, 153, 153);
+    cursor: not-allowed;
+  }
