@@ -12,7 +12,7 @@
     <p class="summary-text">{{ event.summary }}</p>
     <p>Location: {{ event.location }}</p>
     <p>{{ event.date | date : "fullDate" }}</p>
-    <p>Time: {{ event.time }}</p>
+    <p>Time: {{ event.time}}</p>
   </div>
 <div class="event-buttons">
   @if (user?.is_admin) {
