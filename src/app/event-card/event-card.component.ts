@@ -16,7 +16,7 @@ export class EventCardComponent {
   user: UserProfile | undefined;
   rsvpStatus: string = '';
   isPopupVisible = false;
- 
+
 
   constructor(
     private supabaseService: SupabaseService,
@@ -26,7 +26,6 @@ export class EventCardComponent {
     this.id = route.snapshot.paramMap.get('id') || undefined;
 
     supabaseService.userLoaded.subscribe((user) => {
-      console.log(user);
       this.user = user;
     });
   }
@@ -39,10 +38,8 @@ export class EventCardComponent {
     if (!this.id) {
       return;
     }
-    if (window.confirm('Are you sure you want to delete this event?')) {
       this.supabaseService.deleteEvent(this.id);
       this.routerService.navigateByUrl('/');
-    }
   }
 
   onAddEventToUser(eventId: string){
