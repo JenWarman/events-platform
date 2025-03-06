@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SupabaseService } from '../../services/supabase.service';
 import { Router, RouterLink } from '@angular/router';
@@ -21,7 +21,7 @@ export class LoginComponent {
   })
 
   constructor(private supabaseService: SupabaseService, private routerService: Router) {}
-
+  
 
   get emailIsInvalid() {
     return (
@@ -38,7 +38,7 @@ export class LoginComponent {
       this.form.controls.password.invalid
     );
   }
-  
+
   onLogin() {
     if (!this.form.value.email || !this.form.value.password ) {
       return;

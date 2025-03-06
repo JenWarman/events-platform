@@ -15,14 +15,14 @@
     <label for="password">Password</label>
     <div>
       <input
-        type="text"
+     type="password"
         name="password"
         formControlName="password"
         id="password"
       />
     </div>
   </div>
-  <button type="submit">Login</button>
+  <button type="submit" [disabled]="!this.form.valid">Login</button>
 
   @if (emailIsInvalid) {
     <p class="control-error">Please enter a valid email address.</p>

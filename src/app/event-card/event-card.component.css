@@ -1,5 +1,5 @@
 .container {
-  width: 60vw;
+  width: 50vw;
   margin: 2rem auto;
   padding: 2rem;
   border-radius: 4px;
@@ -34,10 +34,19 @@ img {
   padding-top: 24px;
 }
 
-button {
-  width: 40%;
-  padding: 0.5rem 1rem;
+.event-buttons {
+  display: flex;
+  justify-content: center;
+  /* max-width: 40%; */
+  margin: auto;
+  padding: 0.5rem 0.5rem 1rem 0.5rem;
+  background-color: #ffff;
+}
 
+button {
+  /* width: 40%; */
+  padding: 0.5rem 1rem;
+  margin: 1rem;
   border-radius: 0.25rem;
   cursor: pointer;
   border: none;
