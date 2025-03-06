@@ -2,20 +2,29 @@
   <h1>Discover art and cultural events in Nottingham</h1>
   <h2>Join the creative communtiy and sign up</h2>
 </div>
-<form (submit)="onSubmit()">
+<form [formGroup]="form" (submit)="onSubmit()">
   <div>
     <label for="email">Email</label>
     <div>
-      <input type="text" name="email" [(ngModel)]="formData.email" id="email" />
+      <input type="text" name="email" formControlName="email" id="email" />
     </div>
   </div>
   <div>
     <label for="message">Password</label>
     <div>
-      <input name="password" [(ngModel)]="formData.password" id="password" />
+      <input name="password" formControlName="password" id="password" />
     </div>
   </div>
   <button type="submit">Submit</button>
+
+  @if (emailIsInvalid) {
+    <p class="control-error">Please enter a valid email address.</p>
+    } @if (passwordIsInvalid) {
+    <p class="control-error">
+      Please enter a valid password - at least 8 characters.
+    </p>
+    }
+    
 </form>
 <div class="register-link">
   <p>Already have an account? <a [routerLink]="['/login']">Login</a></p>
