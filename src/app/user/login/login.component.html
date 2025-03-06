@@ -4,11 +4,11 @@
     <p>Don't have an account yet? <a [routerLink]="['/register']">Sign Up</a></p>
   </div>
 </div>
-<form (submit)="onLogin()">
+<form [formGroup]="form" (submit)="onLogin()">
   <div>
     <label for="email">Email</label>
     <div>
-      <input type="text" name="email" [(ngModel)]="formData.email" id="email" />
+      <input type="text" name="email" formControlName="email" id="email" />
     </div>
   </div>
   <div>
@@ -17,7 +17,7 @@
       <input
         type="text"
         name="password"
-        [(ngModel)]="formData.password"
+        formControlName="password"
         id="password"
       />
     </div>

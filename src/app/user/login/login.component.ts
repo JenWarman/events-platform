@@ -1,24 +1,32 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SupabaseService } from '../../services/supabase.service';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  formData = {
-    email: '',
-    password: '',
-  };
+
+  form = new FormGroup({
+    email: new FormControl('', {
+      validators: [Validators.email, Validators.required]
+    }),
+    password: new FormControl('', {
+      validators: [Validators.required, Validators.minLength(8)]
+    })
+  })
 
   constructor(private supabaseService: SupabaseService, private routerService: Router) {}
 
   onLogin() {
-      this.supabaseService.loginUser(this.formData)
+    if (!this.form.value.email || !this.form.value.password ) {
+      return;
+    }
+      this.supabaseService.loginUser({email: this.form.value.email, password: this.form.value.password})
         .then((response) => {
           console.log('logged in')
           this.routerService.navigateByUrl('/')
