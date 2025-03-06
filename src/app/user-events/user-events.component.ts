@@ -29,7 +29,6 @@ export class UserEventsComponent {
         return;
       }
       this.supabaseService.fetchEventsByUser(user?.id).then((events) => {
-        console.log(events, '<---data from fetched event by user id')
         this.events = events;
         this.rsvpStatus = 'you\'re going!'
       })
@@ -41,10 +40,8 @@ export class UserEventsComponent {
       console.log('no event id to delete from user');
       return;
     }
-    // if (window.confirm('Are you sure you are not going to this event?')){
       this.supabaseService.deleteEventFromUser(eventId);
       this.rsvpStatus = 'you\'re not going!'
-    // }
   }
 
   onAddToCalendar(){}

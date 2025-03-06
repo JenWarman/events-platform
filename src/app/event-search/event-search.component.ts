@@ -1,10 +1,11 @@
 import { Component} from '@angular/core';
 import { SupabaseService, UserProfile } from '../services/supabase.service';
 import { Router, RouterLink } from '@angular/router';
+import { ScrambleHeaderComponent } from '../scramble-header/scramble-header.component';
 
 @Component({
   selector: 'app-event-search',
-  imports: [RouterLink],
+  imports: [RouterLink, ScrambleHeaderComponent],
   templateUrl: './event-search.component.html',
   styleUrl: './event-search.component.css',
 })

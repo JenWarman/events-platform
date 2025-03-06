@@ -161,7 +161,7 @@ export class SupabaseService {
       .insert({ user_id: user.id, event_id: eventId });
 
       if (error)  {
-        this.errorService.showError('Failed to sign up user to this event.');
+        this.errorService.showError('Failed to sign up user to this event. You may already be signed up, check your events!');
         throw throwError(() => new Error('Failed to sign up user to this event.'));
     }
     if (!data) {

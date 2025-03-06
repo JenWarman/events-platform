@@ -2,7 +2,7 @@
   <div class="container">
     <div class="topnav">
       <div class="topnav-col">
-        <!-- <a [routerLink]="['/']" class="split"><h1>{{ scrambledTitle || scrambleTitle }}</h1></a> -->
+        
         <a [routerLink]="['/']" class="split"><h1>Nottingham Arts</h1></a>
       </div>
       <div class="topnav-col search-bar" >
@@ -10,10 +10,9 @@
       </div>
       <div class="topnav-col">
         <div>
-          <a (click)="onLogClick()">{{this.userStatus}}</a>
-          <a [routerLink]="['/profile']">Profile</a>
-          <!-- <a [routerLink]="['/your-events']">Your events</a> -->
           <a href="">Events</a>
+          <a [routerLink]="['/profile']">Profile</a>
+          <a (click)="onLogClick()">{{this.userStatus}}</a>
         </div>
       </div>
       </div>
