@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { SupabaseService } from '../services/supabase.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class EventListComponent implements OnInit {
   events: any;
+  isFetching = signal(false);
 
   constructor(
     private supabaseService: SupabaseService,
@@ -25,7 +26,7 @@ export class EventListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.isFetching.set(true);
     this.route.queryParamMap.subscribe((query) => {
     
       this.supabaseService.fetchEvents({
@@ -33,6 +34,7 @@ export class EventListComponent implements OnInit {
         keyword: query.get('keyword') ?? undefined,
       }).then((events) => {
         this.events = events;
+        this.isFetching.set(false);
       });
     })
 

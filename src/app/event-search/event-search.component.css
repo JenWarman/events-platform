@@ -6,17 +6,15 @@
   background-position: 60%;
   background-color: rgba(0, 0, 0, 0.486);
   background-blend-mode: overlay;
-  padding: 100px;
-  height: 30vh;
+  padding: 2rem;
+  height: 20vh;
   width: 100vw;
 }
 
-
-h2 {
+h1 {
+  color: #ffff;
   text-align: center;
-  font-size: 50px;
-  font-weight: bold;
-  margin: auto;
+  font-size: 5rem;
 }
 
 p {
@@ -25,7 +23,9 @@ p {
 .search {
   display: flex;
   justify-content: center;
-
+}
+.search-icons {
+ padding-top: 1rem;
 }
 
 input {

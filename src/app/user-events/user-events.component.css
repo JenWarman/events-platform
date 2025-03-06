@@ -95,3 +95,9 @@ button:active {
   padding: 1rem;
   font-weight: 600;
 }
+
+.fallback-text {
+  text-align: center;
+  padding: 1rem;
+  font-weight: 600;
+}

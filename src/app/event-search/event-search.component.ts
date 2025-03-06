@@ -5,7 +5,7 @@ import { ScrambleHeaderComponent } from '../scramble-header/scramble-header.comp
 
 @Component({
   selector: 'app-event-search',
-  imports: [RouterLink, ScrambleHeaderComponent],
+  imports: [RouterLink],
   templateUrl: './event-search.component.html',
   styleUrl: './event-search.component.css',
 })
