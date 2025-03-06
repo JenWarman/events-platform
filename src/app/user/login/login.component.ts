@@ -22,6 +22,23 @@ export class LoginComponent {
 
   constructor(private supabaseService: SupabaseService, private routerService: Router) {}
 
+
+  get emailIsInvalid() {
+    return (
+      this.form.controls.email.touched &&
+      this.form.controls.email.dirty &&
+      this.form.controls.email.invalid
+    );
+  }
+
+  get passwordIsInvalid() {
+    return (
+      this.form.controls.password.touched &&
+      this.form.controls.password.dirty &&
+      this.form.controls.password.invalid
+    );
+  }
+  
   onLogin() {
     if (!this.form.value.email || !this.form.value.password ) {
       return;
@@ -31,7 +48,6 @@ export class LoginComponent {
           console.log('logged in')
           this.routerService.navigateByUrl('/')
         })
-  
         .catch((error) => {
           console.log(error)
         });
