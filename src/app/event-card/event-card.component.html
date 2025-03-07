@@ -1,14 +1,10 @@
 <div class="container">
   @if (event) {
+    <img src="{{ event.image }}" alt="{{event.title}}"/>
   <h3>{{ event.title }}</h3>
-  <p
-    class="type"
-    [ngStyle]="{ 'background-color': getBackgroundColor(event.type) }"
-  >
-    {{ event.type }}
-  </p>
+  <p class="type" > {{ event.type }} </p>
   <div class="event-item-container">
-    <img src="{{ event.image }}" />
+    
     <p class="summary-text">{{ event.summary }}</p>
     <p>Location: {{ event.location }}</p>
     <p>{{ event.date | date : "fullDate" }}</p>
