@@ -4,8 +4,10 @@
             <h1>Your Profile</h1>
             <div class="profile-info">
                 <h2>{{user.email}}</h2>
-                <p>Image</p>
-                <p>Edit profile here</p>
+                @if (user.is_admin){
+                    <h3>Status: Admin</h3>
+                }
+                <button>Edit your account</button>
             </div>
         }
     </div>

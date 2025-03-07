@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { SupabaseService } from '../../services/supabase.service';
+import { SupabaseService, UserProfile } from '../../services/supabase.service';
 import { UserEventsComponent } from '../../user-events/user-events.component';
-import { User } from '@supabase/supabase-js';
 
 @Component({
   selector: 'app-profile',
@@ -10,7 +9,7 @@ import { User } from '@supabase/supabase-js';
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
-  user : User | null = null;
+  user: UserProfile | null = null;
 
   constructor(private supabaseService: SupabaseService){
     this.supabaseService.userLoaded.subscribe((user) => {
