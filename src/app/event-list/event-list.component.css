@@ -10,11 +10,12 @@
 .event-container {
   display: flex;
   flex-direction: row;
-  background-color: #ffff;
+  background-color:rgb(20, 20, 20);
+  color: #fff;
   border-radius: 4px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 4px rgba(251, 143, 143, 0.7);
   margin: 1rem;
-  padding: 1rem;
+  padding: 0 1rem 1rem 1rem;
   width: 100%;
 }
 
@@ -29,41 +30,58 @@
 }
 
 h3 {
-  font-size: 1.4rem;
+  font-size: 2rem;
 }
 
 img {
   padding-top: 14px;
   width: 300px;
 }
-
-.event-info-button {
-  display: block;
+.button-container {
+  display: inline-block;
   margin-left: auto;
-  margin-right: 0;
-  align-self: center;
-}
-
-button {
-  padding: 0.5rem 1rem;
   margin-right: 1rem;
-  margin-top: 1rem;
-  border-radius: 0.25rem;
+  align-self: center;
+  width: 10%;
+}
+.event-info-button {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(20, 20, 20);
+  color: rgb(200, 30, 50);
+  border:solid 1px rgb(200, 30, 50);
+  border-radius: 50%;
+  padding: 20px 40px;
+  font-size: 16px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  border: none;
-  background-color: #8bd1c3;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+.event-info-button span {
+  text-align: center;
+  cursor: pointer;
 }
 
-button:hover,
-button:active {
-  background-color: rgb(107, 124, 124);
+.event-info-button:hover,
+.event-info-button:active {
+  background-color: rgb(200, 30, 50);
+  color: #fff
 }
-
 .type {
+  display: inline-block;
+  margin-left: auto;
+  padding-top: 0.5rem;
+}
+.type p {
   background-color: #8bd1c3;
   margin: auto;
+  width: 100px;
   text-align: center;
   border-radius: 0.25rem;
+  color: rgb(8, 8, 8);
 }
 
 .no-events {

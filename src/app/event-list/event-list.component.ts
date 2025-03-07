@@ -43,13 +43,13 @@ export class EventListComponent implements OnInit {
   getBackgroundColor(eventType: string): string {
     switch (eventType.toLowerCase()) {
       case 'art':
-        return 'lightblue';
+        return 'rgb(200, 30, 50)';
       case 'music':
-        return 'lightgreen';
+        return 'rgb(30, 47, 200)';
       case 'literature':
-        return 'lightcoral';
+        return 'rgb(30, 177, 200)';
       case 'theatre':
-        return 'lightgoldenrodyellow';
+        return 'rgb(200, 138, 30)';
       default:
         return 'white';  
     }
