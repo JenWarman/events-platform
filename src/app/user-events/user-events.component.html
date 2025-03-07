@@ -13,7 +13,7 @@
       <img src="{{ event.event.image }}" alt="{{ event.title }}" />
       <div class="event-detail">
         <h3>{{ event.event.title }}</h3>
-        <p class="type">{{ event.event.type }}</p>
+        <p class="type">{{ event.event.type.toUpperCase() }}</p>
         <p>{{ event.event.summary }}</p>
         <p>Location: {{ event.event.location }}</p>
         <p>{{ event.event.date | date : "fullDate" }}</p>

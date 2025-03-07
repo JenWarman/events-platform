@@ -24,6 +24,10 @@
   width: 100%;
 }
 
+.event-container:hover {
+  box-shadow: 0 0 20px rgba(251, 143, 143, 0.7);
+}
+
 .event-detail {
   display: row;
   padding: 1rem;
