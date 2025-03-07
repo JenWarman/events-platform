@@ -76,18 +76,21 @@ button:active {
   max-width: 40rem;
   margin: auto;
   padding: 1rem;
-  background-color: #ffff;
+  background-color: rgb(20, 20, 20);
+}
+.modal h2 {
+  padding: 1rem;
 }
 
-.modal a {
-  text-decoration: none;
-  font-weight: bold;
+.modal button {
+  margin: 1rem;
+  padding: 0.5rem 1rem;
 }
 
-.modal-header {
-  display: flex;
-  padding-bottom: 1rem;
-}
+.modal button:hover,
+.modal button:active {
+  background-color: rgb(150, 22, 35);
+} 
 
 .register-link {
   padding-top: 1rem;
