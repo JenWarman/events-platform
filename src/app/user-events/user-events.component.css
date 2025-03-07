@@ -72,7 +72,7 @@ img {
 
 .event-info-button:hover,
 .event-info-button:active {
-  background-color: rgb(200, 30, 50);
+  background-color: rgb(150, 22, 35);
   color: #fff;
 }
 
@@ -87,11 +87,11 @@ button {
 
 button:hover,
 button:active {
-  background-color: rgb(200, 30, 50);
+  background-color: rgb(150, 22, 35);
 }
 
 .not-going {
-  background-color: rgb(203, 205, 205);
+  background-color: rgb(148, 109, 113);
 }
 
 .type {
@@ -114,7 +114,8 @@ button:active {
   max-width: 40rem;
   margin: auto;
   padding: 0.5rem 0.5rem 1rem 0.5rem;
-  background-color: #ffff;
+  background-color: rgb(20, 20, 20);
+ 
 }
 
 .modal h2 {
@@ -125,6 +126,15 @@ button:active {
   padding-bottom: 1rem;
 }
 
+.modal button {
+  margin: 0 1rem 0 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.modal button:hover,
+.modal button:active {
+  background-color: rgb(150, 22, 35);
+} 
 .no-events {
   text-align: center;
   padding: 1rem;

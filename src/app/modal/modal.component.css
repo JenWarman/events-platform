@@ -1,35 +1,39 @@
-  .popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .popup-content {
-    background-color: #fff;
-    padding: 1rem;
-    margin: auto;
-    border-radius: 8px;
-    text-align: center;
-    max-width: 400px;
-    width: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  button {
-    float: right;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border: none;
-    background-color: #fff;
-  }
-  
-  button:hover,
-  button:active {
-    background-color: rgb(107, 124, 124);
-  }
+.popup-content {
+  border: solid 1px rgba(251, 143, 143, 0.7);
+  background-color: rgb(20, 20, 20);
+  padding: 1rem;
+  margin: auto;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button {
+  float: right;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  background-color: rgb(48, 48, 48);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+button:hover,
+button:active {
+  background-color: rgb(107, 124, 124);
+}
