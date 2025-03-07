@@ -9,7 +9,7 @@
 <div class="container">
   @for (event of events; track event.id) {
   <div class="event-container">
-    <img src="{{ event.image }}" alt="{{event.title}}"/>
+    <img src="{{ event.image }}" alt="{{ event.title }}" />
     <div class="event-detail">
       <h3>{{ event.title }}</h3>
       <p class="type">
@@ -20,10 +20,10 @@
       <p>Time: {{ event.time }}</p>
     </div>
     <div class="button-container">
-    <div class="event-info-button">
-      <span (click)="onOpenEventDetails(event.id)">Find out more</span>
+      <div class="event-info-button">
+        <span (click)="onOpenEventDetails(event.id)">Find out more</span>
+      </div>
     </div>
-  </div>
   </div>
   }
 </div>

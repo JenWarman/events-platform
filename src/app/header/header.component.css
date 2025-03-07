@@ -1,6 +1,6 @@
 .container {
   width: 100vw;
-  background-color: #140202;
+  background-color: rgb(20, 20, 20);
 }
 
 h1 {
@@ -26,7 +26,7 @@ h1 {
 }
 
 .topnav a:hover {
-  background-color: #8bd1c3;
+  background-color: rgb(200, 30, 50);
 }
 
 .topnav a.split {
@@ -46,5 +46,5 @@ h1 {
 }
 
 .router-link-active {
-  border-bottom: solid 1px #fff;
+  border-bottom: solid 1px rgb(200, 30, 50);
 }
