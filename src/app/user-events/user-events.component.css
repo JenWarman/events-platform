@@ -1,6 +1,11 @@
+.outer-container {
+  display: flex;
+  justify-content: center;
+}
+
 .container {
-  width: 100vw;
-  margin: auto;
+  width: 60vw;
+  margin: 1rem;
   padding: 1rem;
   display: flex;
   flex-direction: row;
@@ -9,28 +14,33 @@
 
 .event-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  background-color:rgb(20, 20, 20);
+  color: #fff;
   border-radius: 4px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 4px rgba(251, 143, 143, 0.7);
   margin: 1rem;
-  padding: 1rem;
-  width: 30%;
+  padding: 0 1rem 1rem 1rem;
+  width: 100%;
 }
 
-.event-container p {
-  text-align: center;
+.event-detail {
+  display: row;
+  padding: 1rem;
 }
-.event-text {
-  margin: 0.5rem;
+
+.event-detail p {
+  margin: 0.5rem auto;
+  padding: 0.25rem;
 }
+
 h3 {
-  text-align: center;
-  font-size: 1.4rem;
-  margin: 8px;
+  font-size: 2rem;
 }
 
 img {
   padding-top: 14px;
+  width: 300px;
 }
 
 button {
@@ -54,13 +64,8 @@ button:active {
 }
 
 .type {
-  background-color: #8bd1c3;
-  margin: auto;
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  border-radius: 0.25rem;
+  color: rgb(200, 30, 50);
+  font-weight: 600;
 }
 
 .event-rsvp {

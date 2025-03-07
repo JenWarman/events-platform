@@ -12,10 +12,11 @@ button {
     border-radius: 0.25rem;
     cursor: pointer;
     border: none;
-    background-color: #8bd1c3;
+    background-color: rgb(200, 30, 50);
+    color: #ffff
   }
   
   button:hover,
   button:active {
-    background-color: rgb(107, 124, 124)
+    background-color: rgb(150, 22, 35)
   }

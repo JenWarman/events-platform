@@ -7,23 +7,30 @@
     <p>You're not signed up to any events.</p>
   </div>
 }
+<div class="outer-container">
+
 
 <div class="container">
     @for (event of events; track event.event_id) {
     <div class="event-container" >
-      <h3>{{ event.event.title }}</h3>
-      <p class="type" [ngStyle]="{ 'background-color': getBackgroundColor(event.event.type) }">{{ event.event.type }}</p>
-      <img src="{{ event.event.image }}" />
-      <p class="event-text">{{event.event.summary}}</p>
-      <p class="event-text">Location: {{ event.event.location }}</p>
-      <p class="event-text">{{ event.event.date | date: 'fullDate'}}</p>
-      <p class="event-text">Time: {{ event.event.time }}</p>
+      <img src="{{ event.event.image }}" alt="{{event.title}}"/>
+      <div class="event-detail">
+        <h3>{{ event.event.title }}</h3>
+        <p class="type" >{{ event.event.type }}</p>
+      
+        <p class="event-text">{{event.event.summary}}</p>
+        <p class="event-text">Location: {{ event.event.location }}</p>
+        <p class="event-text">{{ event.event.date | date: 'fullDate'}}</p>
+        <p class="event-text">Time: {{ event.event.time }}</p>
+      </div>
       <div class="event-rsvp" >
 
         <p class="event-rsvp">{{this.rsvpStatus}}</p>
 
-        <div>
-          <button class="event-rsvp" (click)="showModal()">Edit RSVP</button>
+        <div class="button-container">
+          <div class="event-info-button"></div>
+
+          <button class="event-rsvp " (click)="showModal()">Edit RSVP</button>
           <app-modal *ngIf="isPopupVisible" (close)="hideModal()">
             <div class="modal">
               <h2>Update your RSVP</h2>
@@ -50,3 +57,4 @@
     }
   </div>
  
+</div>

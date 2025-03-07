@@ -71,17 +71,8 @@ img {
   color: #fff
 }
 .type {
-  display: inline-block;
-  margin-left: auto;
-  padding-top: 0.5rem;
-}
-.type p {
-  background-color: #8bd1c3;
-  margin: auto;
-  width: 100px;
-  text-align: center;
-  border-radius: 0.25rem;
-  color: rgb(8, 8, 8);
+  color: rgb(200, 30, 50);
+  font-weight: 600;
 }
 
 .no-events {
