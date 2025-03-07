@@ -114,7 +114,11 @@ button:active {
 .modal h2 {
   padding: 1rem;
 }
-
+.modal a {
+  text-decoration: none;
+  color: rgb(200, 30, 50);
+  font-weight: 600;
+}
 .modal button {
   margin: 1rem;
   padding: 0.5rem 1rem;

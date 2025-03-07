@@ -1,17 +1,25 @@
 form {
-    margin: auto;
-    max-width: 30rem;
-    padding-right: 2rem;
-    padding-left: 2rem;
-    padding-bottom: 2rem;
-  }
+  margin: 2rem auto;
+  max-width: 30rem;
+  padding: 1rem 1rem 4rem 1rem;
+  border-radius: 4px;
+  color: #fff;
+  box-shadow: 0 0 6px rgba(251, 143, 143, 0.7);
+}
   
   .register-header {
     padding: 1rem;
+    color:#fff
   }
 
   .register-header h1 {
+    font-size: 3rem;
     padding: 1rem;
+    color: #ffff;
+  }
+
+  .register-header h2 {
+    font-size: 2rem;
   }
   label {
     display: block;
@@ -30,19 +38,22 @@ form {
     text-align: center;
   }
   .register-link {
-    margin: 2rem auto;
+    color: #ffff;
+    margin: auto;
     max-width: 30rem;
     padding-left: 2rem;
     padding-right: 2rem;
     }
     
     .register-link p {
-      text-align: end;
+      text-align: center;
+      font-size: 1.5rem;
     }
     
     .register-link a {
-      font-weight: bold;
+      font-weight:600;
       text-decoration: none;
+      color: rgb(200, 30, 50);
     }
 
   button {
@@ -52,15 +63,17 @@ form {
     border-radius: 0.25rem;
     cursor: pointer;
     border: none;
-    background-color: #8bd1c3;
+    background-color: rgb(200, 30, 50);
+    color: #fff
   }
   
   button:hover,
   button:active {
-    background-color: rgb(107, 124, 124);
+    background-color: rgb(150, 22, 35);
+    color: #fff;
   }
   
   button:disabled {
-    background-color: rgb(133, 153, 153);
+    background-color: rgb(148, 101, 106);
     cursor: not-allowed;
   }
