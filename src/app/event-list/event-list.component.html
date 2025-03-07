@@ -12,13 +12,11 @@
     <img src="{{ event.image }}" alt="{{event.title}}"/>
     <div class="event-detail">
       <h3>{{ event.title }}</h3>
-      <div >
       <p class="type">
         <!-- [ngStyle]="{ 'background-color': getBackgroundColor(event.type) }" -->
       <!-- > -->
         {{ event.type }}
       </p>
-    </div>
       <p>Location: {{ event.location }}</p>
       <p>{{ event.date | date : "fullDate" }}</p>
       <p>Time: {{ event.time }}</p>

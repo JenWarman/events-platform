@@ -1,60 +1,43 @@
 @if (isFetching()) {
-  <p class="fallback-text">Fetching your events...</p>
-  } 
-
-@if (events!.length === 0) {
-  <div class="no-events">
-    <p>You're not signed up to any events.</p>
-  </div>
+<p class="fallback-text">Fetching your events...</p>
+} @if (events!.length === 0) {
+<div class="no-events">
+  <p>You're not signed up to any events.</p>
+</div>
 }
 <div class="outer-container">
-
-
-<div class="container">
+  <div class="container">
     @for (event of events; track event.event_id) {
-    <div class="event-container" >
-      <img src="{{ event.event.image }}" alt="{{event.title}}"/>
+
+    <div class="event-container">
+      <img src="{{ event.event.image }}" alt="{{ event.title }}" />
       <div class="event-detail">
         <h3>{{ event.event.title }}</h3>
-        <p class="type" >{{ event.event.type }}</p>
-      
-        <p class="event-text">{{event.event.summary}}</p>
-        <p class="event-text">Location: {{ event.event.location }}</p>
-        <p class="event-text">{{ event.event.date | date: 'fullDate'}}</p>
-        <p class="event-text">Time: {{ event.event.time }}</p>
-      </div>
-      <div class="event-rsvp" >
-
-        <p class="event-rsvp">{{this.rsvpStatus}}</p>
-
-        <div class="button-container">
-          <div class="event-info-button"></div>
-
-          <button class="event-rsvp " (click)="showModal()">Edit RSVP</button>
-          <app-modal *ngIf="isPopupVisible" (close)="hideModal()">
-            <div class="modal">
-              <h2>Update your RSVP</h2>
-              <p>Are you still going to this event?</p>
-              <button class="not-going"  (click)="onEditRSVP(event.event.id)">Not going</button>
-              <button>You're going!</button>
-            </div>
-          </app-modal>
-          <button>Add to Calendar</button>
-        </div>
-        
-
-        <!-- <button (click)="showModal()">Add to calendar</button>
+        <p class="type">{{ event.event.type }}</p>
+        <p>{{ event.event.summary }}</p>
+        <p>Location: {{ event.event.location }}</p>
+        <p>{{ event.event.date | date : "fullDate" }}</p>
+        <p>Time: {{ event.event.time }}</p>
+        <button class="event-rsvp" (click)="showModal()">Edit RSVP</button>
         <app-modal *ngIf="isPopupVisible" (close)="hideModal()">
           <div class="modal">
-            <div class="modal-header">
-              <h2>Add to calendar</h2>
-            </div>
+            <h2>Update your RSVP</h2>
+            <p>Are you still going to this event?</p>
+            <button class="not-going" (click)="onEditRSVP(event.event.id)">
+              Not going
+            </button>
+            <button>You're going!</button>
           </div>
-        </app-modal>  -->
+        </app-modal>
+        <button>Add to Calendar</button>
+      </div>
 
+      <div class="button-container">
+        <div class="event-info-button">
+          <span>{{ this.rsvpStatus }}</span>
+        </div>
       </div>
     </div>
     }
   </div>
- 
 </div>
