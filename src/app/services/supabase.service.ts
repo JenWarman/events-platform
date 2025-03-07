@@ -11,6 +11,7 @@ export type UserProfile = User & { is_admin: boolean };
 })
 export class SupabaseService {
   public supabase: SupabaseClient;
+  loading: boolean;
 
   private userLoadedSub: BehaviorSubject<UserProfile | undefined> =
     new BehaviorSubject<UserProfile | undefined>(undefined);
@@ -22,7 +23,16 @@ export class SupabaseService {
       environment.supabaseKey
     );
     this.publishUser();
+    this.loading = false;
   }
+
+  startLoading() {
+    this.loading = true;
+  };
+
+  stopLoading() {
+    this.loading = false;
+  };
 
   private publishUser() {
     this.supabase.auth.getSession().then(async (user) => {
@@ -42,15 +52,18 @@ export class SupabaseService {
   }
 
   async registerUser(formData: { email: string; password: string }) {
+    this.loading = true;
     let { data, error } = await this.supabase.auth.signUp(formData);
     if (error)  {
         this.errorService.showError('Failed to register new user.');
         throw throwError(() => new Error('Failed to register new user.'));
     }
     this.publishUser();
+    this.loading = false;
   }
 
   async loginUser(formData: { email: string; password: string }) {
+    this.loading = true;
     let { data, error } = await this.supabase.auth.signInWithPassword({
       email: formData.email,
       password: formData.password,
@@ -60,6 +73,7 @@ export class SupabaseService {
       throw throwError(() => new Error('Login failed.'));
   }
     this.publishUser();
+    this.loading = false;
   }
 
   async logoutUser() {

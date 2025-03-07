@@ -1,22 +1,30 @@
 @if (isFetching()) {
-  <p class="fallback-text">Fetching events...</p>
-  } 
-@if (events!.length === 0) {
-  <div class="no-events">
-    <p>There are currently no events.</p>
-  </div>
+<p class="fallback-text">Fetching events...</p>
+} @if (events!.length === 0) {
+<div class="no-events">
+  <p>There are currently no events.</p>
+</div>
 }
 
 <div class="container">
   @for (event of events; track event.id) {
-  <div class="event-container" >
-    <h3>{{ event.title }}</h3>
-    <p class="type" [ngStyle]="{ 'background-color': getBackgroundColor(event.type) }">{{ event.type }}</p>
+  <div class="event-container">
     <img src="{{ event.image }}" />
-    <p>Location: {{ event.location }}</p>
-    <p>{{ event.date | date: 'fullDate' }}</p>
-    <p>Time: {{ event.time }}</p>
-    <button (click)="onOpenEventDetails(event.id)">Find out more</button>
+    <div class="event-detail">
+      <h3>{{ event.title }}</h3>
+      <p
+        class="type"
+        [ngStyle]="{ 'background-color': getBackgroundColor(event.type) }"
+      >
+        {{ event.type }}
+      </p>
+      <p>Location: {{ event.location }}</p>
+      <p>{{ event.date | date : "fullDate" }}</p>
+      <p>Time: {{ event.time }}</p>
+    </div>
+    <div class="event-info-button">
+      <button (click)="onOpenEventDetails(event.id)">Find out more</button>
+    </div>
   </div>
   }
 </div>

@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { HeaderComponent } from "./header/header.component";
-import { EventSearchComponent } from "./event-search/event-search.component";
+import { HeaderComponent } from './header/header.component';
+import { EventSearchComponent } from './event-search/event-search.component';
 import { SupabaseService, UserProfile } from './services/supabase.service';
 import { ErrorService } from './services/error.service';
 
@@ -9,24 +9,36 @@ import { ErrorService } from './services/error.service';
   selector: 'app-root',
   imports: [RouterOutlet, HeaderComponent, EventSearchComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'events-platform'
+  title = 'events-platform';
   user: UserProfile | null = null;
-   private _error = signal('');
-      error = this._error.asReadonly();
-  
+  private _error = signal('');
+  error = this._error.asReadonly();
+  // loading: boolean = true;
 
-  constructor(private supabaseService: SupabaseService, private routerService: Router, private errorService: ErrorService) {
+  constructor(
+    private supabaseService: SupabaseService,
+    private routerService: Router,
+    private errorService: ErrorService
+  ) {
     this.supabaseService.userLoaded.subscribe((user) => {
       this.user = user ?? null;
     });
     this.error = this.errorService.error;
+    // this.loading = false;
   }
+
+  // startLoading() {
+  //   this.loading = true;
+  // };
+
+  // stopLoading() {
+  //   this.loading = false;
+  // };
 
   onClearError() {
     this.errorService.clearError();
   }
-  
 }
