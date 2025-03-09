@@ -1,0 +1,11 @@
+.container {
+  width: 100vw;
+  background-color: rgb(20, 20, 20);
+  color: #ffff;
+  margin: auto;
+  padding: 2rem;
+}
+
+.container:hover{
+    box-shadow: 0 0 20px rgba(251, 143, 143, 0.7);
+}

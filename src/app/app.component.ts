@@ -4,10 +4,11 @@ import { HeaderComponent } from './header/header.component';
 import { EventSearchComponent } from './event-search/event-search.component';
 import { SupabaseService, UserProfile } from './services/supabase.service';
 import { ErrorService } from './services/error.service';
+import { FooterComponent } from './footer/footer.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, EventSearchComponent],
+  imports: [RouterOutlet, HeaderComponent, EventSearchComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
