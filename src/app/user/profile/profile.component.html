@@ -1,18 +1,23 @@
 <div class="container">
-    <div class="profile">
-        @if (user) {
-            <h1>Your Profile</h1>
-            <div class="profile-info">
-                <h2>{{user.email}}</h2>
-                @if (user.is_admin){
-                    <h3>Status: Admin</h3>
-                }
-                <button>Edit your account</button>
-            </div>
-        }
+  <div class="profile">
+    @if (user) {
+    <h1>Profile</h1>
+    <div class="profile-info">
+      <h3>{{ user.email }}</h3>
+      @if (user.is_admin){
+      <h3>Status: Admin</h3>
+      }
+      <button
+        [routerLink]="['/edit-user']"
+        routerLinkActive="router-link-active"
+      >
+        Edit your account
+      </button>
     </div>
-    <div class="your-events">
-        <h1>Your Events</h1>
-        <app-user-events></app-user-events>
-    </div>
+    }
+  </div>
+  <div class="your-events">
+    <h1>Your Events</h1>
+    <app-user-events></app-user-events>
+  </div>
 </div>

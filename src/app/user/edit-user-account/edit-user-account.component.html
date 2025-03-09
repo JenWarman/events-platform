@@ -1,0 +1,32 @@
+<form>
+  <h1>Edit your Profile</h1>
+  <div>
+    <label for="email">Email</label>
+    <div>
+      <input type="text" name="email" formControlName="email" id="email" />
+    </div>
+  </div>
+  <div>
+    <label for="password">Password</label>
+    <div>
+      <input
+        type="password"
+        name="password"
+        formControlName="password"
+        id="password"
+      />
+    </div>
+  </div>
+  <div class="edit-profile-buttons">
+    <button type="submit">Confirm changes</button>
+    <button (click)="showModal()">Delete account</button>
+    <app-modal *ngIf="isPopupVisible" (close)="hideModal()">
+        <div class="modal">
+          <div class="modal-header">
+            <h2>Are you sure you want to delete your account?</h2>
+          </div>
+          <button (click)="onDeleteUser(user.id)">Delete event</button>
+        </div>
+      </app-modal>
+  </div>
+</form>

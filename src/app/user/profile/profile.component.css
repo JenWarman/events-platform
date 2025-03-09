@@ -1,8 +1,6 @@
 .container {
   display: flex;
   flex-direction: row;
-  margin: 2rem auto;
-  padding: 2rem;
   color: #fff;
   justify-content: center;
 }
@@ -11,18 +9,15 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 0 2rem;
-  width: 20vw;
+  padding-top: 1rem;
 }
 
 .profile h1 {
-  font-size: 3rem;
+  font-size: 2rem;
 }
+
 .profile-info {
-    margin: 0.5rem;
-}
-.profile-info h2 {
-    margin: 0.5rem auto;
+ flex-direction: row;
 }
 
 .profile-info h3 {
@@ -37,7 +32,7 @@ button {
   border: none;
   background-color: rgb(200, 30, 50);
   color: #fff;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 button:hover,
@@ -48,6 +43,7 @@ button:active {
 
 .your-events h1 {
   margin:auto;
-  padding-left: 2.5rem;
-  font-size: 3rem;
+  padding-left: 2rem;
+  font-size: 2rem;
+ padding-top: 1rem;
 }
