@@ -42,9 +42,5 @@ export class HeaderComponent {
       this.routerService.navigateByUrl('/events');
       this.userStatus = 'Login';
     }
-
   }
-
-
-  
 }

@@ -15,7 +15,7 @@
   border-radius: 4px;
   box-shadow: 0 0 4px rgba(251, 143, 143, 0.7);
   margin: 1rem;
-  padding: 0 1rem 1rem 1rem;
+  padding: 0 1rem 0 1rem;
   width: 100%;
 }
 
@@ -30,15 +30,18 @@
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: 1.75rem;
 }
 
 p {
-  font-size: 1.5rem;
+  font-size: 1rem;
+  text-align: justify;
 }
 img {
-  padding-top: 14px;
-  width: 400px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 350px;
+  height: 350px
 }
 
 .event-buttons {
@@ -57,7 +60,7 @@ button {
   border: none;
   background-color: rgb(200, 30, 50);
   color: #fff;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 button:hover,
@@ -72,8 +75,8 @@ button:active {
 
 .button-container {
   display: inline-block;
-  margin-left: auto;
-  margin-right: 1rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
   align-self: center;
   width: 15%;
 }
