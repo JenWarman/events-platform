@@ -86,7 +86,7 @@ export class SupabaseService {
   }
 
   async fetchEvents(filters?: { category?: string; keyword?: string }) {
-    let builder = this.supabase.from('event').select();
+    let builder = this.supabase.from('event').select().order('date', {ascending: true});
 
     if (filters?.category) {
       builder = builder.eq('type', filters?.category);

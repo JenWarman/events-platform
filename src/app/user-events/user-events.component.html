@@ -1,10 +1,11 @@
 @if (isFetching()) {
 <p class="fallback-text">Fetching your events...</p>
-} @if (events!.length === 0) {
+} 
+<!-- @if (events!.length === 0) {
 <div class="no-events">
   <p>You're not signed up to any events.</p>
 </div>
-}
+} -->
 <div class="outer-container">
   <div class="container">
     @for (event of events; track event.event_id) {

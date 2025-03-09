@@ -1,10 +1,11 @@
 @if (isFetching()) {
 <p class="fallback-text">Fetching events...</p>
-} @if (events!.length === 0) {
+} 
+<!-- @if (events!.length === 0) {
 <div class="no-events">
   <p>There are currently no events.</p>
 </div>
-}
+} -->
 
 <div class="container">
   @for (event of events; track event.id) {

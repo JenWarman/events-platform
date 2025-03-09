@@ -19,6 +19,10 @@
   width: 100%;
 }
 
+.event-container:hover {
+  box-shadow: 0 0 20px rgba(251, 143, 143, 0.7);
+}
+
 .event-detail {
   display: row;
   padding: 1rem;
@@ -26,6 +30,7 @@
 
 .event-detail p {
   margin: 0.5rem auto;
+  margin-right: 1rem;
   padding: 0.25rem;
 }
 
@@ -40,8 +45,9 @@ p {
 img {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  width: 350px;
-  height: 350px
+  width: 400px;
+  height: 350px;
+  align-self: center;
 }
 
 .event-buttons {
