@@ -4,6 +4,9 @@
   color: #ffff;
   margin: auto;
   padding: 2rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
 }
 
 .container:hover{

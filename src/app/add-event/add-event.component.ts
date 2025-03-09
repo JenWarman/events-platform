@@ -13,7 +13,7 @@ import {
   selector: 'app-add-event',
   imports: [ReactiveFormsModule],
   templateUrl: './add-event.component.html',
-  styleUrl: './add-event.component.css'
+  styleUrl: './add-event.component.css',
 })
 export class AddEventComponent {
   user: User | undefined;
@@ -25,7 +25,7 @@ export class AddEventComponent {
     image: new FormControl('', Validators.required),
     date: new FormControl('', Validators.required),
     time: new FormControl('', Validators.required),
-    type: new FormControl('', Validators.required)
+    type: new FormControl('', Validators.required),
   });
 
   constructor(
@@ -36,21 +36,32 @@ export class AddEventComponent {
       this.user = user;
     });
   }
+  get titleIsInvalid() {
+    return (
+      this.form.controls.title.touched &&
+      this.form.controls.title.dirty &&
+      this.form.controls.title.invalid
+    );
+  }
 
   async onAddEvent() {
-    const { data, error } = await this.supabaseService.supabase
-      .from('event')
-      .insert([
-        {
-          title: this.form.value.title,
-          location: this.form.value.location,
-          summary: this.form.value.summary,
-          image: this.form.value.image,
-          date: this.form.value.date,
-          time: this.form.value.time,
-          type: this.form.value.type,
-        },
-      ]);
+    if (
+      !this.form.value.title ) {
+      return;
+    }
+      const { data, error } = await this.supabaseService.supabase
+        .from('event')
+        .insert([
+          {
+            title: this.form.value.title,
+            location: this.form.value.location,
+            summary: this.form.value.summary,
+            image: this.form.value.image,
+            date: this.form.value.date,
+            time: this.form.value.time,
+            type: this.form.value.type,
+          },
+        ]);
     this.routerService.navigateByUrl('/');
   }
 
@@ -59,4 +70,3 @@ export class AddEventComponent {
     this.routerService.navigateByUrl('/');
   }
 }
-

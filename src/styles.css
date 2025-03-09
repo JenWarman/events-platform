@@ -49,6 +49,7 @@
     padding: 0.25rem 0 0 0;
     height: 1.5rem;
     margin-bottom: 1rem;
+    font-weight: 600;
   }
   
   .control-error p {
