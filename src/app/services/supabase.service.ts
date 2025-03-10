@@ -11,7 +11,7 @@ export type UserProfile = User & { is_admin: boolean };
 })
 export class SupabaseService {
   public supabase: SupabaseClient;
-  loading: boolean;
+  // loading: boolean;
 
   private userLoadedSub: BehaviorSubject<UserProfile | undefined> =
     new BehaviorSubject<UserProfile | undefined>(undefined);
@@ -23,16 +23,16 @@ export class SupabaseService {
       environment.supabaseKey
     );
     this.publishUser();
-    this.loading = false;
+    // this.loading = false;
   }
 
-  startLoading() {
-    this.loading = true;
-  };
+  // startLoading() {
+  //   this.loading = true;
+  // };
 
-  stopLoading() {
-    this.loading = false;
-  };
+  // stopLoading() {
+  //   this.loading = false;
+  // };
 
   private publishUser() {
     this.supabase.auth.getSession().then(async (user) => {
@@ -52,18 +52,18 @@ export class SupabaseService {
   }
 
   async registerUser(formData: { email: string; password: string }) {
-    this.loading = true;
+    // this.loading = true;
     let { data, error } = await this.supabase.auth.signUp(formData);
     if (error)  {
         this.errorService.showError('Failed to register new user.');
         throw throwError(() => new Error('Failed to register new user.'));
     }
     this.publishUser();
-    this.loading = false;
+    // this.loading = false;
   }
 
   async loginUser(formData: { email: string; password: string }) {
-    this.loading = true;
+    // this.loading = true;
     let { data, error } = await this.supabase.auth.signInWithPassword({
       email: formData.email,
       password: formData.password,
@@ -73,7 +73,7 @@ export class SupabaseService {
       throw throwError(() => new Error('Login failed.'));
   }
     this.publishUser();
-    this.loading = false;
+    // this.loading = false;
   }
 
   async logoutUser() {
@@ -85,8 +85,21 @@ export class SupabaseService {
     this.publishUser();
   }
 
+  async fetchUserById(user_id: string){
+    const { data: { user } } = await this.supabase.auth.getUser();
+    console.log(user, '<---user fetched')
+   return user;
+  }
+
+  getEventsQuery() {
+    return this.supabase.
+      from('event').
+      select('*, user-events(event_id)').
+      order('date', {ascending: true});
+  }
+
   async fetchEvents(filters?: { category?: string; keyword?: string }) {
-    let builder = this.supabase.from('event').select().order('date', {ascending: true});
+    let builder = this.getEventsQuery()
 
     if (filters?.category) {
       builder = builder.eq('type', filters?.category);
@@ -133,9 +146,7 @@ export class SupabaseService {
   }
 
   async fetchEventByType(eventType: string) {
-    const { data, error } = await this.supabase
-      .from('event')
-      .select()
+    const { data, error } = await this.getEventsQuery()
       .eq('type', eventType);
 
       if (error)  {

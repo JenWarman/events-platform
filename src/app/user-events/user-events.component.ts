@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { SupabaseService } from '../services/supabase.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -11,7 +11,8 @@ import { ModalComponent } from '../modal/modal.component';
   templateUrl: './user-events.component.html',
   styleUrl: './user-events.component.css',
 })
-export class UserEventsComponent {
+export class UserEventsComponent implements OnInit {
+
   event: any;
   events: any;
   user: User | undefined;
@@ -24,28 +25,41 @@ export class UserEventsComponent {
     private routerService: Router,
     private route: ActivatedRoute
   ) {
-    supabaseService.userLoaded.subscribe((user) => {
-      this.isFetching.set(true);
+
+  }
+
+  ngOnInit(): void {
+    this.supabaseService.userLoaded.subscribe((user) => {
       this.user = user;
       if (!user) {
         return;
       }
-      this.supabaseService.fetchEventsByUser(user?.id).then((events) => {
-        
-        this.events = events;
-        this.rsvpStatus = "you're going!";
-      });
+      this.loadEvents()
+    });
+  }
+
+  loadEvents() {
+    this.isFetching.set(true);
+    if (!this.user) {
+      return;
+    }
+    this.supabaseService.fetchEventsByUser(this.user?.id).then((events) => {
+      this.events = events;
+      // this.rsvpStatus = "you're going!";
+    }).finally(() => {
       this.isFetching.set(false);
     });
   }
 
-  onEditRSVP(eventId: string) {
+  async onEditRSVP(eventId: string) {
     if (!eventId) {
       console.log('no event id to delete from user');
       return;
     }
-    this.supabaseService.deleteEventFromUser(eventId);
-    this.rsvpStatus = "you're not going!";
+    await this.supabaseService.deleteEventFromUser(eventId);
+    //this.events = this.events.filter((ev: {event_id: string}) => ev.event_id != eventId);
+    // this.rsvpStatus = "you're not going!";
+    this.loadEvents()
   }
 
   onAddToCalendar() {}
@@ -58,18 +72,4 @@ export class UserEventsComponent {
     this.isPopupVisible = false;
   }
 
-  getBackgroundColor(eventType: string) {
-    switch (eventType.toLowerCase()) {
-      case 'art':
-        return 'lightblue';
-      case 'music':
-        return 'lightgreen';
-      case 'literature':
-        return 'lightcoral';
-      case 'theatre':
-        return 'lightgoldenrodyellow';
-      default:
-        return 'white';
-    }
-  }
 }

@@ -44,7 +44,8 @@ export class EventCardComponent {
 
   onAddEventToUser(eventId: string){
     this.supabaseService.AddEventToUser(this.event.id);
-    this.rsvpStatus = 'You\'re going!'
+    this.rsvpStatus = 'You\'re going!';
+    this.routerService.navigateByUrl('/your-events');
   }
 
   showModal() {
@@ -63,20 +64,5 @@ export class EventCardComponent {
       this.event = event;
       this.rsvpStatus = 'Sign up for event'
     });
-  }
-
-  getBackgroundColor(eventType: string): string {
-    switch (eventType.toLowerCase()) {
-      case 'art':
-        return 'lightblue';
-      case 'music':
-        return 'lightgreen';
-      case 'literature':
-        return 'lightcoral';
-      case 'theatre':
-        return 'lightgoldenrodyellow';
-      default:
-        return 'white';  
-    }
   }
 }
