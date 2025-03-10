@@ -18,6 +18,7 @@ export class UserEventsComponent implements OnInit {
   user: User | undefined;
   rsvpStatus: string = '';
   isPopupVisible = false;
+  showEventModal: string = '';
   isFetching = signal(false);
 
   constructor(
@@ -44,8 +45,8 @@ export class UserEventsComponent implements OnInit {
       return;
     }
     this.supabaseService.fetchEventsByUser(this.user?.id).then((events) => {
+      console.log(events)
       this.events = events;
-      // this.rsvpStatus = "you're going!";
     }).finally(() => {
       this.isFetching.set(false);
     });

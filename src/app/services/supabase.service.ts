@@ -121,9 +121,7 @@ export class SupabaseService {
   }
 
   async fetchEventById(id: string) {
-    const { data, error } = await this.supabase
-      .from('event')
-      .select()
+    const { data, error } = await this.getEventsQuery()
       .eq('id', id);
 
       if (error)  {
@@ -143,6 +141,7 @@ export class SupabaseService {
       this.errorService.showError('Failed to delete event data.');
         throw throwError(() => new Error('Failed to delete event data.'));
     }
+    
   }
 
   async fetchEventByType(eventType: string) {

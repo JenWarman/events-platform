@@ -14,9 +14,7 @@ export class EventCardComponent {
   event: any;
   id: string | undefined;
   user: UserProfile | undefined;
-  rsvpStatus: string = '';
   isPopupVisible = false;
-
 
   constructor(
     private supabaseService: SupabaseService,
@@ -34,17 +32,16 @@ export class EventCardComponent {
     this.routerService.navigateByUrl(`/edit-event/${id}`);
   }
 
-  onDelete(id: string) {
-    if (!this.id) {
+  onDelete() {
+    if (!this.event?.id) {
       return;
     }
-      this.supabaseService.deleteEvent(this.id);
+      this.supabaseService.deleteEvent(this.event.id);
       this.routerService.navigateByUrl('/');
   }
 
   onAddEventToUser(eventId: string){
     this.supabaseService.AddEventToUser(this.event.id);
-    this.rsvpStatus = 'You\'re going!';
     this.routerService.navigateByUrl('/your-events');
   }
 
@@ -62,7 +59,6 @@ export class EventCardComponent {
     }
     this.supabaseService.fetchEventById(this.id).then((event) => {
       this.event = event;
-      this.rsvpStatus = 'Sign up for event'
     });
   }
 }

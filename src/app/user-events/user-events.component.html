@@ -19,11 +19,11 @@
         <p>Location: {{ event.event.location }}</p>
         <p>{{ event.event.date | date : "fullDate" }}</p>
         <p>Time: {{ event.event.time }}</p>
-        <button class="event-rsvp" (click)="showModal()">Edit RSVP</button>
-        <app-modal *ngIf="isPopupVisible" (close)="hideModal()">
+        <button class="event-rsvp" (click)="showEventModal = event.event.id">Edit RSVP</button>
+        <app-modal *ngIf="showEventModal === event.event.id" (close)="showEventModal = ''">
           <div class="modal">
             <h2>Update your RSVP</h2>
-            <p>Are you still going to this event?</p>
+            <p>Are you still going to {{event.event.title}}?</p>
             <button class="not-going" (click)="onEditRSVP(event.event.id)">
               Not going
             </button>
