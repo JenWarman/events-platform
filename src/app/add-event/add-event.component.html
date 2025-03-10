@@ -9,6 +9,18 @@
       formControlName="title"
       id="title"
     />
+    <!--app-form-error [errors]="form.controls.title"></app-form-error-->
+
+
+    @if (form.controls.title.invalid){
+      @if (form.controls.title.errors && form.controls.title.errors['required']){
+        <p >This field cannot be empty</p>
+      }
+      @if (form.controls.title.errors && form.controls.title.errors['minlength'] !== null){
+        <p >Title mus tbe at least {{form.controls.title.errors['minlength'].requiredLength}} characters long</p>
+      }
+      {{form.controls.title.errors | json}}
+    }
   </div>
   <div>
     <label for="location">Location</label>
@@ -51,9 +63,9 @@
   </div>
   <div class="add-event-buttons">
     <button type="button" (click)="onCancel()">Cancel</button>
-    <button type="submit" [disabled]="!this.form.valid">Confirm</button>
+    <button type="submit" [disabled]="!form.valid">Confirm</button>
   </div>
-  @if (titleIsInvalid) {
+  <!-- @if (titleIsInvalid) {
     <p class="control-error">Please enter a title for the event.</p>
-    } 
+    }  -->
 </form>

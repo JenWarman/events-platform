@@ -8,10 +8,11 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-add-event',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, JsonPipe],
   templateUrl: './add-event.component.html',
   styleUrl: './add-event.component.css',
 })
@@ -19,7 +20,7 @@ export class AddEventComponent {
   user: User | undefined;
 
   form = new FormGroup({
-    title: new FormControl('', Validators.required),
+    title: new FormControl('', [Validators.required, Validators.maxLength(128), Validators.minLength(3)]),
     location: new FormControl('', Validators.required),
     summary: new FormControl('', Validators.required),
     image: new FormControl('', Validators.required),
@@ -38,8 +39,8 @@ export class AddEventComponent {
   }
   get titleIsInvalid() {
     return (
-      this.form.controls.title.touched &&
-      this.form.controls.title.dirty &&
+      // this.form.controls.title.touched &&
+      // this.form.controls.title.dirty &&
       this.form.controls.title.invalid
     );
   }

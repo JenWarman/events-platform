@@ -25,9 +25,7 @@ export class UserEventsComponent implements OnInit {
     private supabaseService: SupabaseService,
     private routerService: Router,
     private route: ActivatedRoute
-  ) {
-
-  }
+  ) {}
 
   ngOnInit(): void {
     this.supabaseService.userLoaded.subscribe((user) => {
@@ -36,6 +34,7 @@ export class UserEventsComponent implements OnInit {
         return;
       }
       this.loadEvents()
+      this.rsvpStatus = "You're going!"
     });
   }
 

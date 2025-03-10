@@ -94,12 +94,12 @@ export class SupabaseService {
   getEventsQuery() {
     return this.supabase.
       from('event').
-      select('*, user_events(event_id)').
-      order('date', {ascending: true});
+      select('*, user_events(event_id)')
+      // order('date', {ascending: true});
   }
 
   async fetchEvents(filters?: { category?: string; keyword?: string }) {
-    let builder = this.getEventsQuery()
+    let builder = this.getEventsQuery().order('date', {ascending: true});
 
     if (filters?.category) {
       builder = builder.eq('type', filters?.category);
@@ -141,12 +141,13 @@ export class SupabaseService {
       this.errorService.showError('Failed to delete event data.');
         throw throwError(() => new Error('Failed to delete event data.'));
     }
-    
+
   }
 
   async fetchEventByType(eventType: string) {
     const { data, error } = await this.getEventsQuery()
-      .eq('type', eventType);
+      .eq('type', eventType)
+      .order('date', {ascending: true});
 
       if (error)  {
         this.errorService.showError('Failed to fetch event by event type.');
@@ -199,6 +200,7 @@ export class SupabaseService {
     .from('user_events')
     .select('*, event(*)')
     .eq('user_id', userId)
+    .order('created_at', {ascending: false});
 
     if (error)  {
       this.errorService.showError('Failed to fetch your events.');

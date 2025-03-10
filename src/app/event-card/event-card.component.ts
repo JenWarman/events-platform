@@ -42,7 +42,7 @@ export class EventCardComponent {
 
   onAddEventToUser(eventId: string){
     this.supabaseService.AddEventToUser(this.event.id);
-    this.routerService.navigateByUrl('/your-events');
+    this.routerService.navigateByUrl('/your-events')
   }
 
   showModal() {

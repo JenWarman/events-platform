@@ -112,6 +112,11 @@ button:active {
   font-weight: 600;
 }
 
+.rsvp{
+  color: rgb(200, 30, 50);
+  font-weight: 600;
+  font-size: 1.25rem;
+}
 .event-rsvp {
   padding: 0.5rem 1rem;
   margin: 0 1rem 0 0;

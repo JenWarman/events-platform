@@ -19,6 +19,7 @@
         <p>Location: {{ event.event.location }}</p>
         <p>{{ event.event.date | date : "fullDate" }}</p>
         <p>Time: {{ event.event.time }}</p>
+        <p class="rsvp">{{this.rsvpStatus}}</p>
         <button class="event-rsvp" (click)="showEventModal = event.event.id">Edit RSVP</button>
         <app-modal *ngIf="showEventModal === event.event.id" (close)="showEventModal = ''">
           <div class="modal">
@@ -33,11 +34,11 @@
         <button>Add to Calendar</button>
       </div>
 
-      <div class="button-container">
+      <!-- <div class="button-container">
         <div class="event-info-button">
           <span>{{ this.rsvpStatus }}</span>
         </div>
-      </div>
+      </div> -->
     </div>
     }
   </div>
