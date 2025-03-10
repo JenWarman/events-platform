@@ -8,7 +8,6 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { JsonPipe } from '@angular/common';
 import { FormErrorsComponent } from '../form-errors/form-errors.component';
 
 @Component({
@@ -38,13 +37,6 @@ export class AddEventComponent {
     supabaseService.userLoaded.subscribe((user) => {
       this.user = user;
     });
-  }
-  get titleIsInvalid() {
-    return (
-      // this.form.controls.title.touched &&
-      // this.form.controls.title.dirty &&
-      this.form.controls.title.invalid
-    );
   }
 
   async onAddEvent() {

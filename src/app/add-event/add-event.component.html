@@ -11,7 +11,7 @@
     />
 
     <app-form-errors [field]="form.controls.title"></app-form-errors>
-    
+
   </div>
   <div>
     <label for="location">Location</label>
@@ -21,10 +21,16 @@
       name="location"
       formControlName="location"
     />
+
+    <app-form-errors [field]="form.controls.location"></app-form-errors>
+
   </div>
   <div>
     <label for="summary">Summary</label>
     <textarea rows="5" title="summary" formControlName="summary"></textarea>
+
+    <app-form-errors [field]="form.controls.summary"></app-form-errors>
+
   </div>
   <div>
     <label for="image">Image</label>
@@ -34,6 +40,9 @@
       name="image"
       formControlName="image"
     />
+
+    <app-form-errors [field]="form.controls.image"></app-form-errors>
+
   </div>
   <div>
     <label for="date">Date</label>
@@ -56,7 +65,4 @@
     <button type="button" (click)="onCancel()">Cancel</button>
     <button type="submit" [disabled]="!form.valid">Confirm</button>
   </div>
-  <!-- @if (titleIsInvalid) {
-    <p class="control-error">Please enter a title for the event.</p>
-    }  -->
 </form>
