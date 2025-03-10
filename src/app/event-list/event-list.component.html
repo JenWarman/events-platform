@@ -1,6 +1,6 @@
 @if (isFetching()) {
 <p class="fallback-text">Fetching events...</p>
-} 
+}
 <!-- @if (events!.length === 0) {
 <div class="no-events">
   <p>There are currently no events.</p>
@@ -20,7 +20,11 @@
       <p>Location: {{ event.location }}</p>
       <p>{{ event.date | date : "fullDate" }}</p>
       <p>Time: {{ event.time }}</p>
+      @if (event.user_events.length === 1) {
+      <p class="type">You're going!</p>
+      }
     </div>
+
     <div class="button-container">
       <div class="event-info-button">
         <span (click)="onOpenEventDetails(event.id)">Find out more</span>

@@ -94,7 +94,7 @@ export class SupabaseService {
   getEventsQuery() {
     return this.supabase.
       from('event').
-      select('*, user-events(event_id)').
+      select('*, user_events(event_id)').
       order('date', {ascending: true});
   }
 
@@ -182,7 +182,7 @@ export class SupabaseService {
     }
 
     const { data, error } = await this.supabase
-      .from('user-events')
+      .from('user_events')
       .insert({ user_id: user.id, event_id: eventId });
 
       if (error)  {
@@ -197,7 +197,7 @@ export class SupabaseService {
 
   async fetchEventsByUser(userId: string) {
     const {data, error} = await this.supabase
-    .from('user-events')
+    .from('user_events')
     .select('*, event(*)')
     .eq('user_id', userId)
 
@@ -213,7 +213,7 @@ export class SupabaseService {
 
   async deleteEventFromUser(eventId: string) {
     const { data, error } = await this.supabase
-    .from('user-events')
+    .from('user_events')
     .delete()
     .eq('event_id', eventId)
 
