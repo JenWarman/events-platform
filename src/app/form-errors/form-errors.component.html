@@ -1,0 +1,9 @@
+@if (field && field['invalid'] && field['touched']) {
+      @if (field['errors'] && field['errors']['required']){
+        <p>This field cannot be empty</p>
+      }
+      @if (field['errors'] && field['errors']['minlength'] !== null){
+        <p>Field must be at least {{field['errors']['minlength']?.requiredLength}} characters long</p>
+      }
+
+    }

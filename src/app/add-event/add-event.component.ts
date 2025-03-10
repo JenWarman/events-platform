@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { SupabaseService } from '../services/supabase.service';
 import { User } from '@supabase/supabase-js';
@@ -9,21 +9,23 @@ import {
   Validators,
 } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
+import { FormErrorsComponent } from '../form-errors/form-errors.component';
 
 @Component({
   selector: 'app-add-event',
-  imports: [ReactiveFormsModule, JsonPipe],
+  imports: [ReactiveFormsModule, FormErrorsComponent],
   templateUrl: './add-event.component.html',
   styleUrl: './add-event.component.css',
 })
 export class AddEventComponent {
   user: User | undefined;
+  @Output('errors') errors: any;
 
   form = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.maxLength(128), Validators.minLength(3)]),
-    location: new FormControl('', Validators.required),
-    summary: new FormControl('', Validators.required),
-    image: new FormControl('', Validators.required),
+    location: new FormControl('', [Validators.required, Validators.maxLength(128), Validators.minLength(3)]),
+    summary: new FormControl('', [Validators.required, Validators.maxLength(128), Validators.minLength(3)]),
+    image: new FormControl('', [Validators.required, Validators.maxLength(128), Validators.minLength(3)]),
     date: new FormControl('', Validators.required),
     time: new FormControl('', Validators.required),
     type: new FormControl('', Validators.required),

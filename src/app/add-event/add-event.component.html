@@ -9,18 +9,9 @@
       formControlName="title"
       id="title"
     />
-    <!--app-form-error [errors]="form.controls.title"></app-form-error-->
 
-
-    @if (form.controls.title.invalid){
-      @if (form.controls.title.errors && form.controls.title.errors['required']){
-        <p >This field cannot be empty</p>
-      }
-      @if (form.controls.title.errors && form.controls.title.errors['minlength'] !== null){
-        <p >Title mus tbe at least {{form.controls.title.errors['minlength'].requiredLength}} characters long</p>
-      }
-      {{form.controls.title.errors | json}}
-    }
+    <app-form-errors [field]="form.controls.title"></app-form-errors>
+    
   </div>
   <div>
     <label for="location">Location</label>
