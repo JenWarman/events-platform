@@ -1,6 +1,7 @@
 @if (isFetching()) {
 <p class="fallback-text">Fetching your events...</p>
 } 
+
 <!-- @if (events!.length === 0) {
 <div class="no-events">
   <p>You're not signed up to any events.</p>
@@ -8,6 +9,7 @@
 } -->
 <div class="outer-container">
   <div class="container">
+   
     @for (event of events; track event.event_id) {
 
     <div class="event-container">
@@ -33,12 +35,6 @@
         </app-modal>
         <button>Add to Calendar</button>
       </div>
-
-      <!-- <div class="button-container">
-        <div class="event-info-button">
-          <span>{{ this.rsvpStatus }}</span>
-        </div>
-      </div> -->
     </div>
     }
   </div>

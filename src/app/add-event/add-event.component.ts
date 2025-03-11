@@ -9,10 +9,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { FormErrorsComponent } from '../error-handling/form-errors/form-errors.component';
+import { LoadingSpinnerComponent } from '../loading/loading-spinner/loading-spinner.component';
 
 @Component({
   selector: 'app-add-event',
-  imports: [ReactiveFormsModule, FormErrorsComponent],
+  imports: [ReactiveFormsModule, FormErrorsComponent, LoadingSpinnerComponent],
   templateUrl: './add-event.component.html',
   styleUrl: './add-event.component.css',
 })

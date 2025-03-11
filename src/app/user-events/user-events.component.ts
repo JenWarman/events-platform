@@ -12,7 +12,6 @@ import { ModalComponent } from '../modal/modal.component';
   styleUrl: './user-events.component.css',
 })
 export class UserEventsComponent implements OnInit {
-
   event: any;
   events: any;
   user: User | undefined;
