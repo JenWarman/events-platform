@@ -12,6 +12,7 @@ import { LoadingSpinnerComponent } from '../../loading/loading-spinner/loading-s
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+  show: boolean = false;
   isLoading = false;
    @Output('errors') errors: any;
 
@@ -34,7 +35,10 @@ export class RegisterComponent {
   }
   
     constructor(private supabaseService: SupabaseService, private routerService: Router) {}
-
+    
+    passwordVisibilty() {
+      this.show = !this.show;
+  }
     onSubmit() {
       if (!this.form.value.email || !this.form.value.password ) {
         return;

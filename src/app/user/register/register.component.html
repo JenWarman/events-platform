@@ -14,20 +14,24 @@
   </div>
   <div>
     <label for="message">Password</label>
-    <div>
-      <input name="password" type="password" formControlName="password" id="password" />
-      <app-login-errors [field]="form.controls.password"></app-login-errors>
+    <div class="password">
+      <input name="password" [type]="show ? 'text' : 'password'" formControlName="password" id="password"/>
+      <button class="toggle-visibilty" (click)="passwordVisibilty()">{{show ? 'Hide' : 'Show'}}</button>
+      
     </div>
+    <app-login-errors [field]="form.controls.password"></app-login-errors>
   </div>
   <div>
     <label for="message">Confirm Password</label>
-    <div>
-      <input name="confirmPassword" type="password" formControlName="confirmPassword" id="confirmPassword" />
-      @if (form.get('confirmPassword')?.hasError('notSame')) {
-        <p class="password-error">Passwords do not match</p>
-      }
+    <div class="password">
+      <input name="confirmPassword" [type]="show ? 'text' : 'password'"  formControlName="confirmPassword" id="confirmPassword" />
+      <button class="toggle-visibilty" (click)="passwordVisibilty()">{{show ? 'Hide' : 'Show'}}</button>
+     
       
     </div>
+    @if (form.get('confirmPassword')?.hasError('notSame')) {
+      <p class="password-error">Passwords do not match</p>
+    }
   </div>
   @if (!isLoading){
     <button type="submit" [disabled]="!this.form.valid">Submit</button>
