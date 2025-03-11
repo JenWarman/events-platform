@@ -39,21 +39,5 @@
     background-color: #97615a;
   }
 
-  /* Error control messages */
-  .control-error {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    color: #ac1010;
-    height: 0.5rem;
-    padding: 0.25rem 0 0 0;
-    height: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
-  
-  .control-error p {
-    margin: 0;
-  }
 
 

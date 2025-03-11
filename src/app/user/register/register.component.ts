@@ -2,7 +2,7 @@ import { Component, Output } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SupabaseService } from '../../services/supabase.service';
 import { Router, RouterLink } from '@angular/router';
-import { LoginErrorsComponent } from '../../login-errors/login-errors.component';
+import { LoginErrorsComponent } from '../../error-handling/login-errors/login-errors.component';
 
 @Component({
   selector: 'app-register',

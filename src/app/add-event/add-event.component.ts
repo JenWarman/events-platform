@@ -8,7 +8,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { FormErrorsComponent } from '../form-errors/form-errors.component';
+import { FormErrorsComponent } from '../error-handling/form-errors/form-errors.component';
 
 @Component({
   selector: 'app-add-event',
