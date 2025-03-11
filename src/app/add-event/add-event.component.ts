@@ -17,6 +17,7 @@ import { FormErrorsComponent } from '../error-handling/form-errors/form-errors.c
   styleUrl: './add-event.component.css',
 })
 export class AddEventComponent {
+  isLoading = false;
   user: User | undefined;
   @Output('errors') errors: any;
 
@@ -44,6 +45,7 @@ export class AddEventComponent {
       !this.form.value.title ) {
       return;
     }
+    this.isLoading = true;
       const { data, error } = await this.supabaseService.supabase
         .from('event')
         .insert([
@@ -58,6 +60,7 @@ export class AddEventComponent {
           },
         ]);
     this.routerService.navigateByUrl('/');
+    this.isLoading = false;
   }
 
   onCancel() {

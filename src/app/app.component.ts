@@ -8,7 +8,12 @@ import { FooterComponent } from './footer/footer.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, EventSearchComponent, FooterComponent],
+  imports: [
+    RouterOutlet,
+    HeaderComponent,
+    EventSearchComponent,
+    FooterComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -17,27 +22,20 @@ export class AppComponent {
   user: UserProfile | null = null;
   private _error = signal('');
   error = this._error.asReadonly();
-  // loading: boolean = true;
+  isLoading = false;
 
   constructor(
     private supabaseService: SupabaseService,
     private routerService: Router,
     private errorService: ErrorService
   ) {
+    this.isLoading = true;
     this.supabaseService.userLoaded.subscribe((user) => {
       this.user = user ?? null;
     });
     this.error = this.errorService.error;
-    // this.loading = false;
+    this.isLoading = false;
   }
-
-  // startLoading() {
-  //   this.loading = true;
-  // };
-
-  // stopLoading() {
-  //   this.loading = false;
-  // };
 
   onClearError() {
     this.errorService.clearError();
