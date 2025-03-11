@@ -19,7 +19,7 @@ form {
   }
 
   .register-header h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   label {
     display: block;
@@ -76,4 +76,9 @@ form {
   button:disabled {
     background-color: rgb(148, 101, 106);
     cursor: not-allowed;
+  }
+
+  .password-error {
+    color: rgb(200, 30, 50);
+    margin: 0.25rem;
   }

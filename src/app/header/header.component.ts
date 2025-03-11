@@ -36,7 +36,6 @@ export class HeaderComponent {
     if (!this.user?.email) {
       this.userStatus = 'Login'
       this.routerService.navigateByUrl('/login');
-      return;
     } else {
       this.supabaseService.logoutUser();
       this.routerService.navigateByUrl('/events');

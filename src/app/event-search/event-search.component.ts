@@ -27,10 +27,7 @@ export class EventSearchComponent {
       console.log('no query - in component');
       return;
     }
-  
     this.supabaseService.fetchEventByType(searchTerm).then((event) => {
-      console.log(event, 'fetched event by type');
-      
     });
   }
 

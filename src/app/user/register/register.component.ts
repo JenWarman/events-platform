@@ -1,5 +1,5 @@
 import { Component, Output } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { SupabaseService } from '../../services/supabase.service';
 import { Router, RouterLink } from '@angular/router';
 import { LoginErrorsComponent } from '../../error-handling/login-errors/login-errors.component';
@@ -21,8 +21,17 @@ export class RegisterComponent {
      }),
      password: new FormControl('', {
        validators: [Validators.required, Validators.minLength(8)]
-     })
+     }),
+     confirmPassword: new FormControl('', {
+      validators: [Validators.required, Validators.minLength(8),this.validateSamePassword]
+    })
    })
+
+   private validateSamePassword(control: AbstractControl): ValidationErrors | null {
+    const password = control.parent?.get('password');
+    const confirmPassword = control.parent?.get('confirmPassword');
+    return password?.value == confirmPassword?.value ? null : { 'notSame': true };
+  }
   
     constructor(private supabaseService: SupabaseService, private routerService: Router) {}
 
@@ -30,17 +39,15 @@ export class RegisterComponent {
       if (!this.form.value.email || !this.form.value.password ) {
         return;
       }
-      this.isLoading = true;
-      this.supabaseService.registerUser({email: this.form.value.email, password: this.form.value.password})
-        .then((response) => {
-          console.log('success')
-          this.routerService.navigateByUrl('/')
-          this.isLoading = false;
-        })
-  
-        .catch((error) => {
-          console.log(error);
-          this.isLoading = false;
-        });
+        this.isLoading = true;
+        this.supabaseService.registerUser({email: this.form.value.email, password: this.form.value.password})
+          .then((response) => {
+            this.routerService.navigateByUrl('/')
+            this.isLoading = false;
+          })
+          .catch((error) => {
+            console.log(error);
+            this.isLoading = false;
+          });
+      }
     }
-  }

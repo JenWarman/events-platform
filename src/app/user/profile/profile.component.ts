@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { SupabaseService, UserProfile } from '../../services/supabase.service';
 import { UserEventsComponent } from '../../user-events/user-events.component';
-import { RouterLink } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 
 @Component({

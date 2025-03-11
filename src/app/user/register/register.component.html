@@ -19,6 +19,16 @@
       <app-login-errors [field]="form.controls.password"></app-login-errors>
     </div>
   </div>
+  <div>
+    <label for="message">Confirm Password</label>
+    <div>
+      <input name="confirmPassword" type="password" formControlName="confirmPassword" id="confirmPassword" />
+      @if (form.get('confirmPassword')?.hasError('notSame')) {
+        <p class="password-error">Passwords do not match</p>
+      }
+      
+    </div>
+  </div>
   @if (!isLoading){
     <button type="submit" [disabled]="!this.form.valid">Submit</button>
   }
