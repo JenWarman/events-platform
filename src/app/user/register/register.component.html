@@ -19,7 +19,12 @@
       <app-login-errors [field]="form.controls.password"></app-login-errors>
     </div>
   </div>
-  <button type="submit" [disabled]="!this.form.valid">Submit</button>
+  @if (!isLoading){
+    <button type="submit" [disabled]="!this.form.valid">Submit</button>
+  }
+  @if (isLoading) {
+    <app-loading-spinner></app-loading-spinner>
+    }
 </form>
 <div class="register-link">
   <p>Already have an account? <a [routerLink]="['/login']">Login</a></p>

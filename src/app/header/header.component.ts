@@ -33,7 +33,7 @@ export class HeaderComponent {
   }
 
   onLogClick() {
-    if (!this.user) {
+    if (!this.user?.email) {
       this.userStatus = 'Login'
       this.routerService.navigateByUrl('/login');
       return;

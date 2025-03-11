@@ -5,6 +5,7 @@ form {
   border-radius: 4px;
   color: #fff;
   box-shadow: 0 0 6px rgba(251, 143, 143, 0.7);
+  background-color:rgb(20, 20, 20);
 }
 
 h1 {
@@ -70,3 +71,4 @@ button:disabled {
   background-color: rgb(148, 101, 106);
   cursor: not-allowed;
 }
+
