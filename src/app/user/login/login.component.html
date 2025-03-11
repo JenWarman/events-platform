@@ -1,7 +1,9 @@
 <div class="login-header">
   <h1>Log in</h1>
   <div class="login-link">
-    <p>Don't have an account yet? <a [routerLink]="['/register']">Sign Up</a></p>
+    <p>
+      Don't have an account yet? <a [routerLink]="['/register']">Sign Up</a>
+    </p>
   </div>
 </div>
 <form [formGroup]="form" (submit)="onLogin()">
@@ -9,28 +11,20 @@
     <label for="email">Email</label>
     <div>
       <input type="text" name="email" formControlName="email" id="email" />
+      <app-login-errors [field]="form.controls.email"></app-login-errors>
     </div>
   </div>
   <div>
     <label for="password">Password</label>
     <div>
       <input
-     type="password"
+        type="password"
         name="password"
         formControlName="password"
         id="password"
       />
+      <app-login-errors [field]="form.controls.password"></app-login-errors>
     </div>
   </div>
   <button type="submit" [disabled]="!this.form.valid">Login</button>
-
-  @if (emailIsInvalid) {
-    <p class="control-error">Please enter a valid email address.</p>
-    } @if (passwordIsInvalid) {
-    <p class="control-error">
-      Please enter a valid password - at least 8 characters.
-    </p>
-    }
-
 </form>
-

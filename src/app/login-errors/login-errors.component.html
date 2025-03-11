@@ -1,0 +1,11 @@
+<div class="form-errors">
+    @if (field && field['invalid'] && field['touched']) {
+          @if (field['errors'] && field['errors']['required']){
+            <p>Please enter a valid email address.</p>
+          }
+          @if (field['errors'] && field['errors']['minlength'] !== null){
+            <p>Input must be at least 8 characters long.</p>
+          }
+    
+        }
+    </div>

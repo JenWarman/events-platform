@@ -1,15 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SupabaseService } from '../../services/supabase.service';
 import { Router, RouterLink } from '@angular/router';
+import { LoginErrorsComponent } from '../../login-errors/login-errors.component';
 
 @Component({
   selector: 'app-register',
-  imports: [FormsModule, RouterLink, ReactiveFormsModule],
+  imports: [FormsModule, RouterLink, ReactiveFormsModule, LoginErrorsComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+   @Output('errors') errors: any;
+
   form = new FormGroup({
      email: new FormControl('', {
        validators: [Validators.email, Validators.required]

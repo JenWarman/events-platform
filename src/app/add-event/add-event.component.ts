@@ -21,10 +21,10 @@ export class AddEventComponent {
   @Output('errors') errors: any;
 
   form = new FormGroup({
-    title: new FormControl('', [Validators.required, Validators.maxLength(128), Validators.minLength(3)]),
-    location: new FormControl('', [Validators.required, Validators.maxLength(128), Validators.minLength(3)]),
-    summary: new FormControl('', [Validators.required, Validators.maxLength(128), Validators.minLength(3)]),
-    image: new FormControl('', [Validators.required, Validators.maxLength(128), Validators.minLength(3)]),
+    title: new FormControl('', [Validators.required, Validators.maxLength(128), Validators.minLength(5)]),
+    location: new FormControl('', [Validators.required, Validators.maxLength(128), Validators.minLength(5)]),
+    summary: new FormControl('', [Validators.required, Validators.maxLength(128), Validators.minLength(5)]),
+    image: new FormControl('', [Validators.required, Validators.maxLength(128), Validators.minLength(5)]),
     date: new FormControl('', Validators.required),
     time: new FormControl('', Validators.required),
     type: new FormControl('', Validators.required),
