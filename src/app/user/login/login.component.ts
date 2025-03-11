@@ -18,6 +18,7 @@ import { LoadingSpinnerComponent } from '../../loading/loading-spinner/loading-s
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  show: boolean = false;
   isLoading = false;
   @Output('errors') errors: any;
 
@@ -35,6 +36,9 @@ export class LoginComponent {
     private routerService: Router
   ) {}
 
+  passwordVisibilty() {
+    this.show = !this.show;
+}
   onLogin() {
     if (!this.form.value.email || !this.form.value.password) {
       return;

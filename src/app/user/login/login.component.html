@@ -16,15 +16,17 @@
   </div>
   <div>
     <label for="password">Password</label>
-    <div>
+    <div class="password">
       <input
         type="password"
-        name="password"
+        name="password" [type]="show ? 'text' : 'password'"
         formControlName="password"
         id="password"
       />
-      <app-login-errors [field]="form.controls.password"></app-login-errors>
+      <button class="toggle-visibilty" (click)="passwordVisibilty()">{{show ? 'Hide' : 'Show'}}</button>
+      
     </div>
+    <app-login-errors [field]="form.controls.password"></app-login-errors>
   </div>
   @if (!isLoading) {
   <button type="submit" [disabled]="!this.form.valid">Login</button>

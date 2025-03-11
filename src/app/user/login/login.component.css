@@ -72,3 +72,17 @@ button:disabled {
   cursor: not-allowed;
 }
 
+.password {
+  display: flex;
+  flex-direction: row;
+}
+
+.toggle-visibilty {
+  margin: auto;
+  padding: 0.5rem;
+  margin-bottom: 0.25rem;
+  color:  rgb(200, 30, 50);
+  background-color: rgb(8, 8, 8);
+  font-weight: 600;
+  border: solid 1px rgb(200, 30, 50);
+}
