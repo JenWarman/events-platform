@@ -8,6 +8,8 @@
   position: fixed;
   left: 0;
   bottom: 0;
+  justify-content: center;
+  font-weight: 600;
 }
 .container p {
   margin-left: 1rem;
@@ -18,6 +20,7 @@
   color: #ffff;
   margin-left: 1rem;
   margin-right: 1rem;
+  
 }
 .container:hover {
   box-shadow: 0 0 20px rgba(251, 143, 143, 0.7);
