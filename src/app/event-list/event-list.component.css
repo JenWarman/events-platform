@@ -42,8 +42,8 @@ h3 {
 }
 
 img {
-  padding-top: 14px;
-  width: 300px;
+  padding-top: 1rem;
+  width: 20rem;
 }
 .button-container {
   display: inline-block;
