@@ -59,24 +59,57 @@ export class EventCardComponent implements OnInit {
     this.isPopupVisible = false;
   }
 
-  initClient() {
-    console.log(gapi.client);
-    gapi.client
-      .init({
-        apiKey: 'AIzaSyCs8kF78b9-aq7Ot5VoTx1Hu9MTfxsF2ho',
-        clientId:
-          '777277188325-k49mb0ja0ms5kg4cu2shsmeufhmlkbv9.apps.googleusercontent.com',
-        discoveryDocs: [
-          'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest',
-        ],
-        scope: 'https://www.googleapis.com/auth/calendar.readonly',
-      })
-      .then(() => {
-        //do something...?
-      });
+  async initClient() {
+    await gapi.client.init({
+      apiKey: 'AIzaSyCs8kF78b9-aq7Ot5VoTx1Hu9MTfxsF2ho',
+      discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
+    });
+    this.gapiInited = true;
   }
 
-  addToCalendar() {}
+  gisLoaded() {
+    console.log('gisLoaded')
+    this.tokenClient = gapi.oauth2.initTokenClient({
+      client_id: '777277188325-k49mb0ja0ms5kg4cu2shsmeufhmlkbv9.apps.googleusercontent.com',
+      scope: 'https://www.googleapis.com/auth/calendar.readonly',
+      callback: '', // defined later
+    });
+    this.gisInited = true;
+  }
+
+
+  createGoogleEvent(eventDetails: any) {
+    console.log('is createGoogleEvent working?')
+    this.tokenClient.callback = async (resp: any) => {
+      if (resp.error !== undefined) {
+        throw resp;
+      }
+      await this.scheduleEvent(eventDetails);
+    };
+    if (gapi.client.getToken() === null) {
+      this.tokenClient.requestAccessToken({ prompt: "consent" });
+    } else {
+      this.tokenClient.requestAccessToken({ prompt: "" });
+    }
+  }
+
+  scheduleEvent(eventDetails: any) {
+    let request
+    let eventToAdd = {
+      title: this.event.title,
+      summary:this.event.summary,
+      location: this.event.location,
+      date: this.event.date,
+      time: this.event.time
+    }
+    request = gapi.client.calendar.events.insert({
+      calendarId: "primary",
+      resource: eventToAdd,
+    })
+    request.execute(function (eventToAdd: any) {
+      console.info("Event created: " + eventToAdd.htmlLink);
+    });
+  }
 
   loadGapi(): Promise<void> {
     const script = document.createElement('script');
