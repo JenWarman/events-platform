@@ -1,9 +1,10 @@
 form {
    display: flex;
+   justify-content: center;
 }
 
 input {
-    flex-grow: 1;
+    flex-grow: 0.2;
 }
 
 button {
@@ -19,4 +20,10 @@ button {
   button:hover,
   button:active {
     background-color: rgb(150, 22, 35)
+  }
+
+  @media screen {
+    input {
+      flex-grow: 1;
+  }
   }

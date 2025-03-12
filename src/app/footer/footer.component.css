@@ -1,14 +1,30 @@
 .container {
+  display: flex;
   width: 100vw;
   background-color: rgb(20, 20, 20);
   color: #ffff;
   margin: auto;
   padding: 2rem;
-  position:fixed;
+  position: fixed;
   left: 0;
   bottom: 0;
 }
+.container p {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.container a {
+  text-decoration: none;
+  color: #ffff;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.container:hover {
+  box-shadow: 0 0 20px rgba(251, 143, 143, 0.7);
+}
 
-.container:hover{
-    box-shadow: 0 0 20px rgba(251, 143, 143, 0.7);
+@media screen {
+  .container {
+    width: 100%;
+  }
 }
