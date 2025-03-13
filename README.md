@@ -1,4 +1,4 @@
-# EventsPlatform
+# Events Platform
 
 Welcome to **Not Art** a web application that allows members of Nottingham's creative community find events, sign up to attend and add them to their own personal calendar. Staff members can add, edit and delete events form the platform. 
 
@@ -69,7 +69,7 @@ Once the server is running, open your browser and navigate to `http://localhost:
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
-## Useage
+## Usage
 
 1. **Search Events:** Any user can search events by selecting event type or searching in the search bar.
 2. **Log in:** Users can create an account using a simple registration form then log in to sign up for events.
