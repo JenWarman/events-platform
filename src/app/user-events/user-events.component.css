@@ -133,7 +133,6 @@ button:active {
   margin: auto;
   padding: 0.5rem 0.5rem 1rem 0.5rem;
   background-color: rgb(20, 20, 20);
- 
 }
 
 .modal h2 {
@@ -142,6 +141,7 @@ button:active {
 
 .modal p {
   padding-bottom: 1rem;
+  text-align: center;
 }
 
 .modal button {
