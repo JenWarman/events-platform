@@ -46,11 +46,11 @@ export class UserEventsComponent implements OnInit {
 
   async onEditRSVP(eventId: string) {
     if (!eventId) {
-      console.log('no event id to delete from user');
       return;
     }
     await this.supabaseService.deleteEventFromUser(eventId);
-    this.loadEvents()
+    this.hideModal();
+    this.loadEvents();
   }
 
   showModal() {
@@ -130,7 +130,7 @@ createGoogleEvent(eventDetails: any) {
       if (!user) {
         return;
       }
-      this.loadEvents()
+      this.loadEvents();
       this.rsvpStatus = "You're going!"
     });
     await this.loadGapi();
