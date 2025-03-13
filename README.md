@@ -1,6 +1,6 @@
 # EventsPlatform
 
-Welcome to **Not Art** a web application that allows members of Nottingham's creative community find events, sign up to attend and add them to their own personal calendar. Staff members are can add, edit and delete events form the platform. 
+Welcome to **Not Art** a web application that allows members of Nottingham's creative community find events, sign up to attend and add them to their own personal calendar. Staff members can add, edit and delete events form the platform. 
 
 ## Project Overview 
 
@@ -36,12 +36,12 @@ This project was created using TypeScript, Angular and Supabase.
 1. **Clone Repository**
 
 ```bash
-repo link here.....
+https://github.com/JenWarman/events-platform.git
 ```
 2. **Navigate to Project Directory**
 
 ```bash
-cd into file.....
+cd into events-platform
 ```
 3. **Install Dependencies**
 
@@ -73,7 +73,7 @@ For more information on using the Angular CLI, including detailed command refere
 
 1. **Search Events:** Any user can search events by selecting event type or searching in the search bar.
 2. **Log in:** Users can create an account using a simple registration form then log in to sign up for events.
-3. **Sign up for an Event:** A user can sign up for an event by a simple click of a button. This event will them be added to ***your events*** which can be accessed on their profile page by the search button for your events. 
+3. **Sign up for an Event:** A user can sign up for an event by a simple click of a button. This event will then be added to ***your events*** which can be accessed on their profile page or by the search button. 
 4. **Add Event to Calendar:** Once the user has signed up for an event they can add this event to their personal calendar. 
 5. **Staff Use:** A staff member or *admin* has access to additional event management features and will see buttons to add, edit and delete events.
 
