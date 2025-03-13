@@ -11,7 +11,7 @@
   <div class="container">
     @for (event of events; track event.event_id) {
     <div class="event-container">
-      <img src="{{ event.event.image }}" alt="{{ event.title }}" />
+      <img src="{{ event.event.image }}" alt="{{ event.event.title }}" />
       <div class="event-detail">
         <h3>{{ event.event.title }}</h3>
         <p class="type">{{ event.event.type.toUpperCase() }}</p>
@@ -31,7 +31,7 @@
             <button>You're going!</button>
           </div>
         </app-modal>
-        <button (click)="createGoogleEvent(event)">Add to calendar</button>
+        <button (click)="addToGoogleCalendar(event.event)">Add to calendar</button>
       </div>
     </div>
     }

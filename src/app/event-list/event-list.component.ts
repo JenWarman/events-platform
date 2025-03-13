@@ -3,6 +3,17 @@ import { SupabaseService } from '../services/supabase.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
+// type Event = {
+//   id: string;
+//   title: string;
+//   location: string;
+//   summary: string;
+//   image: string;
+//   date: string;
+//   time: string;
+//   type: string;
+// };
+
 @Component({
   selector: 'app-event-list',
   imports: [CommonModule],
@@ -10,6 +21,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './event-list.component.css'
 })
 export class EventListComponent implements OnInit {
+  // events: Array<{event: Event}> = [];
   events: any;
   isFetching = signal(false);
 
@@ -17,9 +29,7 @@ export class EventListComponent implements OnInit {
     private supabaseService: SupabaseService,
     private routerService: Router,
     private route: ActivatedRoute,
-  ) {
-
-  }
+  ) {}
 
   onOpenEventDetails(id: string) {
     this.routerService.navigateByUrl(`/event-item/${id}`);
