@@ -16,7 +16,7 @@
     <label for="message">Password</label>
     <div class="password">
       <input name="password" [type]="show ? 'text' : 'password'" formControlName="password" id="password"/>
-      <button class="toggle-visibilty" (click)="passwordVisibilty()">{{show ? 'Hide' : 'Show'}}</button>
+      <span class="toggle-visibilty" (click)="passwordVisibilty()">{{show ? 'Hide' : 'Show'}}</span>
       
     </div>
     <app-login-errors [field]="form.controls.password"></app-login-errors>
@@ -25,7 +25,7 @@
     <label for="message">Confirm Password</label>
     <div class="password">
       <input name="confirmPassword" [type]="show ? 'text' : 'password'"  formControlName="confirmPassword" id="confirmPassword" />
-      <button class="toggle-visibilty" (click)="passwordVisibilty()">{{show ? 'Hide' : 'Show'}}</button>
+      <span class="toggle-visibilty" (click)="passwordVisibilty()">{{show ? 'Hide' : 'Show'}}</span>
     </div>
     @if (form.get('confirmPassword')?.hasError('notSame')) {
       <p class="password-error">Passwords do not match</p>

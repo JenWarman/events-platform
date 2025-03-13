@@ -38,7 +38,6 @@ export class UserEventsComponent implements OnInit {
       return;
     }
     this.supabaseService.fetchEventsByUser(this.user?.id).then((events) => {
-      console.log(events)
       this.events = events;
     }).finally(() => {
       this.isFetching.set(false);
@@ -81,8 +80,9 @@ export class UserEventsComponent implements OnInit {
     this.gisInited = true;
   }
 
-  createGoogleEvent(eventDetails: any) {
+createGoogleEvent(eventDetails: any) {
     console.log('is createGoogleEvent working?')
+    // this.scheduleEvent(eventDetails);
     this.tokenClient.callback = async (resp: any) => { /* <----------HERE-------------*/
       if (resp.error !== undefined) {
         throw resp;

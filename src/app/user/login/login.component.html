@@ -23,8 +23,7 @@
         formControlName="password"
         id="password"
       />
-      <button class="toggle-visibilty" (click)="passwordVisibilty()">{{show ? 'Hide' : 'Show'}}</button>
-      
+      <span class="toggle-visibilty" (click)="passwordVisibilty()">{{show ? 'Hide' : 'Show'}}</span>
     </div>
     <app-login-errors [field]="form.controls.password"></app-login-errors>
   </div>
