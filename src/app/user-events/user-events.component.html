@@ -2,47 +2,57 @@
 <p class="fallback-text">Fetching your events...</p>
 } 
 
-<!-- @if (events!.length === 0) {
-<div class="no-events">
-  <p>You're not signed up to any events.</p>
-</div>
-} -->
-<div class="outer-container">
-  <div class="container">
-    @for (event of events; track event.event_id) {
-    <div class="event-container">
-      <img src="{{ event.event.image }}" alt="{{ event.event.title }}" />
-      <div class="event-detail">
-        <h3>{{ event.event.title }}</h3>
-        <p class="type">{{ event.event.type.toUpperCase() }}</p>
-        <p>{{ event.event.summary }}</p>
-        <p>Location: {{ event.event.location }}</p>
-        <p>{{ event.event.date | date : "fullDate" }}</p>
-        <p>Time: {{ event.event.time }}</p>
-        <p class="rsvp">{{this.rsvpStatus}}</p>
-        <button class="event-rsvp" (click)="showEventModal = event.event.id">Edit RSVP</button>
-        <app-modal *ngIf="showEventModal === event.event.id" (close)="showEventModal = ''">
-          <div class="modal">
-            <h2>Update your RSVP</h2>
-            <p>Are you still going to {{event.event.title}}?</p>
-            <button class="not-going" (click)="onEditRSVP(event.event.id)">
-              Not going
-            </button>
-          </div>
-        </app-modal>
-        <button (click)="addToGoogleCalendar(event.event)">Add to calendar</button>
+@if (events.length > 0){
+  <h1>Your Upcoming Events</h1>
+  <div class="outer-container">
+    <div class="container">
+      @for (event of events; track event.event.id) {
+      <div class="event-container">
+        <img src="{{ event.event.image }}" alt="{{ event.event.title }}" />
+        <div class="event-detail">
+          <h3>{{ event.event.title }}</h3>
+          <p class="type">{{ event.event.type.toUpperCase() }}</p>
+          <p>{{ event.event.summary }}</p>
+          <p>Location: {{ event.event.location }}</p>
+          <p>{{ event.event.date | date : "fullDate" }}</p>
+          <p>Time: {{ event.event.time }}</p>
+          <p class="rsvp">{{this.rsvpStatus}}</p>
+          <button class="event-rsvp" (click)="showEventModal = event.event.id">Edit RSVP</button>
+          <app-modal *ngIf="showEventModal === event.event.id" (close)="showEventModal = ''">
+            <div class="modal">
+              <h2>Update your RSVP</h2>
+              <p>Are you still going to {{event.event.title}}?</p>
+              <button class="not-going" (click)="onEditRSVP(event.event.id)">
+                Not going
+              </button>
+            </div>
+          </app-modal>
+          <button (click)="addToGoogleCalendar(event.event)">Add to calendar</button>
+        </div>
       </div>
+      }
     </div>
-    }
   </div>
-  @if (pastEvents){
-    @for (event of pastEvents; track pastEvents.event.id){
-      <h3>{{ event.title }}</h3>
-        <p class="type">{{ event.type.toUpperCase() }}</p>
-        <p>{{ event.summary }}</p>
-        <p>Location: {{ event.location }}</p>
-        <p>{{ event.date | date : "fullDate" }}</p>
-        <p>Time: {{ event.time }}</p>
+}
+
+@if (pastEvents.length > 0){
+  <h1>Past Events</h1>
+  <div class="outer-container">
+    <div class="container">
+      @for (event of pastEvents; track event.event.id) {
+      <div class="event-container">
+        <img src="{{ event.event.image }}" alt="{{ event.event.title }}" />
+        <div class="event-detail">
+          <h3>{{ event.event.title }}</h3>
+          <p class="type">{{ event.event.type.toUpperCase() }}</p>
+          <p>{{ event.event.summary }}</p>
+          <p>Location: {{ event.event.location }}</p>
+          <p>{{ event.event.date | date : "fullDate" }}</p>
+          <p>Time: {{ event.event.time }}</p>
+        </div>
+      </div>
     }
-  }
-</div>
+    </div>
+  </div>
+}
+

@@ -184,38 +184,37 @@ export class SupabaseService {
     return data;
   }
 
-  async fetchEventsByUser(userId: string) {
-    const { data, error } = await this.supabase
-      .from('user_events')
-      .select('*, event(*)')
-      .eq('user_id', userId)
-      .order('created_at', { ascending: false });
-
-    if (error) {
-      this.errorService.showError('Failed to fetch your events.');
-      throw throwError(() => new Error('Failed to fetch your events.'));
-    }
-    if (data!.length < 1) {
-      console.log('empty array for user events');
-    }
-    return data;
+  formatDate(d: Date): string {
+     return d.toISOString()
   }
 
-async fetchEventsByUserAndDate(filters?:{date?: string}){
-  let builder = this.getEventsQuery();
+  async fetchEventsByUser(userId: string, filters?:{past: boolean}) {
+    let q = this.supabase
+    .from('user_events')
+    .select('*, event(*)')
+    .eq('user_id', userId)
+    .order('event(date)', { ascending: false });
 
-  if (filters?.date) {
-    builder = builder.eq('type', filters?.date);
-  }
+    if (filters?.past) {
+      q = q.lt('event.date', this.formatDate(new Date()))
+    } else {
+      q = q.gt('event.date', this.formatDate(new Date()))
+    }
 
-  const { data, error } = await builder;
+    const { data, error } = await q
 
   if (error) {
-    this.errorService.showError('Failed to fetch event by past date.');
-    throw throwError(() => new Error('Failed to fetch by past date.'));
+    this.errorService.showError('Failed to fetch your events.');
+    throw throwError(() => new Error('Failed to fetch your events.'));
   }
-  return data;
-}
+
+  if (!Array.isArray(data) || data.length < 1) {
+    console.log('No events found for user');
+    return []; 
+  }
+
+  return data.filter((ev) => ev.event);
+  }
 
   async deleteEventFromUser(eventId: string) {
     const { data, error } = await this.supabase

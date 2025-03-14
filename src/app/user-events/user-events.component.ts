@@ -4,17 +4,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule, formatDate } from '@angular/common';
 import { User } from '@supabase/supabase-js';
 import { ModalComponent } from '../modal/modal.component';
+import { ErrorService } from '../services/error.service';
 
-// type Event = {
-//   id: string;
-//   title: string;
-//   location: string;
-//   summary: string;
-//   image: string;
-//   date: string;
-//   time: string;
-//   type: string;
-// };
+type Event = {
+  id: string;
+  title: string;
+  location: string;
+  summary: string;
+  image: string;
+  date: string;
+  time: string;
+  type: string;
+};
 
 @Component({
   selector: 'app-user-events',
@@ -23,19 +24,30 @@ import { ModalComponent } from '../modal/modal.component';
   styleUrl: './user-events.component.css',
 })
 export class UserEventsComponent implements OnInit {
-  events: any;
-  // events: Array<{event: Event}> = [];
+  events: Array<{ event: Event }> = [];
+  event: Event = {
+    id: '',
+    title: '',
+    location: '',
+    summary: '',
+    image: '',
+    date: '',
+    time: '',
+    type: '',
+  };
   user: User | undefined;
   rsvpStatus: string = '';
   isPopupVisible = false;
   showEventModal: string = '';
   isFetching = signal(false);
-  pastEvents: any;
+  pastEvents: any[] = [];
+  currentDate = new Date();
 
   constructor(
     private supabaseService: SupabaseService,
     private routerService: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private errorService: ErrorService
   ) {}
 
   loadEvents() {
@@ -43,14 +55,20 @@ export class UserEventsComponent implements OnInit {
     if (!this.user) {
       return;
     }
-    this.supabaseService
-      .fetchEventsByUser(this.user?.id)
-      .then((events) => {
-        this.events = events;
-      })
-      .finally(() => {
-        this.isFetching.set(false);
-      });
+    Promise.all([
+      this.supabaseService.fetchEventsByUser(this.user?.id),
+      this.supabaseService.fetchEventsByUser(this.user?.id, {past: true})
+    ]).then(([future, past]) => {
+      this.events = future;
+      this.pastEvents = past;
+    })
+    .catch((error) => {
+      console.error('Error loading events:', error);
+      this.errorService.showError('There was an error loading your events.');
+    })
+   .finally(() => {
+      this.isFetching.set(false);
+     });
   }
 
   async onEditRSVP(eventId: string) {
@@ -110,24 +128,6 @@ export class UserEventsComponent implements OnInit {
     window.open(url, '_blank');
   }
 
-  loadPastEvents(event: any) {
-    this.isFetching.set(true);
-    if (!event) {
-      return;
-    }
-    let currentDate = new Date();
-    let dateOfEvent = new Date(event.date);
-
-    if (dateOfEvent < currentDate) {
-      this.supabaseService.fetchEventsByUserAndDate(event.date).then((event) => {
-        this.pastEvents = event
-        console.log('fetch event by user and date')
-      })
-      .finally(() => {
-        this.isFetching.set(false);
-      });
-    }
-  }
   async ngOnInit() {
     this.supabaseService.userLoaded.subscribe((user) => {
       this.user = user;
