@@ -102,7 +102,13 @@ export class SupabaseService {
       this.errorService.showError('Failed to fetch event data.');
       throw throwError(() => new Error('Failed to fetch event data.'));
     }
-    return data;
+    let futureEvents = data.filter((event) => {
+      if (this.formatDate(new Date(event.date)) > this.formatDate(new Date())){
+        return event;
+      }
+      
+    })
+    return futureEvents;
   }
 
   async fetchEventById(id: string) {
