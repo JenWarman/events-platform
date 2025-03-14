@@ -30,6 +30,7 @@ export class UserEventsComponent implements OnInit {
   isPopupVisible = false;
   showEventModal: string = '';
   isFetching = signal(false);
+  pastEvents: any;
 
   constructor(
     private supabaseService: SupabaseService,
@@ -69,16 +70,15 @@ export class UserEventsComponent implements OnInit {
     this.isPopupVisible = false;
   }
 
-
   addToGoogleCalendar(event: any) {
     if (!event) {
       return;
     }
 
     let eventDate = new Date(event.date);
-     if (event.time) {
-      const [hours, minutes] = event.time.split(':').map(Number); 
-      eventDate.setHours(hours, minutes, 0, 0); 
+    if (event.time) {
+      const [hours, minutes] = event.time.split(':').map(Number);
+      eventDate.setHours(hours, minutes, 0, 0);
     }
 
     let eventDetails = {
@@ -110,6 +110,24 @@ export class UserEventsComponent implements OnInit {
     window.open(url, '_blank');
   }
 
+  loadPastEvents(event: any) {
+    this.isFetching.set(true);
+    if (!event) {
+      return;
+    }
+    let currentDate = new Date();
+    let dateOfEvent = new Date(event.date);
+
+    if (dateOfEvent < currentDate) {
+      this.supabaseService.fetchEventsByUserAndDate(event.date).then((event) => {
+        this.pastEvents = event
+        console.log('fetch event by user and date')
+      })
+      .finally(() => {
+        this.isFetching.set(false);
+      });
+    }
+  }
   async ngOnInit() {
     this.supabaseService.userLoaded.subscribe((user) => {
       this.user = user;

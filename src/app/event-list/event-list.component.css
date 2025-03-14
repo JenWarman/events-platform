@@ -5,11 +5,14 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 h1 {
   color: #fff;
   margin: 1rem;
+  text-align: center;
+  font-size: 2.5rem;
 }
 .event-container {
   display: flex;

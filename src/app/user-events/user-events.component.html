@@ -35,4 +35,14 @@
     </div>
     }
   </div>
+  @if (pastEvents){
+    @for (event of pastEvents; track pastEvents.event.id){
+      <h3>{{ event.title }}</h3>
+        <p class="type">{{ event.type.toUpperCase() }}</p>
+        <p>{{ event.summary }}</p>
+        <p>Location: {{ event.location }}</p>
+        <p>{{ event.date | date : "fullDate" }}</p>
+        <p>Time: {{ event.time }}</p>
+    }
+  }
 </div>

@@ -43,9 +43,9 @@ export class SupabaseService {
 
   async registerUser(formData: { email: string; password: string }) {
     let { data, error } = await this.supabase.auth.signUp(formData);
-    if (error)  {
-        this.errorService.showError('Failed to register new user.');
-        throw throwError(() => new Error('Failed to register new user.'));
+    if (error) {
+      this.errorService.showError('Failed to register new user.');
+      throw throwError(() => new Error('Failed to register new user.'));
     }
     this.publishUser();
   }
@@ -55,36 +55,36 @@ export class SupabaseService {
       email: formData.email,
       password: formData.password,
     });
-    if (error)  {
+    if (error) {
       this.errorService.showError('Login failed.');
       throw throwError(() => new Error('Login failed.'));
-  }
+    }
     this.publishUser();
   }
 
   async logoutUser() {
     let { error } = await this.supabase.auth.signOut();
-    if (error)  {
+    if (error) {
       this.errorService.showError('Failed to log out user.');
       throw throwError(() => new Error('Failed to log out user.'));
-  }
+    }
     this.publishUser();
   }
 
-  async fetchUserById(user_id: string){
-    const { data: { user } } = await this.supabase.auth.getUser();
-    console.log(user, '<---user fetched')
-   return user;
+  async fetchUserById(user_id: string) {
+    const {
+      data: { user },
+    } = await this.supabase.auth.getUser();
+    console.log(user, '<---user fetched');
+    return user;
   }
 
   getEventsQuery() {
-    return this.supabase.
-      from('event').
-      select('*, user_events(event_id)')
+    return this.supabase.from('event').select('*, user_events(event_id)');
   }
 
   async fetchEvents(filters?: { category?: string; keyword?: string }) {
-    let builder = this.getEventsQuery().order('date', {ascending: true});
+    let builder = this.getEventsQuery().order('date', { ascending: true });
 
     if (filters?.category) {
       builder = builder.eq('type', filters?.category);
@@ -98,20 +98,19 @@ export class SupabaseService {
 
     const { data, error } = await builder;
 
-    if (error)  {
+    if (error) {
       this.errorService.showError('Failed to fetch event data.');
       throw throwError(() => new Error('Failed to fetch event data.'));
-  }
+    }
     return data;
   }
 
   async fetchEventById(id: string) {
-    const { data, error } = await this.getEventsQuery()
-      .eq('id', id);
+    const { data, error } = await this.getEventsQuery().eq('id', id);
 
-      if (error)  {
-        this.errorService.showError('Failed to fetch event by event id.');
-        throw throwError(() => new Error('Failed to fetch event by event id.'));
+    if (error) {
+      this.errorService.showError('Failed to fetch event by event id.');
+      throw throwError(() => new Error('Failed to fetch event by event id.'));
     }
     if (data.length < 1) {
       console.log('error in fetching data');
@@ -124,19 +123,18 @@ export class SupabaseService {
 
     if (response.error) {
       this.errorService.showError('Failed to delete event data.');
-        throw throwError(() => new Error('Failed to delete event data.'));
+      throw throwError(() => new Error('Failed to delete event data.'));
     }
-
   }
 
   async fetchEventByType(eventType: string) {
     const { data, error } = await this.getEventsQuery()
       .eq('type', eventType)
-      .order('date', {ascending: true});
+      .order('date', { ascending: true });
 
-      if (error)  {
-        this.errorService.showError('Failed to fetch event by event type.');
-        throw throwError(() => new Error('Failed to fetch event by event type.'));
+    if (error) {
+      this.errorService.showError('Failed to fetch event by event type.');
+      throw throwError(() => new Error('Failed to fetch event by event type.'));
     }
     if (data!.length < 1) {
       console.log('error in fetching data by type');
@@ -150,9 +148,11 @@ export class SupabaseService {
       .select()
       .textSearch('summary', query);
 
-      if (error)  {
-        this.errorService.showError('Failed to fetch event by keyword search.');
-        throw throwError(() => new Error('Failed to fetch event by keyword search.'));
+    if (error) {
+      this.errorService.showError('Failed to fetch event by keyword search.');
+      throw throwError(
+        () => new Error('Failed to fetch event by keyword search.')
+      );
     }
     if (data!.length < 1) {
       console.log('error in fetching data by query');
@@ -170,9 +170,13 @@ export class SupabaseService {
       .from('user_events')
       .insert({ user_id: user.id, event_id: eventId });
 
-      if (error)  {
-        this.errorService.showError('Failed to sign up user to this event. You may already be signed up, check your events!');
-        throw throwError(() => new Error('Failed to sign up user to this event.'));
+    if (error) {
+      this.errorService.showError(
+        'Failed to sign up user to this event. You may already be signed up, check your events!'
+      );
+      throw throwError(
+        () => new Error('Failed to sign up user to this event.')
+      );
     }
     if (!data) {
       console.log('no event data added to user');
@@ -181,32 +185,50 @@ export class SupabaseService {
   }
 
   async fetchEventsByUser(userId: string) {
-    const {data, error} = await this.supabase
-    .from('user_events')
-    .select('*, event(*)')
-    .eq('user_id', userId)
-    .order('created_at', {ascending: false});
+    const { data, error } = await this.supabase
+      .from('user_events')
+      .select('*, event(*)')
+      .eq('user_id', userId)
+      .order('created_at', { ascending: false });
 
-    if (error)  {
+    if (error) {
       this.errorService.showError('Failed to fetch your events.');
       throw throwError(() => new Error('Failed to fetch your events.'));
-  }
+    }
     if (data!.length < 1) {
-      console.log('empty array for user events')
+      console.log('empty array for user events');
     }
     return data;
   }
 
+async fetchEventsByUserAndDate(filters?:{date?: string}){
+  let builder = this.getEventsQuery();
+
+  if (filters?.date) {
+    builder = builder.eq('type', filters?.date);
+  }
+
+  const { data, error } = await builder;
+
+  if (error) {
+    this.errorService.showError('Failed to fetch event by past date.');
+    throw throwError(() => new Error('Failed to fetch by past date.'));
+  }
+  return data;
+}
+
   async deleteEventFromUser(eventId: string) {
     const { data, error } = await this.supabase
-    .from('user_events')
-    .delete()
-    .eq('event_id', eventId)
+      .from('user_events')
+      .delete()
+      .eq('event_id', eventId);
 
-    if (error)  {
+    if (error) {
       this.errorService.showError('Failed to edit your RSVP to this event.');
-      throw throwError(() => new Error('Failed to edit your RSVP to this event.'));
-  }
+      throw throwError(
+        () => new Error('Failed to edit your RSVP to this event.')
+      );
+    }
     return data;
   }
 }
