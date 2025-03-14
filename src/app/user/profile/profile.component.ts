@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { SupabaseService, UserProfile } from '../../services/supabase.service';
 import { UserEventsComponent } from '../../user-events/user-events.component';
 import { LoginComponent } from '../login/login.component';
@@ -11,10 +11,11 @@ import { LoginComponent } from '../login/login.component';
 })
 export class ProfileComponent {
   user: UserProfile | null = null;
+   isFetching = signal(false);
 
   constructor(private supabaseService: SupabaseService){
     this.supabaseService.userLoaded.subscribe((user) => {
+      this.isFetching.set(true);
       this.user = user ?? null;})
   }
-  
 }

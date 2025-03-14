@@ -38,7 +38,7 @@ export class HeaderComponent {
       this.routerService.navigateByUrl('/login');
     } else {
       this.supabaseService.logoutUser();
-      this.routerService.navigateByUrl('/events');
+      this.routerService.navigateByUrl('/login');
       this.userStatus = 'Login';
     }
   }

@@ -4,6 +4,18 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from '../modal/modal.component';
 
+type Event = {
+  id: string;
+  title: string;
+  location: string;
+  summary: string;
+  image: string;
+  date: string;
+  time: string;
+  type: string;
+  user_events: Array<any>;
+};
+
 @Component({
   selector: 'app-event-card',
   imports: [CommonModule, ModalComponent, RouterLink],
@@ -11,7 +23,17 @@ import { ModalComponent } from '../modal/modal.component';
   styleUrl: './event-card.component.css',
 })
 export class EventCardComponent implements OnInit {
-  event: any;
+  event: Event = {
+    id: '',
+    title: '',
+    location: '',
+    summary: '',
+    image: '',
+    date: '',
+    time: '',
+    type: '',
+    user_events: []
+  };
   id: string | undefined;
   user: UserProfile | undefined;
   isPopupVisible = false;

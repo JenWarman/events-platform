@@ -1,3 +1,7 @@
+@if (isFetching()) {
+  <p class="fallback-text">Fetching your events...</p>
+  } 
+
 @if (!user) {
   <app-login></app-login>
 }
@@ -13,7 +17,6 @@
     }
   </div>
     <div class="your-events">
-    
       <app-user-events></app-user-events>
     </div> 
 </div>
