@@ -3,7 +3,9 @@
 } 
 
 @if (events.length > 0){
+  <div class="your-events-headers">
   <h1>Your Upcoming Events</h1>
+</div>
   <div class="outer-container">
     <div class="container">
       @for (event of events; track event.event.id) {
@@ -36,11 +38,13 @@
 }
 
 @if (pastEvents.length > 0){
-  <h1>Past Events</h1>
+  <div class="your-events-headers">
+    <h1>Past Events</h1>
+  </div>
   <div class="outer-container">
     <div class="container">
       @for (event of pastEvents; track event.event.id) {
-      <div class="event-container">
+      <div class="past-event-container">
         <img src="{{ event.event.image }}" alt="{{ event.event.title }}" />
         <div class="event-detail">
           <h3>{{ event.event.title }}</h3>
