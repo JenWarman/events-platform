@@ -75,7 +75,6 @@ export class SupabaseService {
     const {
       data: { user },
     } = await this.supabase.auth.getUser();
-    console.log(user, '<---user fetched');
     return user;
   }
 
@@ -103,11 +102,10 @@ export class SupabaseService {
       throw throwError(() => new Error('Failed to fetch event data.'));
     }
     let futureEvents = data.filter((event) => {
-      if (this.formatDate(new Date(event.date)) > this.formatDate(new Date())){
+      if (this.formatDate(new Date(event.date)) > this.formatDate(new Date())) {
         return event;
       }
-      
-    })
+    });
     return futureEvents;
   }
 
@@ -185,41 +183,40 @@ export class SupabaseService {
       );
     }
     if (!data) {
-      console.log('no event data added to user');
+      // console.log('no event data added to user');
     }
     return data;
   }
 
   formatDate(d: Date): string {
-     return d.toISOString()
+    return d.toISOString();
   }
 
-  async fetchEventsByUser(userId: string, filters?:{past: boolean}) {
+  async fetchEventsByUser(userId: string, filters?: { past: boolean }) {
     let q = this.supabase
-    .from('user_events')
-    .select('*, event(*)')
-    .eq('user_id', userId)
-    .order('event(date)', { ascending: false });
+      .from('user_events')
+      .select('*, event(*)')
+      .eq('user_id', userId)
+      .order('event(date)', { ascending: false });
 
     if (filters?.past) {
-      q = q.lt('event.date', this.formatDate(new Date()))
+      q = q.lt('event.date', this.formatDate(new Date()));
     } else {
-      q = q.gt('event.date', this.formatDate(new Date()))
+      q = q.gt('event.date', this.formatDate(new Date()));
     }
 
-    const { data, error } = await q
+    const { data, error } = await q;
 
-  if (error) {
-    this.errorService.showError('Failed to fetch your events.');
-    throw throwError(() => new Error('Failed to fetch your events.'));
-  }
+    if (error) {
+      this.errorService.showError('Failed to fetch your events.');
+      throw throwError(() => new Error('Failed to fetch your events.'));
+    }
 
-  if (!Array.isArray(data) || data.length < 1) {
-    console.log('No events found for user');
-    return []; 
-  }
+    if (!Array.isArray(data) || data.length < 1) {
+      return [];
+    }
 
-  return data.filter((ev) => ev.event);
+    return data.filter((ev) => ev.event);
   }
 
   async deleteEventFromUser(eventId: string) {

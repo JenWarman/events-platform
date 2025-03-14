@@ -27,7 +27,8 @@ h1 {
 }
 
 .event-container:hover {
-  box-shadow: 0 0 20px rgba(251, 143, 143, 0.7);
+  box-shadow: 0 0 10px rgba(251, 143, 143, 0.7);
+  border: solid 1px rgb(200, 30, 50);
 }
 
 .event-detail {
@@ -47,6 +48,8 @@ h3 {
 img {
   padding-top: 1rem;
   width: 20rem;
+  max-inline-size: 100%;
+  block-size: auto;
 }
 .button-container {
   display: inline-block;

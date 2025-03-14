@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
 import { SupabaseService, UserProfile } from '../services/supabase.service';
-import { ScrambleHeaderComponent } from '../scramble-header/scramble-header.component';
 
 @Component({
   selector: 'app-header',

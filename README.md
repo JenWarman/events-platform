@@ -77,7 +77,14 @@ For more information on using the Angular CLI, including detailed command refere
 4. **Add Event to Calendar:** Once the user has signed up for an event they can add this event to their personal calendar. 
 5. **Staff Use:** A staff member or *admin* has access to additional event management features and will see buttons to add, edit and delete events.
 
-To add, edit or delete your own events use the following log in - 
+To search and sign up for events use the following log in - 
+
+```bash
+email: user@user.com
+password: 1234pass
+```
+
+To access event management tools and add, edit or delete your own events use the following log in - 
 
 ```bash
 email: admin@admin.com

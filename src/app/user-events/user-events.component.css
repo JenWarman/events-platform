@@ -37,7 +37,8 @@
 }
 
 .event-container:hover {
-  box-shadow: 0 0 20px rgba(251, 143, 143, 0.7);
+  box-shadow: 0 0 10px rgba(251, 143, 143, 0.7);
+  border: solid 1px rgb(200, 30, 50);
 }
 
 .event-detail {
@@ -66,6 +67,8 @@ img {
   width: 400px;
   height: 350px;
   align-self: center;
+  max-inline-size: 100%;
+  block-size: auto;
 }
 .button-container {
   display: inline-block;

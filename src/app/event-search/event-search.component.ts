@@ -5,7 +5,7 @@ import { ScrambleHeaderComponent } from '../scramble-header/scramble-header.comp
 
 @Component({
   selector: 'app-event-search',
-  imports: [RouterLink],
+  imports: [RouterLink, ScrambleHeaderComponent],
   templateUrl: './event-search.component.html',
   styleUrl: './event-search.component.css',
 })
@@ -24,7 +24,6 @@ export class EventSearchComponent {
 
   onSearchEventType(searchTerm: string) {
     if (!searchTerm) {
-      console.log('no query - in component');
       return;
     }
     this.supabaseService.fetchEventByType(searchTerm).then((event) => {

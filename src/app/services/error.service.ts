@@ -8,7 +8,6 @@ export class ErrorService{
     error = this._error.asReadonly();
 
   showError(message: string) {
-    console.log(message);
     this._error.set(message);
   }
 
