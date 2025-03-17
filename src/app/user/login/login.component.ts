@@ -50,12 +50,10 @@ export class LoginComponent {
         password: this.form.value.password,
       })
       .then((response) => {
-        console.log('logged in');
         this.routerService.navigateByUrl('/');
         this.isLoading = false;
       })
       .catch((error) => {
-        console.log(error);
         this.isLoading = false;
       });
       

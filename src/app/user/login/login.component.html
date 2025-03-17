@@ -27,9 +27,11 @@
     </div>
     <app-login-errors [field]="form.controls.password"></app-login-errors>
   </div>
+
   @if (!isLoading) {
   <button type="submit" [disabled]="!this.form.valid">Login</button>
   } 
+  
   @if (isLoading) {
   <app-loading-spinner></app-loading-spinner>
   }

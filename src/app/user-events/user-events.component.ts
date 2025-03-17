@@ -63,7 +63,6 @@ export class UserEventsComponent implements OnInit {
       this.pastEvents = past;
     })
     .catch((error) => {
-      console.error('Error loading events:', error);
       this.errorService.showError('There was an error loading your events.');
     })
    .finally(() => {

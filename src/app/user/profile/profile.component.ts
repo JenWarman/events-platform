@@ -7,15 +7,16 @@ import { LoginComponent } from '../login/login.component';
   selector: 'app-profile',
   imports: [UserEventsComponent, LoginComponent],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+  styleUrl: './profile.component.css',
 })
 export class ProfileComponent {
   user: UserProfile | null = null;
-   isFetching = signal(false);
+  isFetching = signal(false);
 
-  constructor(private supabaseService: SupabaseService){
+  constructor(private supabaseService: SupabaseService) {
     this.supabaseService.userLoaded.subscribe((user) => {
       this.isFetching.set(true);
-      this.user = user ?? null;})
+      this.user = user ?? null;
+    });
   }
 }

@@ -8,6 +8,7 @@
 </div>
   <div class="outer-container">
     <div class="container">
+
       @for (event of events; track event.event.id) {
       <div class="event-container">
         <img src="{{ event.event.image }}" alt="{{ event.event.title }}" />
@@ -33,6 +34,7 @@
         </div>
       </div>
       }
+
     </div>
   </div>
 }
@@ -43,6 +45,7 @@
   </div>
   <div class="outer-container">
     <div class="container">
+
       @for (event of pastEvents; track event.event.id) {
       <div class="past-event-container">
         <img src="{{ event.event.image }}" alt="{{ event.event.title }}" />
@@ -56,6 +59,7 @@
         </div>
       </div>
     }
+    
     </div>
   </div>
 }

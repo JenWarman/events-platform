@@ -117,7 +117,8 @@ export class SupabaseService {
       throw throwError(() => new Error('Failed to fetch event by event id.'));
     }
     if (data.length < 1) {
-      console.log('error in fetching data');
+      this.errorService.showError('Failed to fetch event by event id.');
+      throw throwError(() => new Error('Failed to fetch event by event id.'));
     }
     return data[0];
   }

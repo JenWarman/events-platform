@@ -1,6 +1,5 @@
 <div class="register-heading">
   <div class="register-header">
-  <!-- <h1>Discover art and cultural events in Nottingham</h1> -->
   <h3>Join the creative communtiy and sign up</h3>
 </div>
 </div>
@@ -17,7 +16,6 @@
     <div class="password">
       <input name="password" [type]="show ? 'text' : 'password'" formControlName="password" id="password"/>
       <span class="toggle-visibilty" (click)="passwordVisibilty()">{{show ? 'Hide' : 'Show'}}</span>
-      
     </div>
     <app-login-errors [field]="form.controls.password"></app-login-errors>
   </div>
@@ -27,16 +25,20 @@
       <input name="confirmPassword" [type]="show ? 'text' : 'password'"  formControlName="confirmPassword" id="confirmPassword" />
       <span class="toggle-visibilty" (click)="passwordVisibilty()">{{show ? 'Hide' : 'Show'}}</span>
     </div>
+
     @if (form.get('confirmPassword')?.hasError('notSame')) {
       <p class="password-error">Passwords do not match</p>
     }
   </div>
+
   @if (!isLoading){
     <button type="submit" [disabled]="!this.form.valid">Submit</button>
   }
+
   @if (isLoading) {
     <app-loading-spinner></app-loading-spinner>
     }
+    
 </form>
 <div class="register-link">
   <p>Already have an account? <a [routerLink]="['/login']">Login</a></p>
