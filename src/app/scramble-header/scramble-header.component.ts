@@ -15,14 +15,14 @@ export class ScrambleHeaderComponent implements OnInit {
   ];
   currentIndex: number = 0;
   scrambledTitle: string = '';
-  originalText: string = 'Not Art'; // Start with 'Not Art' initially
+  originalText: string = 'Not Art'; 
   scrambleDuration: number = 0;
-  unscrambleDuration: number = 1500;
+  unscrambleDuration: number = 2500; 
 
   characters: string = '!<>-_\\/[]{}—=+*^?#________';
 
   ngOnInit(): void {
-    this.scrambleTitle(); // Initial scramble of 'Not Art'
+    this.scrambleTitle(); 
     this.startScrambling();
   }
 
@@ -53,12 +53,12 @@ export class ScrambleHeaderComponent implements OnInit {
       if (index === this.originalText.length) {
         clearInterval(interval);
       }
-    }, 50);
+    }, 100);
   }
 
   startScrambling(): void {
     const cycleInterval = setInterval(() => {
-      if (this.currentIndex < this.phrases.length - 1) {
+      if (this.currentIndex < this.phrases.length) {
         this.originalText = this.phrases[this.currentIndex];
         this.scrambleTitle();
 
