@@ -1,6 +1,6 @@
 # Events Platform
 
-Welcome to **Not Art** a web application that allows members of Nottingham's creative community find events, sign up to attend and add them to their own personal calendar. Staff members can add, edit and delete events form the platform. 
+Welcome to [**Not Art**](https://not-art.netlify.app/) a web application that allows members of Nottingham's creative community find events, sign up to attend and add them to their own personal calendar. Staff members can add, edit and delete events form the platform. 
 
 ## Project Overview 
 
