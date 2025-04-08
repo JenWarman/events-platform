@@ -12,7 +12,7 @@ export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/events'
+    redirectTo: 'events'
   },
   {
     path: 'events',

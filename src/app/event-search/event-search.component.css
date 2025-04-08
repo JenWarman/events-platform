@@ -22,7 +22,7 @@ h1 {
 
 h2 {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: lighter;
 }
 
@@ -31,7 +31,11 @@ h2 {
   justify-content: center;
 }
 .search-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
  padding-top: 1rem;
+ font-size: 1.5rem;
 }
 
 input {
@@ -44,9 +48,11 @@ button {
   margin-top: 1rem;
   border-radius: 0.25rem;
   cursor: pointer;
-  border:solid 1px rgb(200, 30, 50);
+  border:solid 2px rgb(200, 30, 50);
   background-color:rgb(20, 20, 20);
   color: rgb(200, 30, 50);
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 button:hover,

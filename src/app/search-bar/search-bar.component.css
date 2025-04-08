@@ -5,6 +5,7 @@ form {
 
 input {
   flex-grow: 0.2;
+  font-size: 1rem;
 }
 
 button {
@@ -15,6 +16,7 @@ button {
   border: none;
   background-color: rgb(200, 30, 50);
   color: #ffff;
+  font-size: 1rem;
 }
 
 button:hover,
