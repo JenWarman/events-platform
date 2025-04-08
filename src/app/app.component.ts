@@ -26,7 +26,6 @@ export class AppComponent {
 
   constructor(
     private supabaseService: SupabaseService,
-    private routerService: Router,
     private errorService: ErrorService
   ) {
     this.isLoading = true;

@@ -39,10 +39,11 @@ h1 {
 .event-detail p {
   margin: 0.5rem auto;
   padding: 0.25rem;
+  font-size: 1.5rem;
 }
 
 h3 {
-  font-size: 1.7rem;
+  font-size: 1.9rem;
 }
 
 img {
@@ -56,7 +57,6 @@ img {
   margin-left: auto;
   margin-right: 1rem;
   align-self: center;
-  width: 10%;
 }
 .event-info-button {
   width: 100px;
@@ -65,8 +65,8 @@ img {
   color: rgb(200, 30, 50);
   border: solid 1px rgb(200, 30, 50);
   border-radius: 50%;
-  padding: 20px 40px;
-  font-size: 16px;
+  padding: 4rem  4rem;
+  font-size: 1.5rem;
   display: inline-flex;
   justify-content: center;
   align-items: center;
