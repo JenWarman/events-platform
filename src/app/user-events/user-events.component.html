@@ -11,9 +11,9 @@
 
       @for (event of events; track event.event.id) {
       <div class="event-container">
-        <img src="{{ event.event.image }}" alt="{{ event.event.title }}" />
+        <img src="{{ event.event.image }}" alt="{{ event.event.title }} at {{event.event.location}}" />
         <div class="event-detail">
-          <h3>{{ event.event.title }}</h3>
+          <h2>{{ event.event.title }}</h2>
           <p class="type">{{ event.event.type.toUpperCase() }}</p>
           <p>Location: {{ event.event.location }}</p>
           <p>{{ event.event.date | date : "fullDate" }}</p>

@@ -1,9 +1,9 @@
 <div class="container">
   @if (event) {
   <div class="event-container">
-    <img src="{{ event.image }}" alt="{{ event.title }}" />
+    <img src="{{ event.image }}" alt="{{ event.title }} at {{event.location}}" />
     <div class="event-detail">
-      <h3>{{ event.title }}</h3>
+      <h2>{{ event.title }}</h2>
       <p class="type">
         {{ event.type.toUpperCase() }}
       </p>
