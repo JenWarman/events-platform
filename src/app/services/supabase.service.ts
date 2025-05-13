@@ -177,7 +177,7 @@ export class SupabaseService {
 
     if (error) {
       this.errorService.showError(
-        'Failed to sign up user to this event. You may already be signed up, check your events!'
+        'You need to login to sign up for an event! Login or sign-up for an account.'
       );
       throw throwError(
         () => new Error('Failed to sign up user to this event.')
