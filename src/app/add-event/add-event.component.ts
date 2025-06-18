@@ -25,7 +25,7 @@ export class AddEventComponent {
   form = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.maxLength(128), Validators.minLength(5)]),
     location: new FormControl('', [Validators.required, Validators.maxLength(128), Validators.minLength(5)]),
-    summary: new FormControl('', [Validators.required, Validators.minLength(5)]),
+    summary: new FormControl('', Validators.required),
     image: new FormControl('', [Validators.required, Validators.minLength(5)]),
     date: new FormControl('', Validators.required),
     time: new FormControl('', Validators.required),
