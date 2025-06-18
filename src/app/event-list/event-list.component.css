@@ -3,9 +3,10 @@
   margin: 1rem;
   padding: 1rem;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
+  flex-direction: column-reverse;
   justify-content: center;
+  align-items: center;
 }
 
 h1 {
@@ -23,7 +24,7 @@ h1 {
   box-shadow: 0 0 4px rgba(251, 143, 143, 0.7);
   margin: 1rem;
   padding: 0 1rem 1rem 1rem;
-  width: 100vw;
+  width: 100%;
 }
 
 .event-container:hover {

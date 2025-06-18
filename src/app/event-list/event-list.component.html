@@ -1,9 +1,9 @@
 @if (isFetching()) {
 <p class="fallback-text">Fetching events...</p>
 }
-
+ <h1>Upcoming Events</h1>
 <div class="container">
-  <h1>Upcoming Events</h1>
+ 
   @for (event of events; track event.id) {
   <div class="event-container">
     <img src="{{ event.image }}" alt="{{ event.title }} at {{event.location}}" />
