@@ -9,7 +9,7 @@
       </p>
       <p>{{ event.summary }}</p>
       <p>Location: {{ event.location }}</p>
-      <p>Date: {{ event.date | date: 'dd MMMM yyyy' }}</p>
+      <p>Date: {{ event.date | date : "fullDate" }}</p>
       <p>Time: {{ event.time }}</p>
       @if (event.user_events.length ===1) {
         <p class="type">You're going!</p>
