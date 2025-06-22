@@ -8,7 +8,7 @@
 
 .event-container {
   display: flex;
-  flex-direction: column;
+   flex-direction: row;
   background-color: rgb(20, 20, 20);
   color: #fff;
   border-radius: 4px;
@@ -27,19 +27,13 @@
 .event-detail {
   align-self:  center;
   width: 80%;
-  display: column;
   padding: 1rem;
-  text-align: center;
 }
 
 .event-detail p {
   margin: 0.5rem auto;
   margin-right: 1rem;
   padding: 0.25rem;
-}
-
-.type {
-  text-align: center;
 }
 
 h3 {
@@ -53,7 +47,7 @@ p {
 
 img {
   padding: 2rem;
-  width: 80%;
+  width: 50%;
   align-self: center;
   max-inline-size: 100%;
   block-size: auto;
@@ -61,21 +55,19 @@ img {
 
 .event-buttons {
   display: flex;
-  justify-content: center;
-  margin: auto;
-  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  align-items: flex-start;
+
 }
 
 button {
   padding: 0.5rem 1rem;
-  margin-left: auto;
-  margin-right: 1rem;
   border-radius: 0.25rem;
   cursor: pointer;
   border: none;
   background-color: rgb(200, 30, 50);
   color: #fff;
   font-size: 1.5rem;
+  margin-right: 1rem;
 }
 
 button:hover,
@@ -89,13 +81,15 @@ button:active {
 }
 
 .button-container {
-  display: flex;
-  margin: auto;
-  padding-bottom: 3rem;
+ display: flex;
+  justify-content: flex-start; /* Align to the left */
+  margin: 0;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
 }
 .event-info-button {
   padding: 0.5rem 1rem;
-  margin: 0 auto;
+  margin: 0; 
   border-radius: 0.25rem;
   cursor: pointer;
   border: none;
@@ -138,3 +132,21 @@ button:active {
 .register-link {
   padding-top: 1rem;
 }
+/* 
+
+@media (max-width: 768px) {
+  .event-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  img {
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .event-detail {
+    width: 100%;
+    padding: 1rem;
+  }
+} */
