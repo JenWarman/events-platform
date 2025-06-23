@@ -199,7 +199,7 @@ export class SupabaseService {
       .from('user_events')
       .select('*, event(*)')
       .eq('user_id', userId)
-      .order('event(date)', { ascending: false });
+      .order('event(date)', { ascending: !(filters?.past ?? false) });
 
     if (filters?.past) {
       q = q.lt('event.date', this.formatDate(new Date()));
