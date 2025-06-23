@@ -14,6 +14,7 @@ export class SupabaseService {
 
   private userLoadedSub: BehaviorSubject<UserProfile | undefined> =
     new BehaviorSubject<UserProfile | undefined>(undefined);
+    
   public userLoaded = this.userLoadedSub.asObservable();
 
   constructor(private errorService: ErrorService) {

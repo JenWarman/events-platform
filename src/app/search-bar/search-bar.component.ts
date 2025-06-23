@@ -18,7 +18,7 @@ export class SearchBarComponent {
   constructor(private routerService: Router){}
 
   onFormSubmit() {
-    this.routerService.navigate(['/events'], {queryParams: {keyword: this.form.value.keyword}, queryParamsHandling: 'merge'})
+    this.routerService.navigate(['/events'], {queryParams: {keyword: this.form.value.keyword}, queryParamsHandling: 'replace'})
     this.form.reset();  
   }
   
