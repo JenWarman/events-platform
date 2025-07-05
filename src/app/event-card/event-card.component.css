@@ -132,21 +132,19 @@ button:active {
 .register-link {
   padding-top: 1rem;
 }
-/* 
 
-@media (max-width: 768px) {
+
+
+@media (max-width: 1200px) {
+
   .event-container {
     flex-direction: column;
     align-items: center;
   }
 
   img {
-    width: 100%;
+    width: 80%;
     padding: 1rem 0;
   }
 
-  .event-detail {
-    width: 100%;
-    padding: 1rem;
-  }
-} */
+}
